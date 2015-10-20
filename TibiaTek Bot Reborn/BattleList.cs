@@ -79,14 +79,15 @@ namespace TibiaTekBot
         public bool NextVisible()
         {
             bool isOnScreen = false;
-            while (Next() && !(isOnScreen = OnScreen));
+
+            while (Next() && !(isOnScreen = (OnScreen && client.LocalPlayer.Location.Z == Location.Z)));
             return isOnScreen;
         }
 
         public bool PreviousVisible()
         {
             bool isOnScreen = false;
-            while (Previous() && !(isOnScreen = OnScreen)) ;
+            while (Previous() && !(isOnScreen = (OnScreen && client.LocalPlayer.Location.Z == Location.Z))) ;
             return isOnScreen;
         }
 
