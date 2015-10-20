@@ -24,9 +24,14 @@ namespace TibiaTekBot
 
         public struct Location
         {
-            public uint Z;
-            public uint Y;
             public uint X;
+            public uint Y;
+            public uint Z;
+
+            public override string ToString()
+            {
+                return String.Format("{{{0}, {1}, {2}}}", X, Y, Z);
+            }
         }
 
         public struct Outfit
