@@ -51,6 +51,48 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleList.cs" />
+    <Compile Include="fmrAlarms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrAlarms.Designer.cs">
+      <DependentUpon>fmrAlarms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrCharacterStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrCharacterStatistics.Designer.cs">
+      <DependentUpon>fmrCharacterStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrEditLoot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrEditLoot.Designer.cs">
+      <DependentUpon>fmrEditLoot.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrGPSMap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrGPSMap.Designer.cs">
+      <DependentUpon>fmrGPSMap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrLagBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrLagBar.Designer.cs">
+      <DependentUpon>fmrLagBar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrLoginServer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrLoginServer.Designer.cs">
+      <DependentUpon>fmrLoginServer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fmrTibiaTekKeyboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmrTibiaTekKeyboard.Designer.cs">
+      <DependentUpon>fmrTibiaTekKeyboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="LocalPlayer.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Kernel.cs" />
@@ -66,6 +108,27 @@
     <Compile Include="Timer.cs" />
     <Compile Include="Features\ExperienceChecker.cs" />
     <Compile Include="Utilities.cs" />
+    <EmbeddedResource Include="fmrAlarms.resx">
+      <DependentUpon>fmrAlarms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrCharacterStatistics.resx">
+      <DependentUpon>fmrCharacterStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrEditLoot.resx">
+      <DependentUpon>fmrEditLoot.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrGPSMap.resx">
+      <DependentUpon>fmrGPSMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrLagBar.resx">
+      <DependentUpon>fmrLagBar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrLoginServer.resx">
+      <DependentUpon>fmrLoginServer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmrTibiaTekKeyboard.resx">
+      <DependentUpon>fmrTibiaTekKeyboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +142,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="MapReader\tiles.psd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,8 +157,71 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\lagbar_interface.png" />
+    <None Include="Resources\lagbar_bar.gif" />
+    <None Include="Resources\char_blue.png" />
+    <None Include="Resources\char_green.png" />
+    <None Include="Resources\char_magenta.png" />
+    <None Include="Resources\char_orange.png" />
+    <None Include="Resources\char_red.png" />
+    <None Include="Resources\char_yellow.png" />
+    <None Include="Resources\Character.JPG" />
+    <None Include="Resources\ILMap.jpg" />
+    <None Include="Resources\Image1.jpg" />
+    <None Include="Resources\keyboard.png" />
+    <None Include="Resources\keyboard_activate.png" />
+    <None Include="Resources\keyboard_edit.png" />
+    <None Include="Resources\keyboard_stop.png" />
+    <None Include="Resources\lagbar_close.bmp" />
+    <None Include="Resources\lagbar_close.png" />
+    <None Include="Resources\location_pointer_blue.png" />
+    <None Include="Resources\location_pointer_bw.png" />
+    <None Include="Resources\location_pointer_green.png" />
+    <None Include="Resources\script_delete.png" />
+    <None Include="Resources\script_edit.png" />
+    <None Include="Resources\script_pause.png" />
+    <None Include="Resources\script_play.png" />
+    <None Include="Resources\script_save.png" />
+    <None Include="Resources\script_stop.png" />
+    <None Include="Resources\script_warning.png" />
+    <None Include="Resources\ttb splash0.jpg" />
+    <None Include="Resources\ttb splash1.jpg" />
+    <None Include="Resources\ttb splash2.jpg" />
+    <None Include="Resources\ttb splash3.jpg" />
+    <None Include="Resources\ttb splash4.jpg" />
+    <None Include="Resources\ttb splash5.jpg" />
+    <None Include="Resources\ttb splash6.jpg" />
+    <None Include="Resources\ttb splash7.jpg" />
+    <None Include="Resources\ttb splash8.jpg" />
+    <None Include="Resources\map_big.jpg" />
+    <Content Include="Alarms\Dong Dong.wav" />
+    <Content Include="Alarms\Pinc.WAV" />
+    <Content Include="Alarms\Ring Ring.wav" />
+    <Content Include="Alarms\Tune.wav" />
+    <Content Include="MapReader\creature.gif" />
+    <Content Include="MapReader\depot.gif" />
+    <Content Include="MapReader\doorclosed.gif" />
+    <Content Include="MapReader\doorlocked.gif" />
+    <Content Include="MapReader\dooropen.gif" />
+    <Content Include="MapReader\holeclosed.gif" />
+    <Content Include="MapReader\holeopen.gif" />
+    <Content Include="MapReader\ladder.gif" />
+    <Content Include="MapReader\lava.gif" />
+    <Content Include="MapReader\mailbox.gif" />
+    <Content Include="MapReader\notwalkable.gif" />
+    <Content Include="MapReader\otherplayer.gif" />
+    <Content Include="MapReader\player.gif" />
+    <Content Include="MapReader\stairs.gif" />
+    <Content Include="MapReader\stairsgodown.gif" />
+    <Content Include="MapReader\stairsgoup.gif" />
+    <Content Include="MapReader\swamp.gif" />
+    <Content Include="MapReader\teleport.gif" />
+    <Content Include="MapReader\walkable.gif" />
+    <Content Include="MapReader\waterfish.gif" />
+    <Content Include="MapReader\waternofish.gif" />
     <Content Include="ttb.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
