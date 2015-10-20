@@ -34,12 +34,21 @@ namespace TibiaTekBot
                 if (bl.ID != playerID && bl.OnScreen && bl.Location.Z == playerLoc.Z)
                 {
                     MessageBox.Show(String.Format("ID: {0:X} \nName: {1} \nLocation: {2}", bl.ID, bl.Name, bl.Location));
+
                 }
             } while (bl.Next());
         }
 
         private void ExpCheckerTrigger_CheckedChanged(object sender, EventArgs e)
         {
+            if (ExpCheckerTrigger.Text=="Activate")
+            {
+                ExpCheckerTrigger.Text = "Deactivate";
+            }
+            else
+            {
+                ExpCheckerTrigger.Text = "Activate";
+            }
             kernel.ExperienceChecker.Active = ((CheckBox)sender).Checked;
         }
     }
