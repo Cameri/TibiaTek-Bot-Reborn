@@ -23,6 +23,7 @@ namespace TibiaTekBot
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //agregado
             MessageBox.Show(String.Format("{0:X}", kernel.Client.LocalPlayer.ID));
             
             BattleList bl = kernel.Client.GetBattlelist();
