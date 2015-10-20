@@ -23,20 +23,19 @@ namespace TibiaTekBot
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-            MessageBox.Show(String.Format("{0:X}", kernel.Client.LocalPlayer.ID));
-            
+            //MessageBox.Show(String.Format("{0}", kernel.Client.LocalPlayer.Location));
             BattleList bl = kernel.Client.GetBattlelist();
-            MessageBox.Show(bl.BattlelistBegin.ToString());
+           // MessageBox.Show(bl.BattlelistBegin.ToString());
             bl.Reset();
-            int c = 0;
+            Tibia.Location playerLoc = kernel.Client.LocalPlayer.Location;
+            uint playerID = kernel.Client.LocalPlayer.ID;
             do
             {
-                MessageBox.Show(String.Format("{0:X} {1}", bl.ID, bl.Name));
-                c++;
-            } while (bl.Next() && c < 5);
-
-            //MessageBox.Show(String.Format("{0:X} {1:X} {2:X}", kernel.Client.LocalPlayer.debug[0], kernel.Client.LocalPlayer.debug[1], kernel.Client.LocalPlayer.debug[2]));
+                if (bl.ID != playerID && bl.OnScreen && bl.Location.Z == playerLoc.Z)
+                {
+                    MessageBox.Show(String.Format("ID: {0:X} \nName: {1} \nLocation: {2}", bl.ID, bl.Name, bl.Location));
+                }
+            } while (bl.Next());
         }
 
         private void ExpCheckerTrigger_CheckedChanged(object sender, EventArgs e)
