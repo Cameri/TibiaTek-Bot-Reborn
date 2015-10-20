@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace TibiaTekBot
 {
@@ -58,7 +54,7 @@ namespace TibiaTekBot
             ItemMaxCount = 1299U,
             ItemSize = 0xDCU,
             NameOffset = 0x4U,
-            LocationOffset = 0x24U,
+            LocationOffset = 0x24U, 
             CoordZOffset = 0x24U,
             CoordYOffset = 0x28U,
             CoordXOffset = 0x2CU,
