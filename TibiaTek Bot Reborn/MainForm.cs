@@ -24,6 +24,8 @@ namespace TibiaTekBot
         private void button1_Click(object sender, EventArgs e)
         {
             //MessageBox.Show(String.Format("{0}", kernel.Client.LocalPlayer.Location));
+            //test
+            MessageBox.Show(String.Format("{0:X}", kernel.Client.LocalPlayer.ID));
             BattleList bl = kernel.Client.GetBattlelist();
             MessageBox.Show(bl.BattlelistBegin.ToString());
             
