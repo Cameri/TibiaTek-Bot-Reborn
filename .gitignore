@@ -12,3 +12,7 @@
 /TibiaTek Bot Reborn/obj/Release/TibiaTek Bot Reborn.csproj.FileListAbsolute.txt
 *.exe
 *.pdb
+*.resources
+.vs/TibiaTek Bot Reborn/v14/.suo
+*.suo
+*.suo
