@@ -12,12 +12,16 @@ namespace TibiaTekBot
 {
     public partial class MainForm : Form
     {
+
+        AlarmsForm alarmsForm = new AlarmsForm();
+
         Kernel kernel;
 
         public MainForm()
         {
             kernel = new Kernel();
             kernel.Start();
+            alarmsForm.kernel = kernel;
             InitializeComponent();
         }
 
@@ -50,6 +54,42 @@ namespace TibiaTekBot
                 ExpCheckerTrigger.Text = "Activate";
             }
             kernel.ExperienceChecker.Active = ((CheckBox)sender).Checked;
+        }
+
+        private void GroupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBox3_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ExpCheckerBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AutoLooterBox_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alarmsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            alarmsForm.Show();
+            alarmsForm.BringToFront();
         }
     }
 }

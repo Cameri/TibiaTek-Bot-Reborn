@@ -69,6 +69,9 @@
             this.ExpCheckerTrigger = new System.Windows.Forms.CheckBox();
             this.ExpShowCreatures = new System.Windows.Forms.CheckBox();
             this.ExpShowNext = new System.Windows.Forms.CheckBox();
+            this.mainMenu = new System.Windows.Forms.MenuStrip();
+            this.windowsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.alarmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoLooterBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).BeginInit();
             this.GroupBox2.SuspendLayout();
@@ -80,6 +83,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumSoulPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumManaPoints)).BeginInit();
             this.ExpCheckerBox.SuspendLayout();
+            this.mainMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // AutoLooterBox
@@ -90,12 +94,13 @@
             this.AutoLooterBox.Controls.Add(this.AutoLooterMinCap);
             this.AutoLooterBox.Controls.Add(this.AutoLooterConfigure);
             this.AutoLooterBox.Controls.Add(this.AutoLooterTrigger);
-            this.AutoLooterBox.Location = new System.Drawing.Point(12, 12);
+            this.AutoLooterBox.Location = new System.Drawing.Point(12, 31);
             this.AutoLooterBox.Name = "AutoLooterBox";
             this.AutoLooterBox.Size = new System.Drawing.Size(206, 95);
             this.AutoLooterBox.TabIndex = 8;
             this.AutoLooterBox.TabStop = false;
             this.AutoLooterBox.Text = "Auto Looter";
+            this.AutoLooterBox.Enter += new System.EventHandler(this.AutoLooterBox_Enter);
             // 
             // AutoLooterHelp
             // 
@@ -174,12 +179,13 @@
             this.GroupBox2.Controls.Add(this.Label3);
             this.GroupBox2.Controls.Add(this.SpellCasterSpell);
             this.GroupBox2.Controls.Add(this.Label1);
-            this.GroupBox2.Location = new System.Drawing.Point(12, 113);
+            this.GroupBox2.Location = new System.Drawing.Point(12, 132);
             this.GroupBox2.Name = "GroupBox2";
             this.GroupBox2.Size = new System.Drawing.Size(206, 105);
             this.GroupBox2.TabIndex = 9;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Spell Caster";
+            this.GroupBox2.Enter += new System.EventHandler(this.GroupBox2_Enter);
             // 
             // SpellCasterHelp
             // 
@@ -259,12 +265,13 @@
             this.GroupBox4.Controls.Add(this.Label6);
             this.GroupBox4.Controls.Add(this.AutoEaterTrigger);
             this.GroupBox4.Controls.Add(this.AutoEaterSmart);
-            this.GroupBox4.Location = new System.Drawing.Point(224, 12);
+            this.GroupBox4.Location = new System.Drawing.Point(224, 31);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(191, 167);
             this.GroupBox4.TabIndex = 11;
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "Auto Eater";
+            this.GroupBox4.Enter += new System.EventHandler(this.GroupBox4_Enter);
             // 
             // AutoEaterHelp
             // 
@@ -391,12 +398,13 @@
             this.GroupBox3.Controls.Add(this.Label4);
             this.GroupBox3.Controls.Add(this.RunemakerSpell);
             this.GroupBox3.Controls.Add(this.Label2);
-            this.GroupBox3.Location = new System.Drawing.Point(224, 185);
+            this.GroupBox3.Location = new System.Drawing.Point(224, 204);
             this.GroupBox3.Name = "GroupBox3";
             this.GroupBox3.Size = new System.Drawing.Size(191, 144);
             this.GroupBox3.TabIndex = 10;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "Runemaker";
+            this.GroupBox3.Enter += new System.EventHandler(this.GroupBox3_Enter);
             // 
             // RunemakerHelp
             // 
@@ -491,7 +499,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(184, 335);
+            this.button1.Location = new System.Drawing.Point(184, 354);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 16;
@@ -505,12 +513,13 @@
             this.ExpCheckerBox.Controls.Add(this.ExpCheckerTrigger);
             this.ExpCheckerBox.Controls.Add(this.ExpShowCreatures);
             this.ExpCheckerBox.Controls.Add(this.ExpShowNext);
-            this.ExpCheckerBox.Location = new System.Drawing.Point(12, 224);
+            this.ExpCheckerBox.Location = new System.Drawing.Point(12, 243);
             this.ExpCheckerBox.Name = "ExpCheckerBox";
             this.ExpCheckerBox.Size = new System.Drawing.Size(206, 105);
             this.ExpCheckerBox.TabIndex = 12;
             this.ExpCheckerBox.TabStop = false;
             this.ExpCheckerBox.Text = "Experience Checker";
+            this.ExpCheckerBox.Enter += new System.EventHandler(this.ExpCheckerBox_Enter);
             // 
             // ExpCheckerHelp
             // 
@@ -557,21 +566,49 @@
             this.ExpShowNext.Text = "Experience To Next Level";
             this.ExpShowNext.UseVisualStyleBackColor = true;
             // 
+            // mainMenu
+            // 
+            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.windowsMenuItem});
+            this.mainMenu.Location = new System.Drawing.Point(0, 0);
+            this.mainMenu.Name = "mainMenu";
+            this.mainMenu.Size = new System.Drawing.Size(429, 24);
+            this.mainMenu.TabIndex = 17;
+            this.mainMenu.Text = "mainMenu";
+            // 
+            // windowsMenuItem
+            // 
+            this.windowsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.alarmsToolStripMenuItem});
+            this.windowsMenuItem.Name = "windowsMenuItem";
+            this.windowsMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.windowsMenuItem.Text = "&Windows";
+            // 
+            // alarmsToolStripMenuItem
+            // 
+            this.alarmsToolStripMenuItem.Name = "alarmsToolStripMenuItem";
+            this.alarmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.alarmsToolStripMenuItem.Text = "&Alarms";
+            this.alarmsToolStripMenuItem.Click += new System.EventHandler(this.alarmsToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(429, 367);
+            this.ClientSize = new System.Drawing.Size(429, 395);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ExpCheckerBox);
             this.Controls.Add(this.GroupBox4);
             this.Controls.Add(this.GroupBox3);
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.AutoLooterBox);
+            this.Controls.Add(this.mainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.mainMenu;
             this.Name = "MainForm";
             this.Text = "TibiaTek Bot Reborn";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.AutoLooterBox.ResumeLayout(false);
             this.AutoLooterBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).EndInit();
@@ -588,7 +625,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumManaPoints)).EndInit();
             this.ExpCheckerBox.ResumeLayout(false);
             this.ExpCheckerBox.PerformLayout();
+            this.mainMenu.ResumeLayout(false);
+            this.mainMenu.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -634,6 +674,9 @@
         internal System.Windows.Forms.CheckBox ExpCheckerTrigger;
         internal System.Windows.Forms.CheckBox ExpShowCreatures;
         internal System.Windows.Forms.CheckBox ExpShowNext;
+        private System.Windows.Forms.MenuStrip mainMenu;
+        private System.Windows.Forms.ToolStripMenuItem windowsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem alarmsToolStripMenuItem;
     }
 }
 

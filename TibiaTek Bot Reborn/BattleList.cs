@@ -55,6 +55,22 @@ namespace TibiaTekBot
             }
         }
 
+        public bool IsPlayer
+        {
+            get
+            {
+                return client.ReadUInt(BattlelistBegin + Index * (uint)Constants.BattleList.ItemSize) < 0x40000000;
+            }
+        }
+
+        public bool IsMonster
+        {
+            get
+            {
+                return !IsPlayer;
+            }
+        }
+
         public uint ID
         {
             get

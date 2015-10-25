@@ -47,6 +47,11 @@ namespace TibiaTekBot
             CapacityOffset = 0x6D101C, // XORed
             AttackedEntity
         }
+
+        public enum VipList : uint
+        {
+
+        }
         
         public enum BattleList : uint
         {

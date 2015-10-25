@@ -51,11 +51,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BattleList.cs" />
-    <Compile Include="fmrAlarms.cs">
+    <Compile Include="AlarmsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fmrAlarms.Designer.cs">
-      <DependentUpon>fmrAlarms.cs</DependentUpon>
+    <Compile Include="AlarmsForm.Designer.cs">
+      <DependentUpon>AlarmsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="fmrCharacterStatistics.cs">
       <SubType>Form</SubType>
@@ -108,8 +108,8 @@
     <Compile Include="Timer.cs" />
     <Compile Include="Features\ExperienceChecker.cs" />
     <Compile Include="Utilities.cs" />
-    <EmbeddedResource Include="fmrAlarms.resx">
-      <DependentUpon>fmrAlarms.cs</DependentUpon>
+    <EmbeddedResource Include="AlarmsForm.resx">
+      <DependentUpon>AlarmsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrCharacterStatistics.resx">
       <DependentUpon>fmrCharacterStatistics.cs</DependentUpon>

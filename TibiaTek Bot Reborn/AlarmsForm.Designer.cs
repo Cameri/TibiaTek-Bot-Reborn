@@ -1,6 +1,6 @@
 ﻿namespace TibiaTekBot
 {
-    partial class fmrAlarms
+    partial class AlarmsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,22 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.TabPage tablalala;
+            this.GroupBox13 = new System.Windows.Forms.GroupBox();
+            this.GroupBox15 = new System.Windows.Forms.GroupBox();
+            this.Label8 = new System.Windows.Forms.Label();
+            this.ItemsCheckInventory = new System.Windows.Forms.CheckBox();
+            this.ItemsCheckFloor = new System.Windows.Forms.CheckBox();
+            this.Label10 = new System.Windows.Forms.Label();
+            this.ItemsCount = new System.Windows.Forms.NumericUpDown();
+            this.ItemsCondition = new System.Windows.Forms.ComboBox();
+            this.Label9 = new System.Windows.Forms.Label();
+            this.ItemsList = new System.Windows.Forms.CheckedListBox();
+            this.GroupBox14 = new System.Windows.Forms.GroupBox();
+            this.ItemsPauseBot = new System.Windows.Forms.CheckBox();
+            this.ItemsMessagePlayer = new System.Windows.Forms.CheckBox();
+            this.ItemsLogOut = new System.Windows.Forms.CheckBox();
+            this.ItemsPlaySound = new System.Windows.Forms.CheckBox();
+            this.ItemsMessagePlayerName = new System.Windows.Forms.TextBox();
             this.AlarmsHelp = new System.Windows.Forms.Button();
             this.AlarmsActivate = new System.Windows.Forms.Button();
             this.AlarmsLoad = new System.Windows.Forms.Button();
@@ -45,10 +61,8 @@
             this.BattlelistMultiFloorAbove = new System.Windows.Forms.CheckBox();
             this.BattlelistMultiFloorBelow = new System.Windows.Forms.CheckBox();
             this.GroupBox6 = new System.Windows.Forms.GroupBox();
-            this.BattlelistGMCM = new System.Windows.Forms.CheckBox();
-            this.BattlelistMonsterNPC = new System.Windows.Forms.CheckBox();
-            this.BattlelistPlayerKiller = new System.Windows.Forms.CheckBox();
-            this.BattlelistPlayer = new System.Windows.Forms.CheckBox();
+            this.BattlelistActivateIfMonsterNPC = new System.Windows.Forms.CheckBox();
+            this.BattlelistActivateIfPlayer = new System.Windows.Forms.CheckBox();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
             this.BattlelistIgnoredPlayerRemove = new System.Windows.Forms.Button();
             this.BattlelistIgnoredPlayerAdd = new System.Windows.Forms.Button();
@@ -103,22 +117,6 @@
             this.Label5 = new System.Windows.Forms.Label();
             this.StatusHitPoints = new System.Windows.Forms.NumericUpDown();
             this.Label4 = new System.Windows.Forms.Label();
-            this.GroupBox13 = new System.Windows.Forms.GroupBox();
-            this.GroupBox15 = new System.Windows.Forms.GroupBox();
-            this.Label8 = new System.Windows.Forms.Label();
-            this.ItemsCheckInventory = new System.Windows.Forms.CheckBox();
-            this.ItemsCheckFloor = new System.Windows.Forms.CheckBox();
-            this.Label10 = new System.Windows.Forms.Label();
-            this.ItemsCount = new System.Windows.Forms.NumericUpDown();
-            this.ItemsCondition = new System.Windows.Forms.ComboBox();
-            this.Label9 = new System.Windows.Forms.Label();
-            this.ItemsList = new System.Windows.Forms.CheckedListBox();
-            this.GroupBox14 = new System.Windows.Forms.GroupBox();
-            this.ItemsPauseBot = new System.Windows.Forms.CheckBox();
-            this.ItemsMessagePlayer = new System.Windows.Forms.CheckBox();
-            this.ItemsLogOut = new System.Windows.Forms.CheckBox();
-            this.ItemsPlaySound = new System.Windows.Forms.CheckBox();
-            this.ItemsMessagePlayerName = new System.Windows.Forms.TextBox();
             this.TabPage4 = new System.Windows.Forms.TabPage();
             this.ChangeSoundGrpBox = new System.Windows.Forms.GroupBox();
             this.PrivMsgGrpBox = new System.Windows.Forms.GroupBox();
@@ -147,6 +145,11 @@
             this.Label11 = new System.Windows.Forms.Label();
             this.BlSoundBox = new System.Windows.Forms.ComboBox();
             tablalala = new System.Windows.Forms.TabPage();
+            tablalala.SuspendLayout();
+            this.GroupBox13.SuspendLayout();
+            this.GroupBox15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemsCount)).BeginInit();
+            this.GroupBox14.SuspendLayout();
             this.Tabs.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.GroupBox1.SuspendLayout();
@@ -169,11 +172,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.StatusSoulPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusManaPoints)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusHitPoints)).BeginInit();
-            tablalala.SuspendLayout();
-            this.GroupBox13.SuspendLayout();
-            this.GroupBox15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemsCount)).BeginInit();
-            this.GroupBox14.SuspendLayout();
             this.TabPage4.SuspendLayout();
             this.ChangeSoundGrpBox.SuspendLayout();
             this.PrivMsgGrpBox.SuspendLayout();
@@ -183,6 +181,203 @@
             this.PubMsgGrpBox.SuspendLayout();
             this.BlGrpBox.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tablalala
+            // 
+            tablalala.Controls.Add(this.GroupBox13);
+            tablalala.Location = new System.Drawing.Point(4, 22);
+            tablalala.Name = "tablalala";
+            tablalala.Padding = new System.Windows.Forms.Padding(3);
+            tablalala.Size = new System.Drawing.Size(360, 296);
+            tablalala.TabIndex = 4;
+            tablalala.Text = "Items";
+            tablalala.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox13
+            // 
+            this.GroupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBox13.Controls.Add(this.GroupBox15);
+            this.GroupBox13.Controls.Add(this.GroupBox14);
+            this.GroupBox13.Enabled = false;
+            this.GroupBox13.Location = new System.Drawing.Point(6, 6);
+            this.GroupBox13.Name = "GroupBox13";
+            this.GroupBox13.Size = new System.Drawing.Size(348, 284);
+            this.GroupBox13.TabIndex = 0;
+            this.GroupBox13.TabStop = false;
+            this.GroupBox13.Text = "Items Alarm Settings";
+            // 
+            // GroupBox15
+            // 
+            this.GroupBox15.Controls.Add(this.Label8);
+            this.GroupBox15.Controls.Add(this.ItemsCheckInventory);
+            this.GroupBox15.Controls.Add(this.ItemsCheckFloor);
+            this.GroupBox15.Controls.Add(this.Label10);
+            this.GroupBox15.Controls.Add(this.ItemsCount);
+            this.GroupBox15.Controls.Add(this.ItemsCondition);
+            this.GroupBox15.Controls.Add(this.Label9);
+            this.GroupBox15.Controls.Add(this.ItemsList);
+            this.GroupBox15.Location = new System.Drawing.Point(6, 19);
+            this.GroupBox15.Name = "GroupBox15";
+            this.GroupBox15.Size = new System.Drawing.Size(333, 134);
+            this.GroupBox15.TabIndex = 27;
+            this.GroupBox15.TabStop = false;
+            this.GroupBox15.Text = "Items List";
+            // 
+            // Label8
+            // 
+            this.Label8.AutoSize = true;
+            this.Label8.Location = new System.Drawing.Point(224, 76);
+            this.Label8.Name = "Label8";
+            this.Label8.Size = new System.Drawing.Size(25, 13);
+            this.Label8.TabIndex = 7;
+            this.Label8.Text = "and";
+            // 
+            // ItemsCheckInventory
+            // 
+            this.ItemsCheckInventory.AutoSize = true;
+            this.ItemsCheckInventory.Enabled = false;
+            this.ItemsCheckInventory.Location = new System.Drawing.Point(149, 75);
+            this.ItemsCheckInventory.Name = "ItemsCheckInventory";
+            this.ItemsCheckInventory.Size = new System.Drawing.Size(72, 17);
+            this.ItemsCheckInventory.TabIndex = 6;
+            this.ItemsCheckInventory.Text = " inventory";
+            this.ItemsCheckInventory.UseVisualStyleBackColor = true;
+            // 
+            // ItemsCheckFloor
+            // 
+            this.ItemsCheckFloor.AutoSize = true;
+            this.ItemsCheckFloor.Enabled = false;
+            this.ItemsCheckFloor.Location = new System.Drawing.Point(255, 75);
+            this.ItemsCheckFloor.Name = "ItemsCheckFloor";
+            this.ItemsCheckFloor.Size = new System.Drawing.Size(49, 17);
+            this.ItemsCheckFloor.TabIndex = 5;
+            this.ItemsCheckFloor.Text = "floor.";
+            this.ItemsCheckFloor.UseVisualStyleBackColor = true;
+            // 
+            // Label10
+            // 
+            this.Label10.AutoSize = true;
+            this.Label10.Location = new System.Drawing.Point(147, 59);
+            this.Label10.Name = "Label10";
+            this.Label10.Size = new System.Drawing.Size(160, 13);
+            this.Label10.TabIndex = 4;
+            this.Label10.Text = "of the selected items, find also in";
+            // 
+            // ItemsCount
+            // 
+            this.ItemsCount.Enabled = false;
+            this.ItemsCount.Location = new System.Drawing.Point(205, 35);
+            this.ItemsCount.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
+            this.ItemsCount.Name = "ItemsCount";
+            this.ItemsCount.Size = new System.Drawing.Size(66, 20);
+            this.ItemsCount.TabIndex = 3;
+            // 
+            // ItemsCondition
+            // 
+            this.ItemsCondition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ItemsCondition.Enabled = false;
+            this.ItemsCondition.FormattingEnabled = true;
+            this.ItemsCondition.Items.AddRange(new object[] {
+            "=",
+            "<",
+            ">",
+            "<=",
+            ">=",
+            "!="});
+            this.ItemsCondition.Location = new System.Drawing.Point(150, 35);
+            this.ItemsCondition.Name = "ItemsCondition";
+            this.ItemsCondition.Size = new System.Drawing.Size(49, 21);
+            this.ItemsCondition.TabIndex = 2;
+            // 
+            // Label9
+            // 
+            this.Label9.AutoSize = true;
+            this.Label9.Location = new System.Drawing.Point(146, 19);
+            this.Label9.Name = "Label9";
+            this.Label9.Size = new System.Drawing.Size(131, 13);
+            this.Label9.TabIndex = 1;
+            this.Label9.Text = "Fire alarm when you have:";
+            // 
+            // ItemsList
+            // 
+            this.ItemsList.FormattingEnabled = true;
+            this.ItemsList.Items.AddRange(new object[] {
+            "Food",
+            "Blank Runes",
+            "Worms",
+            "Throwables (Spears)",
+            "Ammunition"});
+            this.ItemsList.Location = new System.Drawing.Point(6, 19);
+            this.ItemsList.Name = "ItemsList";
+            this.ItemsList.Size = new System.Drawing.Size(134, 109);
+            this.ItemsList.TabIndex = 0;
+            // 
+            // GroupBox14
+            // 
+            this.GroupBox14.Controls.Add(this.ItemsPauseBot);
+            this.GroupBox14.Controls.Add(this.ItemsMessagePlayer);
+            this.GroupBox14.Controls.Add(this.ItemsLogOut);
+            this.GroupBox14.Controls.Add(this.ItemsPlaySound);
+            this.GroupBox14.Controls.Add(this.ItemsMessagePlayerName);
+            this.GroupBox14.Location = new System.Drawing.Point(6, 159);
+            this.GroupBox14.Name = "GroupBox14";
+            this.GroupBox14.Size = new System.Drawing.Size(333, 72);
+            this.GroupBox14.TabIndex = 26;
+            this.GroupBox14.TabStop = false;
+            this.GroupBox14.Text = "Actions";
+            // 
+            // ItemsPauseBot
+            // 
+            this.ItemsPauseBot.AutoSize = true;
+            this.ItemsPauseBot.Location = new System.Drawing.Point(10, 42);
+            this.ItemsPauseBot.Name = "ItemsPauseBot";
+            this.ItemsPauseBot.Size = new System.Drawing.Size(75, 17);
+            this.ItemsPauseBot.TabIndex = 13;
+            this.ItemsPauseBot.Text = "Pause Bot";
+            this.ItemsPauseBot.UseVisualStyleBackColor = true;
+            // 
+            // ItemsMessagePlayer
+            // 
+            this.ItemsMessagePlayer.AutoSize = true;
+            this.ItemsMessagePlayer.Location = new System.Drawing.Point(184, 19);
+            this.ItemsMessagePlayer.Name = "ItemsMessagePlayer";
+            this.ItemsMessagePlayer.Size = new System.Drawing.Size(104, 17);
+            this.ItemsMessagePlayer.TabIndex = 12;
+            this.ItemsMessagePlayer.Text = "Message Player:";
+            this.ItemsMessagePlayer.UseVisualStyleBackColor = true;
+            // 
+            // ItemsLogOut
+            // 
+            this.ItemsLogOut.AutoSize = true;
+            this.ItemsLogOut.Location = new System.Drawing.Point(96, 19);
+            this.ItemsLogOut.Name = "ItemsLogOut";
+            this.ItemsLogOut.Size = new System.Drawing.Size(59, 17);
+            this.ItemsLogOut.TabIndex = 11;
+            this.ItemsLogOut.Text = "Logout";
+            this.ItemsLogOut.UseVisualStyleBackColor = true;
+            // 
+            // ItemsPlaySound
+            // 
+            this.ItemsPlaySound.AutoSize = true;
+            this.ItemsPlaySound.Location = new System.Drawing.Point(10, 19);
+            this.ItemsPlaySound.Name = "ItemsPlaySound";
+            this.ItemsPlaySound.Size = new System.Drawing.Size(80, 17);
+            this.ItemsPlaySound.TabIndex = 10;
+            this.ItemsPlaySound.Text = "Play Sound";
+            this.ItemsPlaySound.UseVisualStyleBackColor = true;
+            // 
+            // ItemsMessagePlayerName
+            // 
+            this.ItemsMessagePlayerName.Location = new System.Drawing.Point(184, 42);
+            this.ItemsMessagePlayerName.Name = "ItemsMessagePlayerName";
+            this.ItemsMessagePlayerName.Size = new System.Drawing.Size(123, 20);
+            this.ItemsMessagePlayerName.TabIndex = 9;
             // 
             // AlarmsHelp
             // 
@@ -202,6 +397,7 @@
             this.AlarmsActivate.TabIndex = 10;
             this.AlarmsActivate.Text = "Activate";
             this.AlarmsActivate.UseVisualStyleBackColor = true;
+            this.AlarmsActivate.Click += new System.EventHandler(this.AlarmsActivate_Click);
             // 
             // AlarmsLoad
             // 
@@ -222,6 +418,7 @@
             this.AlarmsHide.TabIndex = 8;
             this.AlarmsHide.Text = "Hide";
             this.AlarmsHide.UseVisualStyleBackColor = true;
+            this.AlarmsHide.Click += new System.EventHandler(this.AlarmsHide_Click);
             // 
             // AlarmsSave
             // 
@@ -289,7 +486,7 @@
             this.MultiFloorGroupBox.Size = new System.Drawing.Size(167, 82);
             this.MultiFloorGroupBox.TabIndex = 17;
             this.MultiFloorGroupBox.TabStop = false;
-            this.MultiFloorGroupBox.Text = "Multi-Floor Triggers";
+            this.MultiFloorGroupBox.Text = "Filter By Floor";
             // 
             // Label3
             // 
@@ -313,7 +510,12 @@
             // 
             this.BattlelistMultiFloorRange.Location = new System.Drawing.Point(70, 48);
             this.BattlelistMultiFloorRange.Maximum = new decimal(new int[] {
-            7,
+            15,
+            0,
+            0,
+            0});
+            this.BattlelistMultiFloorRange.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -337,32 +539,28 @@
             // 
             // BattlelistMultiFloorAbove
             // 
-            this.BattlelistMultiFloorAbove.Appearance = System.Windows.Forms.Appearance.Button;
             this.BattlelistMultiFloorAbove.AutoSize = true;
-            this.BattlelistMultiFloorAbove.Location = new System.Drawing.Point(107, 19);
+            this.BattlelistMultiFloorAbove.Location = new System.Drawing.Point(98, 19);
             this.BattlelistMultiFloorAbove.Name = "BattlelistMultiFloorAbove";
-            this.BattlelistMultiFloorAbove.Size = new System.Drawing.Size(54, 23);
+            this.BattlelistMultiFloorAbove.Size = new System.Drawing.Size(63, 17);
             this.BattlelistMultiFloorAbove.TabIndex = 1;
             this.BattlelistMultiFloorAbove.Text = " Above ";
             this.BattlelistMultiFloorAbove.UseVisualStyleBackColor = true;
             // 
             // BattlelistMultiFloorBelow
             // 
-            this.BattlelistMultiFloorBelow.Appearance = System.Windows.Forms.Appearance.Button;
             this.BattlelistMultiFloorBelow.AutoSize = true;
             this.BattlelistMultiFloorBelow.Location = new System.Drawing.Point(6, 19);
             this.BattlelistMultiFloorBelow.Name = "BattlelistMultiFloorBelow";
-            this.BattlelistMultiFloorBelow.Size = new System.Drawing.Size(52, 23);
+            this.BattlelistMultiFloorBelow.Size = new System.Drawing.Size(61, 17);
             this.BattlelistMultiFloorBelow.TabIndex = 0;
             this.BattlelistMultiFloorBelow.Text = " Below ";
             this.BattlelistMultiFloorBelow.UseVisualStyleBackColor = true;
             // 
             // GroupBox6
             // 
-            this.GroupBox6.Controls.Add(this.BattlelistGMCM);
-            this.GroupBox6.Controls.Add(this.BattlelistMonsterNPC);
-            this.GroupBox6.Controls.Add(this.BattlelistPlayerKiller);
-            this.GroupBox6.Controls.Add(this.BattlelistPlayer);
+            this.GroupBox6.Controls.Add(this.BattlelistActivateIfMonsterNPC);
+            this.GroupBox6.Controls.Add(this.BattlelistActivateIfPlayer);
             this.GroupBox6.Location = new System.Drawing.Point(6, 19);
             this.GroupBox6.Name = "GroupBox6";
             this.GroupBox6.Size = new System.Drawing.Size(336, 40);
@@ -370,45 +568,25 @@
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "Activate Alarm If";
             // 
-            // BattlelistGMCM
+            // BattlelistActivateIfMonsterNPC
             // 
-            this.BattlelistGMCM.AutoSize = true;
-            this.BattlelistGMCM.Location = new System.Drawing.Point(250, 17);
-            this.BattlelistGMCM.Name = "BattlelistGMCM";
-            this.BattlelistGMCM.Size = new System.Drawing.Size(64, 17);
-            this.BattlelistGMCM.TabIndex = 7;
-            this.BattlelistGMCM.Text = "GM/CM";
-            this.BattlelistGMCM.UseVisualStyleBackColor = true;
+            this.BattlelistActivateIfMonsterNPC.AutoSize = true;
+            this.BattlelistActivateIfMonsterNPC.Location = new System.Drawing.Point(67, 17);
+            this.BattlelistActivateIfMonsterNPC.Name = "BattlelistActivateIfMonsterNPC";
+            this.BattlelistActivateIfMonsterNPC.Size = new System.Drawing.Size(91, 17);
+            this.BattlelistActivateIfMonsterNPC.TabIndex = 6;
+            this.BattlelistActivateIfMonsterNPC.Text = "Monster/NPC";
+            this.BattlelistActivateIfMonsterNPC.UseVisualStyleBackColor = true;
             // 
-            // BattlelistMonsterNPC
+            // BattlelistActivateIfPlayer
             // 
-            this.BattlelistMonsterNPC.AutoSize = true;
-            this.BattlelistMonsterNPC.Location = new System.Drawing.Point(67, 17);
-            this.BattlelistMonsterNPC.Name = "BattlelistMonsterNPC";
-            this.BattlelistMonsterNPC.Size = new System.Drawing.Size(91, 17);
-            this.BattlelistMonsterNPC.TabIndex = 6;
-            this.BattlelistMonsterNPC.Text = "Monster/NPC";
-            this.BattlelistMonsterNPC.UseVisualStyleBackColor = true;
-            // 
-            // BattlelistPlayerKiller
-            // 
-            this.BattlelistPlayerKiller.AutoSize = true;
-            this.BattlelistPlayerKiller.Location = new System.Drawing.Point(164, 17);
-            this.BattlelistPlayerKiller.Name = "BattlelistPlayerKiller";
-            this.BattlelistPlayerKiller.Size = new System.Drawing.Size(80, 17);
-            this.BattlelistPlayerKiller.TabIndex = 5;
-            this.BattlelistPlayerKiller.Text = "Player Killer";
-            this.BattlelistPlayerKiller.UseVisualStyleBackColor = true;
-            // 
-            // BattlelistPlayer
-            // 
-            this.BattlelistPlayer.AutoSize = true;
-            this.BattlelistPlayer.Location = new System.Drawing.Point(6, 17);
-            this.BattlelistPlayer.Name = "BattlelistPlayer";
-            this.BattlelistPlayer.Size = new System.Drawing.Size(55, 17);
-            this.BattlelistPlayer.TabIndex = 4;
-            this.BattlelistPlayer.Text = "Player";
-            this.BattlelistPlayer.UseVisualStyleBackColor = true;
+            this.BattlelistActivateIfPlayer.AutoSize = true;
+            this.BattlelistActivateIfPlayer.Location = new System.Drawing.Point(6, 17);
+            this.BattlelistActivateIfPlayer.Name = "BattlelistActivateIfPlayer";
+            this.BattlelistActivateIfPlayer.Size = new System.Drawing.Size(55, 17);
+            this.BattlelistActivateIfPlayer.TabIndex = 4;
+            this.BattlelistActivateIfPlayer.Text = "Player";
+            this.BattlelistActivateIfPlayer.UseVisualStyleBackColor = true;
             // 
             // GroupBox5
             // 
@@ -428,12 +606,14 @@
             // BattlelistIgnoredPlayerRemove
             // 
             this.BattlelistIgnoredPlayerRemove.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.BattlelistIgnoredPlayerRemove.Enabled = false;
             this.BattlelistIgnoredPlayerRemove.Location = new System.Drawing.Point(95, 187);
             this.BattlelistIgnoredPlayerRemove.Name = "BattlelistIgnoredPlayerRemove";
             this.BattlelistIgnoredPlayerRemove.Size = new System.Drawing.Size(62, 20);
             this.BattlelistIgnoredPlayerRemove.TabIndex = 17;
             this.BattlelistIgnoredPlayerRemove.Text = "Remove";
             this.BattlelistIgnoredPlayerRemove.UseVisualStyleBackColor = true;
+            this.BattlelistIgnoredPlayerRemove.Click += new System.EventHandler(this.BattlelistIgnoredPlayerRemove_Click);
             // 
             // BattlelistIgnoredPlayerAdd
             // 
@@ -444,6 +624,7 @@
             this.BattlelistIgnoredPlayerAdd.TabIndex = 16;
             this.BattlelistIgnoredPlayerAdd.Text = "Add";
             this.BattlelistIgnoredPlayerAdd.UseVisualStyleBackColor = true;
+            this.BattlelistIgnoredPlayerAdd.Click += new System.EventHandler(this.BattlelistIgnoredPlayerAdd_Click);
             // 
             // BattlelistIgnoredPlayersInput
             // 
@@ -464,6 +645,7 @@
             this.BattlelistIgnoredPlayers.Size = new System.Drawing.Size(151, 134);
             this.BattlelistIgnoredPlayers.Sorted = true;
             this.BattlelistIgnoredPlayers.TabIndex = 14;
+            this.BattlelistIgnoredPlayers.SelectedIndexChanged += new System.EventHandler(this.BattlelistIgnoredPlayers_SelectedIndexChanged);
             // 
             // GroupBox4
             // 
@@ -1003,202 +1185,6 @@
             this.Label4.TabIndex = 0;
             this.Label4.Text = "Hit Points below:";
             // 
-            // tablalala
-            // 
-            tablalala.Controls.Add(this.GroupBox13);
-            tablalala.Location = new System.Drawing.Point(4, 22);
-            tablalala.Name = "tablalala";
-            tablalala.Padding = new System.Windows.Forms.Padding(3);
-            tablalala.Size = new System.Drawing.Size(360, 296);
-            tablalala.TabIndex = 4;
-            tablalala.Text = "Items";
-            tablalala.UseVisualStyleBackColor = true;
-            // 
-            // GroupBox13
-            // 
-            this.GroupBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.GroupBox13.Controls.Add(this.GroupBox15);
-            this.GroupBox13.Controls.Add(this.GroupBox14);
-            this.GroupBox13.Location = new System.Drawing.Point(6, 6);
-            this.GroupBox13.Name = "GroupBox13";
-            this.GroupBox13.Size = new System.Drawing.Size(348, 284);
-            this.GroupBox13.TabIndex = 0;
-            this.GroupBox13.TabStop = false;
-            this.GroupBox13.Text = "Items Alarm Settings";
-            // 
-            // GroupBox15
-            // 
-            this.GroupBox15.Controls.Add(this.Label8);
-            this.GroupBox15.Controls.Add(this.ItemsCheckInventory);
-            this.GroupBox15.Controls.Add(this.ItemsCheckFloor);
-            this.GroupBox15.Controls.Add(this.Label10);
-            this.GroupBox15.Controls.Add(this.ItemsCount);
-            this.GroupBox15.Controls.Add(this.ItemsCondition);
-            this.GroupBox15.Controls.Add(this.Label9);
-            this.GroupBox15.Controls.Add(this.ItemsList);
-            this.GroupBox15.Location = new System.Drawing.Point(6, 19);
-            this.GroupBox15.Name = "GroupBox15";
-            this.GroupBox15.Size = new System.Drawing.Size(333, 134);
-            this.GroupBox15.TabIndex = 27;
-            this.GroupBox15.TabStop = false;
-            this.GroupBox15.Text = "Items List";
-            // 
-            // Label8
-            // 
-            this.Label8.AutoSize = true;
-            this.Label8.Location = new System.Drawing.Point(224, 76);
-            this.Label8.Name = "Label8";
-            this.Label8.Size = new System.Drawing.Size(25, 13);
-            this.Label8.TabIndex = 7;
-            this.Label8.Text = "and";
-            // 
-            // ItemsCheckInventory
-            // 
-            this.ItemsCheckInventory.AutoSize = true;
-            this.ItemsCheckInventory.Enabled = false;
-            this.ItemsCheckInventory.Location = new System.Drawing.Point(149, 75);
-            this.ItemsCheckInventory.Name = "ItemsCheckInventory";
-            this.ItemsCheckInventory.Size = new System.Drawing.Size(72, 17);
-            this.ItemsCheckInventory.TabIndex = 6;
-            this.ItemsCheckInventory.Text = " inventory";
-            this.ItemsCheckInventory.UseVisualStyleBackColor = true;
-            // 
-            // ItemsCheckFloor
-            // 
-            this.ItemsCheckFloor.AutoSize = true;
-            this.ItemsCheckFloor.Enabled = false;
-            this.ItemsCheckFloor.Location = new System.Drawing.Point(255, 75);
-            this.ItemsCheckFloor.Name = "ItemsCheckFloor";
-            this.ItemsCheckFloor.Size = new System.Drawing.Size(49, 17);
-            this.ItemsCheckFloor.TabIndex = 5;
-            this.ItemsCheckFloor.Text = "floor.";
-            this.ItemsCheckFloor.UseVisualStyleBackColor = true;
-            // 
-            // Label10
-            // 
-            this.Label10.AutoSize = true;
-            this.Label10.Location = new System.Drawing.Point(147, 59);
-            this.Label10.Name = "Label10";
-            this.Label10.Size = new System.Drawing.Size(160, 13);
-            this.Label10.TabIndex = 4;
-            this.Label10.Text = "of the selected items, find also in";
-            // 
-            // ItemsCount
-            // 
-            this.ItemsCount.Enabled = false;
-            this.ItemsCount.Location = new System.Drawing.Point(205, 35);
-            this.ItemsCount.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.ItemsCount.Name = "ItemsCount";
-            this.ItemsCount.Size = new System.Drawing.Size(66, 20);
-            this.ItemsCount.TabIndex = 3;
-            // 
-            // ItemsCondition
-            // 
-            this.ItemsCondition.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ItemsCondition.Enabled = false;
-            this.ItemsCondition.FormattingEnabled = true;
-            this.ItemsCondition.Items.AddRange(new object[] {
-            "=",
-            "<",
-            ">",
-            "<=",
-            ">=",
-            "!="});
-            this.ItemsCondition.Location = new System.Drawing.Point(150, 35);
-            this.ItemsCondition.Name = "ItemsCondition";
-            this.ItemsCondition.Size = new System.Drawing.Size(49, 21);
-            this.ItemsCondition.TabIndex = 2;
-            // 
-            // Label9
-            // 
-            this.Label9.AutoSize = true;
-            this.Label9.Location = new System.Drawing.Point(146, 19);
-            this.Label9.Name = "Label9";
-            this.Label9.Size = new System.Drawing.Size(131, 13);
-            this.Label9.TabIndex = 1;
-            this.Label9.Text = "Fire alarm when you have:";
-            // 
-            // ItemsList
-            // 
-            this.ItemsList.FormattingEnabled = true;
-            this.ItemsList.Items.AddRange(new object[] {
-            "Food",
-            "Blank Runes",
-            "Worms",
-            "Throwables (Spears)",
-            "Ammunition"});
-            this.ItemsList.Location = new System.Drawing.Point(6, 19);
-            this.ItemsList.Name = "ItemsList";
-            this.ItemsList.Size = new System.Drawing.Size(134, 109);
-            this.ItemsList.TabIndex = 0;
-            // 
-            // GroupBox14
-            // 
-            this.GroupBox14.Controls.Add(this.ItemsPauseBot);
-            this.GroupBox14.Controls.Add(this.ItemsMessagePlayer);
-            this.GroupBox14.Controls.Add(this.ItemsLogOut);
-            this.GroupBox14.Controls.Add(this.ItemsPlaySound);
-            this.GroupBox14.Controls.Add(this.ItemsMessagePlayerName);
-            this.GroupBox14.Location = new System.Drawing.Point(6, 159);
-            this.GroupBox14.Name = "GroupBox14";
-            this.GroupBox14.Size = new System.Drawing.Size(333, 72);
-            this.GroupBox14.TabIndex = 26;
-            this.GroupBox14.TabStop = false;
-            this.GroupBox14.Text = "Actions";
-            // 
-            // ItemsPauseBot
-            // 
-            this.ItemsPauseBot.AutoSize = true;
-            this.ItemsPauseBot.Location = new System.Drawing.Point(10, 42);
-            this.ItemsPauseBot.Name = "ItemsPauseBot";
-            this.ItemsPauseBot.Size = new System.Drawing.Size(75, 17);
-            this.ItemsPauseBot.TabIndex = 13;
-            this.ItemsPauseBot.Text = "Pause Bot";
-            this.ItemsPauseBot.UseVisualStyleBackColor = true;
-            // 
-            // ItemsMessagePlayer
-            // 
-            this.ItemsMessagePlayer.AutoSize = true;
-            this.ItemsMessagePlayer.Location = new System.Drawing.Point(184, 19);
-            this.ItemsMessagePlayer.Name = "ItemsMessagePlayer";
-            this.ItemsMessagePlayer.Size = new System.Drawing.Size(104, 17);
-            this.ItemsMessagePlayer.TabIndex = 12;
-            this.ItemsMessagePlayer.Text = "Message Player:";
-            this.ItemsMessagePlayer.UseVisualStyleBackColor = true;
-            // 
-            // ItemsLogOut
-            // 
-            this.ItemsLogOut.AutoSize = true;
-            this.ItemsLogOut.Location = new System.Drawing.Point(96, 19);
-            this.ItemsLogOut.Name = "ItemsLogOut";
-            this.ItemsLogOut.Size = new System.Drawing.Size(59, 17);
-            this.ItemsLogOut.TabIndex = 11;
-            this.ItemsLogOut.Text = "Logout";
-            this.ItemsLogOut.UseVisualStyleBackColor = true;
-            // 
-            // ItemsPlaySound
-            // 
-            this.ItemsPlaySound.AutoSize = true;
-            this.ItemsPlaySound.Location = new System.Drawing.Point(10, 19);
-            this.ItemsPlaySound.Name = "ItemsPlaySound";
-            this.ItemsPlaySound.Size = new System.Drawing.Size(80, 17);
-            this.ItemsPlaySound.TabIndex = 10;
-            this.ItemsPlaySound.Text = "Play Sound";
-            this.ItemsPlaySound.UseVisualStyleBackColor = true;
-            // 
-            // ItemsMessagePlayerName
-            // 
-            this.ItemsMessagePlayerName.Location = new System.Drawing.Point(184, 42);
-            this.ItemsMessagePlayerName.Name = "ItemsMessagePlayerName";
-            this.ItemsMessagePlayerName.Size = new System.Drawing.Size(123, 20);
-            this.ItemsMessagePlayerName.TabIndex = 9;
-            // 
             // TabPage4
             // 
             this.TabPage4.Controls.Add(this.ChangeSoundGrpBox);
@@ -1467,7 +1453,7 @@
             this.BlSoundBox.Size = new System.Drawing.Size(148, 21);
             this.BlSoundBox.TabIndex = 0;
             // 
-            // fmrAlarms
+            // AlarmsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1478,8 +1464,22 @@
             this.Controls.Add(this.AlarmsHide);
             this.Controls.Add(this.AlarmsSave);
             this.Controls.Add(this.Tabs);
-            this.Name = "fmrAlarms";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "AlarmsForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Alarms";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AlarmsForm_FormClosing);
+            this.Load += new System.EventHandler(this.AlarmsForm_Load);
+            tablalala.ResumeLayout(false);
+            this.GroupBox13.ResumeLayout(false);
+            this.GroupBox15.ResumeLayout(false);
+            this.GroupBox15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemsCount)).EndInit();
+            this.GroupBox14.ResumeLayout(false);
+            this.GroupBox14.PerformLayout();
             this.Tabs.ResumeLayout(false);
             this.TabPage1.ResumeLayout(false);
             this.GroupBox1.ResumeLayout(false);
@@ -1512,13 +1512,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.StatusSoulPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusManaPoints)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.StatusHitPoints)).EndInit();
-            tablalala.ResumeLayout(false);
-            this.GroupBox13.ResumeLayout(false);
-            this.GroupBox15.ResumeLayout(false);
-            this.GroupBox15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemsCount)).EndInit();
-            this.GroupBox14.ResumeLayout(false);
-            this.GroupBox14.PerformLayout();
             this.TabPage4.ResumeLayout(false);
             this.ChangeSoundGrpBox.ResumeLayout(false);
             this.PrivMsgGrpBox.ResumeLayout(false);
@@ -1555,10 +1548,8 @@
         internal System.Windows.Forms.CheckBox BattlelistMultiFloorAbove;
         internal System.Windows.Forms.CheckBox BattlelistMultiFloorBelow;
         internal System.Windows.Forms.GroupBox GroupBox6;
-        internal System.Windows.Forms.CheckBox BattlelistGMCM;
-        internal System.Windows.Forms.CheckBox BattlelistMonsterNPC;
-        internal System.Windows.Forms.CheckBox BattlelistPlayerKiller;
-        internal System.Windows.Forms.CheckBox BattlelistPlayer;
+        internal System.Windows.Forms.CheckBox BattlelistActivateIfMonsterNPC;
+        internal System.Windows.Forms.CheckBox BattlelistActivateIfPlayer;
         internal System.Windows.Forms.GroupBox GroupBox5;
         internal System.Windows.Forms.Button BattlelistIgnoredPlayerRemove;
         internal System.Windows.Forms.Button BattlelistIgnoredPlayerAdd;
