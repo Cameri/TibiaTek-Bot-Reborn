@@ -24,34 +24,17 @@ namespace TibiaTekBot
             BattleList bl = kernel.Client.GetBattlelist();
             uint localPlayerID = kernel.Client.LocalPlayer.ID;
             Tibia.Location localPlayerLoc = kernel.Client.LocalPlayer.Location;
-            bool alert = false;
             bl.Reset();
 
             
             do
             {    
-                if (!bl.OnScreen
-                    || bl.ID == localPlayerID)
+                if (!bl.OnScreen || bl.ID == localPlayerID)
                 {
                     continue;
                 }
 
                 Tibia.Location entityLoc = bl.Location;
-
-                if (!BattlelistMultiFloorAbove.Checked
-                    && !BattlelistMultiFloorBelow.Checked
-                    && entityLoc.Z != localPlayerLoc.Z)
-                {
-                    continue;
-                }
-
-                //for (int i = 0; i < BattlelistIgnoredPlayers.Items.Count; i++)
-                //{
-                //    if (Regex.IsMatch(bl.Name, BattlelistIgnoredPlayers.Items[i].ToString(), RegexOptions.IgnoreCase))
-                //    {
-                //        continue;
-                //    }
-                //}
 
                 bool isIgnore = false;
                 foreach (var listBoxItem in BattlelistIgnoredPlayers.Items)
@@ -64,7 +47,7 @@ namespace TibiaTekBot
                     else
                     {
                         isIgnore = false;
-                }
+                    }
 
                 }
 
@@ -82,13 +65,17 @@ namespace TibiaTekBot
                 {
                     continue;
                 }
-                
-                // Check if entity is above or below, and how far
-                if ((Math.Abs(localPlayerLoc.Z - entityLoc.Z) > BattlelistMultiFloorRange.Value) 
-                    && ((!BattlelistMultiFloorAbove.Checked && localPlayerLoc.Z > entityLoc.Z)
-                    || (!BattlelistMultiFloorBelow.Checked && localPlayerLoc.Z < entityLoc.Z))) {
+
+                // Verify relative entity floor
+                if ((entityLoc.IsHigherThan(localPlayerLoc) && !BattlelistMultiFloorAbove.Checked)
+                    || (entityLoc.IsLowerThan(localPlayerLoc) && !BattlelistMultiFloorBelow.Checked)
+                    || ((BattlelistMultiFloorAbove.Checked || BattlelistMultiFloorBelow.Checked)
+                    && Math.Abs((int)localPlayerLoc.Z - (int)entityLoc.Z) > BattlelistMultiFloorRange.Value))
+                {
                     continue;
                 }
+
+
 
                 if (!BattlelistMultiFloorAbove.Checked
                     && !BattlelistMultiFloorBelow.Checked
@@ -111,7 +98,7 @@ namespace TibiaTekBot
                 {
 
                     new SoundPlayer(BLSound).Play(); 
-  
+
                 }
                 break;
                 
