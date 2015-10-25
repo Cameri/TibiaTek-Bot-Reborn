@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Media;
+using System.IO;
 
 namespace TibiaTekBot
 {
@@ -19,6 +20,7 @@ namespace TibiaTekBot
 
         private void BattlelistTimer_Execute(object sender, EventArgs e)
         {
+            //SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\" + BlSoundBox.SelectedItem);
             BattleList bl = kernel.Client.GetBattlelist();
             uint localPlayerID = kernel.Client.LocalPlayer.ID;
             Tibia.Location localPlayerLoc = kernel.Client.LocalPlayer.Location;
@@ -43,12 +45,32 @@ namespace TibiaTekBot
                     continue;
                 }
 
-                for (int i = 0; i < BattlelistIgnoredPlayers.Items.Count; i++)
+                //for (int i = 0; i < BattlelistIgnoredPlayers.Items.Count; i++)
+                //{
+                //    if (Regex.IsMatch(bl.Name, BattlelistIgnoredPlayers.Items[i].ToString(), RegexOptions.IgnoreCase))
+                //    {
+                //        continue;
+                //    }
+                //}
+
+                bool isIgnore = false;
+                foreach (var listBoxItem in BattlelistIgnoredPlayers.Items)
                 {
-                    if (Regex.IsMatch(bl.Name, BattlelistIgnoredPlayers.Items[i].ToString(), RegexOptions.IgnoreCase))
+                    if (bl.Name.ToLower().Contains(listBoxItem.ToString()))
                     {
-                        continue;
+                        isIgnore = true;
+                        break;
                     }
+                    else
+                    {
+                        isIgnore = false;
+                    }
+
+                }
+
+                if (isIgnore == true)
+                {
+                    continue;
                 }
 
                 if (!BattlelistActivateIfPlayer.Checked && bl.IsPlayer)
@@ -80,7 +102,9 @@ namespace TibiaTekBot
                 
                 if (BattlelistPlaySound.Checked)
                 {
-                    new SoundPlayer(Application.StartupPath + "\\Alarms\\Tune.wav").Play();
+
+                    new SoundPlayer(BLSound).Play(); 
+  
                 }
                 break;
                 
@@ -115,6 +139,17 @@ namespace TibiaTekBot
         private void AlarmsForm_Load(object sender, EventArgs e)
         {
 
+            #region Cargar BlSoundBox
+            if (BlSoundBox.Items.Count > 0)
+            {
+                BlSoundBox.Items.Clear();
+            }
+            foreach (var sound in Directory.GetFiles(Environment.CurrentDirectory + "\\Alarms"))
+            {
+                BlSoundBox.Items.Add(Path.GetFileName(sound));
+            } 
+            BlSoundBox.SelectedIndex = 0;
+            #endregion
         }
 
         private void AlarmsHide_Click(object sender, EventArgs e)
@@ -127,8 +162,13 @@ namespace TibiaTekBot
             string input = BattlelistIgnoredPlayersInput.Text.Trim();
             if (!String.IsNullOrEmpty(input))
             {
-                BattlelistIgnoredPlayers.Items.Add(input);
-            }   
+                BattlelistIgnoredPlayers.Items.Add(input.ToLower());
+                BattlelistIgnoredPlayersInput.Clear();
+                BattlelistIgnoredPlayersInput.Focus();
+            }
+
+
+            
         }
 
         private void BattlelistIgnoredPlayers_SelectedIndexChanged(object sender, EventArgs e)
@@ -142,6 +182,70 @@ namespace TibiaTekBot
             {
                 BattlelistIgnoredPlayers.Items.RemoveAt(BattlelistIgnoredPlayers.SelectedIndex);
             }
+        }
+
+        private void BlSoundBox_DropDown(object sender, EventArgs e)
+        {
+            if (BlSoundBox.Items.Count > 0)
+            {
+                BlSoundBox.Items.Clear();
+            }
+            foreach (var sound in Directory.GetFiles(Environment.CurrentDirectory + "\\Alarms"))
+            {
+                BlSoundBox.Items.Add(Path.GetFileName(sound));
+            }
+        }
+
+        private void BlSoundBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (BlSoundBox.SelectedItem == null)
+            {
+                BlSoundBox.SelectedIndex = 0;
+            }
+        }
+
+        private void BlSoundTest_Click(object sender, EventArgs e)
+        {
+            if (BlSoundBox.Text != string.Empty)
+            {
+                SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\" + BlSoundBox.SelectedItem);
+                simpleSound.Play();
+            }
+            else
+            {
+                MessageBox.Show("Select a sound from the list.");
+            }
+        }
+
+        private void SoundFileBrowseButton_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.Filter = "txt files (*.wav)|*.wav";
+            openFileDialog1.RestoreDirectory = true;
+
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    SoundFilePath.Text = openFileDialog1.FileName;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
+                }
+            }
+        }
+
+        private void SoundFileAddButton_Click(object sender, EventArgs e)
+        {
+            File.Copy(SoundFilePath.Text, Environment.CurrentDirectory + "\\Alarms\\" + Path.GetFileName(SoundFilePath.Text), true);
+            SoundFilePath.Clear();
+            MessageBox.Show("Alarms added succesfully.");
+        }
+        string BLSound = "";
+        private void BlSoundBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            BLSound = Application.StartupPath + "\\Alarms\\" + BlSoundBox.SelectedItem;
         }
     }
 }

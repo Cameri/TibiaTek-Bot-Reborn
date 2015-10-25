@@ -194,10 +194,18 @@
     <None Include="Resources\ttb splash7.jpg" />
     <None Include="Resources\ttb splash8.jpg" />
     <None Include="Resources\map_big.jpg" />
-    <Content Include="Alarms\Dong Dong.wav" />
-    <Content Include="Alarms\Pinc.WAV" />
-    <Content Include="Alarms\Ring Ring.wav" />
-    <Content Include="Alarms\Tune.wav" />
+    <Content Include="Alarms\Dong Dong.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Alarms\Pinc.WAV">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Alarms\Ring Ring.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Alarms\Tune.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="MapReader\creature.gif" />
     <Content Include="MapReader\depot.gif" />
     <Content Include="MapReader\doorclosed.gif" />
