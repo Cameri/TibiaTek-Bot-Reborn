@@ -3,12 +3,15 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Media;
 using System.IO;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TibiaTekBot
 {
     public partial class AlarmsForm : Form
     {
         bool Active = false;
+        string LogTextDetails;
         Timer BattlelistTimer;
         public Kernel kernel;
         public AlarmsForm()
@@ -20,7 +23,7 @@ namespace TibiaTekBot
 
         private void BattlelistTimer_Execute(object sender, EventArgs e)
         {
-            //SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\" + BlSoundBox.SelectedItem);
+           
             BattleList bl = kernel.Client.GetBattlelist();
             uint localPlayerID = kernel.Client.LocalPlayer.ID;
             Tibia.Location localPlayerLoc = kernel.Client.LocalPlayer.Location;
@@ -109,16 +112,17 @@ namespace TibiaTekBot
                 
                 if (BattlelistPlaySound.Checked)
                 {
-
-                    new SoundPlayer(BLSound).Play(); 
-  
+                    new SoundPlayer(BLSound).Play();
+                    LogTextDetails = String.Format("{0}     Alarm was activated:     Affected Alarm: Battle List     ID: {1:X}     Name: {2}     Location: {3}     ", DateTime.Now, bl.ID, bl.Name, bl.Location);
+                    ListViewLogs.Invoke((Action)(() => ListViewLogs.Items.Add(LogTextDetails)));
+                    SaveLogToTXT(LogTextDetails);
                 }
                 break;
                 
 
             } while (bl.Next());
         }
-
+ 
         private void AlarmsActivate_Click(object sender, EventArgs e)
         {
             AlarmsLoad.Enabled = false;
@@ -254,5 +258,57 @@ namespace TibiaTekBot
         {
             BLSound = Application.StartupPath + "\\Alarms\\" + BlSoundBox.SelectedItem;
         }
+
+        void SaveLogToTXT(string LogText)
+        {
+            string path = Environment.CurrentDirectory + "\\Logs";
+            string playername = kernel.Client.LocalPlayer.Name;
+
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            if (!File.Exists(path + "\\" + playername + ".Logs.txt"))
+            {
+                // Create a file to write to.
+                File.Create(path + "\\" + playername+".Logs.txt").Close();
+                
+            }
+          
+            using (StreamWriter sw = new StreamWriter(path + "\\" + playername + ".Logs.txt", true))
+            {
+                sw.WriteLine(LogText);
+            }
+        }
+
+        private void OpenLogFolder_Click(object sender, EventArgs e)
+        {
+            string path = Environment.CurrentDirectory + "\\Logs";
+            if (Directory.Exists(path))
+            {
+                Process.Start("explorer.exe", path);
+            }
+            else
+            {
+                MessageBox.Show("Directory not found.");
+            }
+        }
+
+        private void ViewLogButtom_Click(object sender, EventArgs e)
+        {
+            string path = Environment.CurrentDirectory + "\\Logs";
+            string playername = kernel.Client.LocalPlayer.Name;
+            if (File.Exists(path+"\\"+playername+".Logs.txt"))
+            {
+                Process.Start(path + "\\" + playername + ".Logs.txt");
+            }
+            else
+            {
+                MessageBox.Show("No log file found for "+playername);
+            }
+            
+        }
+        
     }
 }

@@ -144,6 +144,11 @@
             this.BlSoundTest = new System.Windows.Forms.Button();
             this.Label11 = new System.Windows.Forms.Label();
             this.BlSoundBox = new System.Windows.Forms.ComboBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.ListViewLogs = new System.Windows.Forms.ListView();
+            this.LogText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ViewLogButtom = new System.Windows.Forms.Button();
+            this.OpenLogFolder = new System.Windows.Forms.Button();
             tablalala = new System.Windows.Forms.TabPage();
             tablalala.SuspendLayout();
             this.GroupBox13.SuspendLayout();
@@ -180,6 +185,7 @@
             this.StGrpBox.SuspendLayout();
             this.PubMsgGrpBox.SuspendLayout();
             this.BlGrpBox.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tablalala
@@ -440,6 +446,7 @@
             this.Tabs.Controls.Add(this.TabPage2);
             this.Tabs.Controls.Add(tablalala);
             this.Tabs.Controls.Add(this.TabPage4);
+            this.Tabs.Controls.Add(this.tabPage5);
             this.Tabs.Location = new System.Drawing.Point(13, 11);
             this.Tabs.Name = "Tabs";
             this.Tabs.SelectedIndex = 0;
@@ -1459,6 +1466,54 @@
             this.BlSoundBox.SelectedIndexChanged += new System.EventHandler(this.BlSoundBox_SelectedIndexChanged);
             this.BlSoundBox.DropDownClosed += new System.EventHandler(this.BlSoundBox_DropDownClosed);
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.OpenLogFolder);
+            this.tabPage5.Controls.Add(this.ViewLogButtom);
+            this.tabPage5.Controls.Add(this.ListViewLogs);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(360, 296);
+            this.tabPage5.TabIndex = 6;
+            this.tabPage5.Text = "Logs";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // ListViewLogs
+            // 
+            this.ListViewLogs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.LogText});
+            this.ListViewLogs.Location = new System.Drawing.Point(4, 4);
+            this.ListViewLogs.Name = "ListViewLogs";
+            this.ListViewLogs.Size = new System.Drawing.Size(353, 246);
+            this.ListViewLogs.TabIndex = 0;
+            this.ListViewLogs.UseCompatibleStateImageBehavior = false;
+            this.ListViewLogs.View = System.Windows.Forms.View.Details;
+            // 
+            // LogText
+            // 
+            this.LogText.Text = "Log Text";
+            this.LogText.Width = 500;
+            // 
+            // ViewLogButtom
+            // 
+            this.ViewLogButtom.Location = new System.Drawing.Point(282, 256);
+            this.ViewLogButtom.Name = "ViewLogButtom";
+            this.ViewLogButtom.Size = new System.Drawing.Size(75, 23);
+            this.ViewLogButtom.TabIndex = 1;
+            this.ViewLogButtom.Text = "View Log";
+            this.ViewLogButtom.UseVisualStyleBackColor = true;
+            this.ViewLogButtom.Click += new System.EventHandler(this.ViewLogButtom_Click);
+            // 
+            // OpenLogFolder
+            // 
+            this.OpenLogFolder.Location = new System.Drawing.Point(4, 256);
+            this.OpenLogFolder.Name = "OpenLogFolder";
+            this.OpenLogFolder.Size = new System.Drawing.Size(102, 23);
+            this.OpenLogFolder.TabIndex = 2;
+            this.OpenLogFolder.Text = "Open Log Folder";
+            this.OpenLogFolder.UseVisualStyleBackColor = true;
+            this.OpenLogFolder.Click += new System.EventHandler(this.OpenLogFolder_Click);
+            // 
             // AlarmsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1532,6 +1587,7 @@
             this.PubMsgGrpBox.PerformLayout();
             this.BlGrpBox.ResumeLayout(false);
             this.BlGrpBox.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1653,5 +1709,10 @@
         internal System.Windows.Forms.Button BlSoundTest;
         internal System.Windows.Forms.Label Label11;
         internal System.Windows.Forms.ComboBox BlSoundBox;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.ListView ListViewLogs;
+        private System.Windows.Forms.ColumnHeader LogText;
+        private System.Windows.Forms.Button OpenLogFolder;
+        private System.Windows.Forms.Button ViewLogButtom;
     }
 }
