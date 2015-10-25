@@ -27,9 +27,7 @@ namespace TibiaTekBot
 
         private void button1_Click(object sender, EventArgs e)
         {
-            kernel.Client.BringToFront();
-            System.Threading.Thread.Sleep(5000);
-            System.Windows.Forms.SendKeys.SendWait("hola{ENTER}");
+            kernel.Client.SendKeys("exura{ENTER}");
 
             return;
             //MessageBox.Show(String.Format("{0}", kernel.Client.LocalPlayer.Location));

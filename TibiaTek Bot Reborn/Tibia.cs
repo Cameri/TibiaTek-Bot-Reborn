@@ -10,6 +10,15 @@ namespace TibiaTekBot
 {
     public class Tibia
     {
+        #region Enumerations
+        public enum WindowStates
+        {
+            Active,
+            Minimized,
+            Inactive,
+            Hidden
+        }
+        #endregion
 
         #region Structures
         public struct Location
@@ -76,14 +85,7 @@ namespace TibiaTekBot
             }
             set
             {
-                try
-                {
-                    SetWindowText(clientProcess.MainWindowHandle, value);
-                } catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-
+                Windows.SetWindowText(clientProcess.MainWindowHandle, value);
             }
         }
 
@@ -124,6 +126,33 @@ namespace TibiaTekBot
         }
 
         public string Version { get; private set; }
+
+        public WindowStates WindowState
+        {
+            get
+            {
+                Windows.WindowPlacement wp = default(Windows.WindowPlacement);
+                wp.length = (byte)System.Runtime.InteropServices.Marshal.SizeOf(typeof(Windows.WindowPlacement));
+                if (!Windows.GetWindowPlacement(WindowHandle, out wp))
+                {
+                    return WindowStates.Inactive;
+                }
+                switch (wp.showCmd)
+                {
+                    case Windows.ShowStates.SW_SHOWNORMAL:
+                    case Windows.ShowStates.SW_SHOWMAXIMIZED:
+                        if (Windows.GetForegroundWindow() == WindowHandle)
+                        {
+                            return WindowStates.Active;
+                        }
+                        return WindowStates.Inactive;
+                    case Windows.ShowStates.SW_SHOWMINIMIZED:
+                        return WindowStates.Minimized;
+                    default:
+                        return WindowStates.Inactive;
+                }
+            }
+        }
         #endregion
 
         #region Public Methods
@@ -134,7 +163,73 @@ namespace TibiaTekBot
 
         public bool Show()
         {
-            return Windows.ShowWindow(WindowHandle, (uint)Windows.ShowWindowCommands.SW_SHOW);
+            return Windows.ShowWindow(WindowHandle, (uint)Windows.ShowStates.SW_SHOW);
+        }
+
+        public bool Restore()
+        {
+            return Windows.ShowWindow(WindowHandle, (uint)Windows.ShowStates.SW_RESTORE);
+        }
+
+        public bool Minimize()
+        {
+            return Windows.ShowWindow(WindowHandle, (uint)Windows.ShowStates.SW_SHOWMINIMIZED);
+        }
+
+        public bool Maximize()
+        {
+            return Windows.ShowWindow(WindowHandle, (uint)Windows.ShowStates.SW_SHOWMAXIMIZED);
+        }
+
+        public bool Hide()
+        {
+            return Windows.ShowWindow(WindowHandle, (uint)Windows.ShowStates.SW_HIDE);
+        }
+
+        public void Close(bool force = false)
+        {
+            if (force)
+            {
+                clientProcess.Kill();
+            }
+            else
+            {
+                clientProcess.CloseMainWindow();
+            }
+            
+        }
+        public bool SendKeys(string keys)
+        {
+            DateTime timeout = DateTime.Now.AddSeconds(3);
+            WindowStates state;
+            while ((state = WindowState) != WindowStates.Active)
+            {
+                if (DateTime.Now >= timeout)
+                {
+                    return false;
+                }
+                else if (state == WindowStates.Minimized)
+                {
+                    Restore();
+                }
+                else if (state == WindowStates.Hidden)
+                {
+                    Show();
+                }
+                else if (state == WindowStates.Inactive)
+                {
+                    BringToFront();
+                }
+                else if (state == WindowStates.Active)
+                {
+                    break;
+                }
+                System.Threading.Thread.Sleep(1000);
+                state = WindowState;
+            }
+            System.Threading.Thread.Sleep(1000);
+            System.Windows.Forms.SendKeys.SendWait(keys);
+            return true;
         }
 
         public void FlashWindow(bool stop = false)

@@ -30,7 +30,7 @@ namespace TibiaTekBot
             get
             {
                 //return client.ReadLocation(BattlelistBegin + Index * (uint)Constants.Battlelist.ItemSize + (uint)Constants.Battlelist.LocationOffset);
-                Tibia.Location loc = Tibia.ReadAs<Tibia.Location>(client, BattlelistBegin + Index * (uint)Constants.BattleList.ItemSize + (uint)Constants.BattleList.LocationOffset);
+                Tibia.Location loc = Windows.ReadAs<Tibia.Location>(client.Handle, BattlelistBegin + Index * (uint)Constants.BattleList.ItemSize + (uint)Constants.BattleList.LocationOffset);
                 // but Cipsoft fuckered the order here
                 loc.X ^= loc.Z;
                 loc.Z ^= loc.X;
@@ -43,7 +43,7 @@ namespace TibiaTekBot
         {
             get
             {
-                return Tibia.ReadAs<Tibia.Outfit>(client, BattlelistBegin + Index * (uint)Constants.BattleList.ItemSize + (uint)Constants.BattleList.OutfitOffset);
+                return Windows.ReadAs<Tibia.Outfit>(client.Handle, BattlelistBegin + Index * (uint)Constants.BattleList.ItemSize + (uint)Constants.BattleList.OutfitOffset);
             }
         }
 

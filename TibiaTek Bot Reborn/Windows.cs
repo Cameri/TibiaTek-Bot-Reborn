@@ -17,7 +17,7 @@ namespace TibiaTekBot
             FLASHW_TIMERNOFG = 12
         }
 
-        public enum ShowWindowCommands : uint
+        public enum ShowStates : uint
         {
             SW_FORCEMINIMIZE = 11,
             SW_HIDE = 0,
@@ -39,11 +39,11 @@ namespace TibiaTekBot
         [StructLayout(LayoutKind.Sequential)]
         public struct FlashWindowInfo
         {
-            uint cbSize;
-            IntPtr hWnd;
-            FlashWindowFlags dwFlags;
-            uint uCount;
-            uint dwTimeout;
+            public uint cbSize;
+            public IntPtr hWnd;
+            public FlashWindowFlags dwFlags;
+            public uint uCount;
+            public uint dwTimeout;
 
             public FlashWindowInfo(IntPtr Handle, FlashWindowFlags Flags, uint Count, uint Timeout)
             {
@@ -55,6 +55,16 @@ namespace TibiaTekBot
             }
         }
 
+        [StructLayout(LayoutKind.Sequential)]
+        public struct WindowPlacement
+        {
+            public uint length;
+            public uint flags;
+            public ShowStates showCmd;
+            public System.Drawing.Point ptMinPosition;
+            public System.Drawing.Point ptMaxPosition;
+            public System.Drawing.Rectangle rcNormalPosition;
+        }
         #endregion
         #region External functions
         [DllImport("kernel32.dll")]
@@ -74,6 +84,12 @@ namespace TibiaTekBot
 
         [DllImport("user32.dll")]
         public static extern int FlashWindowEx([In] FlashWindowInfo fwiInfo);
+
+        [DllImport("user32.dll")]
+        public static extern bool GetWindowPlacement(IntPtr hWnd, out WindowPlacement windowPlacement);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
         #endregion
 
         public static T ReadAs<T>(IntPtr Handle, uint Address) where T : struct
