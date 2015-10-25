@@ -1280,6 +1280,7 @@
             this.SoundFileAddButton.TabIndex = 3;
             this.SoundFileAddButton.Text = "Add";
             this.SoundFileAddButton.UseVisualStyleBackColor = true;
+            this.SoundFileAddButton.Click += new System.EventHandler(this.SoundFileAddButton_Click);
             // 
             // SoundFileBrowseButton
             // 
@@ -1289,6 +1290,7 @@
             this.SoundFileBrowseButton.TabIndex = 2;
             this.SoundFileBrowseButton.Text = "Browse";
             this.SoundFileBrowseButton.UseVisualStyleBackColor = true;
+            this.SoundFileBrowseButton.Click += new System.EventHandler(this.SoundFileBrowseButton_Click);
             // 
             // SoundFilePath
             // 
@@ -1434,6 +1436,7 @@
             this.BlSoundTest.TabIndex = 0;
             this.BlSoundTest.Text = "Play";
             this.BlSoundTest.UseVisualStyleBackColor = true;
+            this.BlSoundTest.Click += new System.EventHandler(this.BlSoundTest_Click);
             // 
             // Label11
             // 
@@ -1452,6 +1455,9 @@
             this.BlSoundBox.Name = "BlSoundBox";
             this.BlSoundBox.Size = new System.Drawing.Size(148, 21);
             this.BlSoundBox.TabIndex = 0;
+            this.BlSoundBox.DropDown += new System.EventHandler(this.BlSoundBox_DropDown);
+            this.BlSoundBox.SelectedIndexChanged += new System.EventHandler(this.BlSoundBox_SelectedIndexChanged);
+            this.BlSoundBox.DropDownClosed += new System.EventHandler(this.BlSoundBox_DropDownClosed);
             // 
             // AlarmsForm
             // 
