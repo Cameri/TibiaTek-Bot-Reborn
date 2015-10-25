@@ -13,9 +13,10 @@ namespace TibiaTekBot
         bool Active = false;
         string LogTextDetails;
         Timer BattlelistTimer;
-        public Kernel kernel;
-        public AlarmsForm()
+        public Tibia client;
+        public AlarmsForm(Tibia client)
         {
+            this.client = client;
             BattlelistTimer = new Timer(5000);
             BattlelistTimer.Execute += BattlelistTimer_Execute;
             InitializeComponent();
@@ -24,12 +25,11 @@ namespace TibiaTekBot
         private void BattlelistTimer_Execute(object sender, EventArgs e)
         {
            
-            BattleList bl = kernel.Client.GetBattlelist();
-            uint localPlayerID = kernel.Client.LocalPlayer.ID;
-            Tibia.Location localPlayerLoc = kernel.Client.LocalPlayer.Location;
+            BattleList bl = client.GetBattlelist();
+            uint localPlayerID = client.LocalPlayer.ID;
+            Tibia.Location localPlayerLoc = client.LocalPlayer.Location;
             bl.Reset();
 
-            
             do
             {    
                 if (!bl.OnScreen || bl.ID == localPlayerID)
@@ -249,7 +249,7 @@ namespace TibiaTekBot
         void SaveLogToTXT(string LogText)
         {
             string path = Environment.CurrentDirectory + "\\Logs";
-            string playername = kernel.Client.LocalPlayer.Name;
+            string playername = client.LocalPlayer.Name;
 
             if (!Directory.Exists(path))
             {
@@ -285,7 +285,7 @@ namespace TibiaTekBot
         private void ViewLogButtom_Click(object sender, EventArgs e)
         {
             string path = Environment.CurrentDirectory + "\\Logs";
-            string playername = kernel.Client.LocalPlayer.Name;
+            string playername = client.LocalPlayer.Name;
             if (File.Exists(path+"\\"+playername+".Logs.txt"))
             {
                 Process.Start(path + "\\" + playername + ".Logs.txt");

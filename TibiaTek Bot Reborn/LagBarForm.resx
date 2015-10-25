@@ -117,11 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="lagBarTimer.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="lagBarTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="PictureBox2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAYAAABWdVznAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wwAADsMBx2+oZAAAAN5JREFUKFOFkEEOgkAMRWdBBGZGY7yGCxW8kmACKibeyb0Lr1f7xoBDCLFJk077
+        vAAADrwBlbxySQAAAN5JREFUKFOFkEEOgkAMRWdBBGZGY7yGCxW8kmACKibeyb0Lr1f7xoBDCLFJk077
         /+/vmO2ukH+5L0up27tk3smEkPqN5NaLJd0y9A5KOLed5M6OCTSq5q5qnVTXTurmquSVFEcIN51nPwKD
         RtfGAiQ9hEYEVqNG/Xy9B3BfszVYHQjqFwsxMCZikbtSv/4SeNCcIyCGqCFosI61PbgH9jV2sT0QSA6b
         PVo/JICJeMgAtfClfK1uDX8fx+nSyal9BAA1q/H7PXIzBhPeuqCysLm43CphLanzkiTJFGyM+QBB7dYa

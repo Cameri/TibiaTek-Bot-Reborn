@@ -13,7 +13,8 @@ namespace TibiaTekBot
     public partial class MainForm : Form
     {
 
-        AlarmsForm alarmsForm = new AlarmsForm();
+        AlarmsForm alarmsForm;
+        LagBarForm lagBarForm;
 
         Kernel kernel;
 
@@ -21,7 +22,8 @@ namespace TibiaTekBot
         {
             kernel = new Kernel();
             kernel.Start();
-            alarmsForm.kernel = kernel;
+            alarmsForm = new AlarmsForm(kernel.Client);
+            lagBarForm = new LagBarForm(kernel.Client);
             InitializeComponent();
         }
 
@@ -96,6 +98,12 @@ namespace TibiaTekBot
         }
 
         private void lagBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            lagBarForm.Show();
+            lagBarForm.BringToFront();
+        }
+
+        private void windowsMenuItem_Click(object sender, EventArgs e)
         {
 
         }

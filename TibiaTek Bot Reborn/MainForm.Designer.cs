@@ -585,6 +585,7 @@
             this.windowsMenuItem.Name = "windowsMenuItem";
             this.windowsMenuItem.Size = new System.Drawing.Size(68, 20);
             this.windowsMenuItem.Text = "&Windows";
+            this.windowsMenuItem.Click += new System.EventHandler(this.windowsMenuItem_Click);
             // 
             // alarmsToolStripMenuItem
             // 
@@ -597,7 +598,7 @@
             // 
             this.lagBarToolStripMenuItem.Name = "lagBarToolStripMenuItem";
             this.lagBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.lagBarToolStripMenuItem.Text = "Lag Bar";
+            this.lagBarToolStripMenuItem.Text = "&Lag Bar";
             this.lagBarToolStripMenuItem.Click += new System.EventHandler(this.lagBarToolStripMenuItem_Click);
             // 
             // MainForm
