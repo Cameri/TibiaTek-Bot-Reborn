@@ -32,6 +32,16 @@ namespace TibiaTekBot
             {
                 return String.Format("X: {0}, Y: {1}, Z: {2}", X, Y, Z);
             }
+
+            public bool IsHigherThan(Location otherLoc)
+            {
+                return this.Z < otherLoc.Z;
+            }
+
+            public bool IsLowerThan(Location otherLoc)
+            {
+                return this.Z > otherLoc.Z;
+            }
         }
 
         public struct Outfit
