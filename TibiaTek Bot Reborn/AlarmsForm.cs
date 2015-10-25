@@ -220,7 +220,7 @@ namespace TibiaTekBot
         private void SoundFileBrowseButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.Filter = "txt files (*.wav)|*.wav";
+            openFileDialog1.Filter = "Wav files (*.wav)|*.wav";
             openFileDialog1.RestoreDirectory = true;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
