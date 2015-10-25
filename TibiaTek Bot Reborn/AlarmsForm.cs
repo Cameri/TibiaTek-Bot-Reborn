@@ -36,13 +36,6 @@ namespace TibiaTekBot
 
                 Tibia.Location entityLoc = bl.Location;
 
-                if (!BattlelistMultiFloorAbove.Checked
-                    && !BattlelistMultiFloorBelow.Checked
-                    && entityLoc.Z != localPlayerLoc.Z)
-                {
-                    continue;
-                }
-
                 for (int i = 0; i < BattlelistIgnoredPlayers.Items.Count; i++)
                 {
                     if (Regex.IsMatch(bl.Name, BattlelistIgnoredPlayers.Items[i].ToString(), RegexOptions.IgnoreCase))
@@ -65,6 +58,13 @@ namespace TibiaTekBot
                 if ((Math.Abs(localPlayerLoc.Z - entityLoc.Z) > BattlelistMultiFloorRange.Value) 
                     && ((!BattlelistMultiFloorAbove.Checked && localPlayerLoc.Z > entityLoc.Z)
                     || (!BattlelistMultiFloorBelow.Checked && localPlayerLoc.Z < entityLoc.Z))) {
+                    continue;
+                }
+
+                if (!BattlelistMultiFloorAbove.Checked
+                    && !BattlelistMultiFloorBelow.Checked
+                    && entityLoc.Z != localPlayerLoc.Z)
+                {
                     continue;
                 }
 
