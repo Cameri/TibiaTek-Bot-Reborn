@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices; // for DllImport
 using System.Diagnostics;
 
 
@@ -11,17 +10,8 @@ namespace TibiaTekBot
 {
     public class Tibia
     {
-        #region External functions
-        [DllImport("kernel32.dll")]
-        public static extern int ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [In, Out] byte[] buffer, uint size, out IntPtr lpNumberOfBytesRead);
 
-        [DllImport("kernel32.dll")]
-        public static extern int WriteProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, byte[] buffer, uint size, out IntPtr lpNumberOfBytesWritten);
-
-        [DllImport("user32.dll")]
-        public static extern bool SetWindowText(IntPtr hWnd, string lpString);
-        #endregion
-
+        #region Structures
         public struct Location
         {
             public uint X;
@@ -54,15 +44,14 @@ namespace TibiaTekBot
             public uint Addons;
             public uint MountID;
         }
+        #endregion
 
+        #region Private Properties
         private Process clientProcess;
+        #endregion
+
+        #region Public Properties
         public LocalPlayer LocalPlayer { get; private set; }
-
-        public BattleList GetBattlelist()
-        {
-            return new BattleList(this, 0);
-        }
-
         public bool IsConnected
         {
             get
@@ -79,8 +68,6 @@ namespace TibiaTekBot
             }
         }
 
-        #region Properties
-
         public string Title
         {
             get
@@ -96,7 +83,7 @@ namespace TibiaTekBot
                 {
                     Console.WriteLine(ex.ToString());
                 }
-                
+
             }
         }
 
@@ -139,14 +126,46 @@ namespace TibiaTekBot
         public string Version { get; private set; }
         #endregion
 
-        #region Memory Functions
+        #region Public Methods
+        public bool BringToFront()
+        {
+            return Windows.SetForegroundWindow(WindowHandle);
+        }
+
+        public bool Show()
+        {
+            return Windows.ShowWindow(WindowHandle, (uint)Windows.ShowWindowCommands.SW_SHOW);
+        }
+
+        public void FlashWindow(bool stop = false)
+        {
+            if (stop)
+            {
+                var flags = Windows.FlashWindowFlags.FLASHW_STOP;
+                Windows.FlashWindowInfo fwi = new Windows.FlashWindowInfo(WindowHandle, flags, 0, 0);
+                Windows.FlashWindowEx(fwi);
+            }
+            else
+            {
+                var flags = Windows.FlashWindowFlags.FLASHW_TIMERNOFG
+                    | Windows.FlashWindowFlags.FLASHW_TRAY
+                    | Windows.FlashWindowFlags.FLASHW_CAPTION;
+                Windows.FlashWindowInfo fwi = new Windows.FlashWindowInfo(WindowHandle, flags, 0, 0);
+                Windows.FlashWindowEx(fwi);
+            }
+        }
+        
+        public BattleList GetBattlelist()
+        {
+            return new BattleList(this, 0);
+        }
         public byte[] ReadBytes(uint Address, uint BytesToRead)
         {
             IntPtr ptrBytesRead;
             byte[] buffer = new byte[BytesToRead];
             if (BytesToRead > 0)
             {
-                ReadProcessMemory(Handle, (IntPtr)Address, buffer, BytesToRead, out ptrBytesRead);
+                Windows.ReadProcessMemory(Handle, (IntPtr)Address, buffer, BytesToRead, out ptrBytesRead);
             }
             return buffer;
         }
@@ -181,22 +200,10 @@ namespace TibiaTekBot
         }
         public Location ReadLocation(uint Address)
         {
-            byte[] bytes = ReadBytes(Address, 12);
-            GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            Tibia.Location loc = (Tibia.Location)Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(Tibia.Location));
-            handle.Free();
-            return loc;
+            return Windows.ReadAs<Tibia.Location>(Handle, Address);
         }
 
-        public static T ReadAs<T>(Tibia client, uint Address) where T : struct
-        {
-            T structure = default(T);
-            byte[] bytes = client.ReadBytes(Address, (uint)System.Runtime.InteropServices.Marshal.SizeOf(structure));
-            GCHandle handle = GCHandle.Alloc(bytes, GCHandleType.Pinned);
-            structure = (T) Marshal.PtrToStructure(handle.AddrOfPinnedObject(), typeof(T));
-            handle.Free();
-            return structure;
-        }
+
 
         public string ReadString(uint Address, uint Length = 32)
         {
@@ -205,7 +212,7 @@ namespace TibiaTekBot
         public void WriteBytes(uint Address, byte[] bytes, uint BytesToWrite)
         {
             IntPtr ptrBytesWritten;
-            WriteProcessMemory(Handle, (IntPtr)Address, bytes, BytesToWrite, out ptrBytesWritten);
+            Windows.WriteProcessMemory(Handle, (IntPtr)Address, bytes, BytesToWrite, out ptrBytesWritten);
         }
         public void WriteUInt(uint Address, uint value)
         {
@@ -238,7 +245,7 @@ namespace TibiaTekBot
 
         #endregion
 
-
+        #region Private Methods
         private Process GetNewClient()
         {
             Process clientProcess;
@@ -273,6 +280,12 @@ namespace TibiaTekBot
             }
             return null;
         }
+        
+        private void clientProcess_Exited(object sender, EventArgs e)
+        {
+            System.Threading.Thread.CurrentThread.Abort();
+        }
+        #endregion
 
         public Tibia()
         {
@@ -296,9 +309,5 @@ namespace TibiaTekBot
             }
         }
 
-        private void clientProcess_Exited(object sender, EventArgs e)
-        {
-            System.Threading.Thread.CurrentThread.Abort();
-        }
     }
 }

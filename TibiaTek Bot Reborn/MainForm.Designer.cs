@@ -72,6 +72,7 @@
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.windowsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alarmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lagBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoLooterBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).BeginInit();
             this.GroupBox2.SuspendLayout();
@@ -579,7 +580,8 @@
             // windowsMenuItem
             // 
             this.windowsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alarmsToolStripMenuItem});
+            this.alarmsToolStripMenuItem,
+            this.lagBarToolStripMenuItem});
             this.windowsMenuItem.Name = "windowsMenuItem";
             this.windowsMenuItem.Size = new System.Drawing.Size(68, 20);
             this.windowsMenuItem.Text = "&Windows";
@@ -590,6 +592,13 @@
             this.alarmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alarmsToolStripMenuItem.Text = "&Alarms";
             this.alarmsToolStripMenuItem.Click += new System.EventHandler(this.alarmsToolStripMenuItem_Click);
+            // 
+            // lagBarToolStripMenuItem
+            // 
+            this.lagBarToolStripMenuItem.Name = "lagBarToolStripMenuItem";
+            this.lagBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lagBarToolStripMenuItem.Text = "Lag Bar";
+            this.lagBarToolStripMenuItem.Click += new System.EventHandler(this.lagBarToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -677,6 +686,7 @@
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem windowsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alarmsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lagBarToolStripMenuItem;
     }
 }
 

@@ -110,6 +110,7 @@
     <Compile Include="Timer.cs" />
     <Compile Include="Features\ExperienceChecker.cs" />
     <Compile Include="Utilities.cs" />
+    <Compile Include="Windows.cs" />
     <EmbeddedResource Include="AlarmsForm.resx">
       <DependentUpon>AlarmsForm.cs</DependentUpon>
     </EmbeddedResource>
