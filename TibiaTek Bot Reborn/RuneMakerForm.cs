@@ -48,7 +48,7 @@ namespace TibiaTekBot
             {
                 if (RunOnMaxMana.Checked == true)
                 {
-                    if (kernel.Client.LocalPlayer.ManaPoints == kernel.Client.LocalPlayer.MaxManaPoints)
+                    if (kernel.Client.LocalPlayer.ManaPoints >= kernel.Client.LocalPlayer.MaxManaPoints-2)
                     {
 
                         if (kernel.Client.LocalPlayer.SoulPoints>RunemakerMinimumSoulPoints.Value+5)
