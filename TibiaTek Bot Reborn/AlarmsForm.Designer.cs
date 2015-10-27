@@ -145,10 +145,10 @@
             this.Label11 = new System.Windows.Forms.Label();
             this.BlSoundBox = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.OpenLogFolder = new System.Windows.Forms.Button();
+            this.ViewLogButtom = new System.Windows.Forms.Button();
             this.ListViewLogs = new System.Windows.Forms.ListView();
             this.LogText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ViewLogButtom = new System.Windows.Forms.Button();
-            this.OpenLogFolder = new System.Windows.Forms.Button();
             tablalala = new System.Windows.Forms.TabPage();
             tablalala.SuspendLayout();
             this.GroupBox13.SuspendLayout();
@@ -677,16 +677,19 @@
             this.BattleListPauseBot.TabIndex = 13;
             this.BattleListPauseBot.Text = "Pause Bot";
             this.BattleListPauseBot.UseVisualStyleBackColor = true;
+            this.BattleListPauseBot.CheckedChanged += new System.EventHandler(this.BattleListPauseBot_CheckedChanged);
             // 
             // BattlelistMessagePlayer
             // 
             this.BattlelistMessagePlayer.AutoSize = true;
+            this.BattlelistMessagePlayer.Enabled = false;
             this.BattlelistMessagePlayer.Location = new System.Drawing.Point(10, 59);
             this.BattlelistMessagePlayer.Name = "BattlelistMessagePlayer";
             this.BattlelistMessagePlayer.Size = new System.Drawing.Size(104, 17);
             this.BattlelistMessagePlayer.TabIndex = 12;
             this.BattlelistMessagePlayer.Text = "Message Player:";
             this.BattlelistMessagePlayer.UseVisualStyleBackColor = true;
+            this.BattlelistMessagePlayer.CheckedChanged += new System.EventHandler(this.BattlelistMessagePlayer_CheckedChanged);
             // 
             // BattlelistLogout
             // 
@@ -714,6 +717,7 @@
             this.BattlelistMessagePlayerInput.Name = "BattlelistMessagePlayerInput";
             this.BattlelistMessagePlayerInput.Size = new System.Drawing.Size(120, 20);
             this.BattlelistMessagePlayerInput.TabIndex = 9;
+            this.BattlelistMessagePlayerInput.TextChanged += new System.EventHandler(this.BattlelistMessagePlayerInput_TextChanged);
             // 
             // TabPage3
             // 
@@ -1057,6 +1061,7 @@
             // StatusMessagePlayer
             // 
             this.StatusMessagePlayer.AutoSize = true;
+            this.StatusMessagePlayer.Enabled = false;
             this.StatusMessagePlayer.Location = new System.Drawing.Point(10, 85);
             this.StatusMessagePlayer.Name = "StatusMessagePlayer";
             this.StatusMessagePlayer.Size = new System.Drawing.Size(104, 17);
@@ -1090,6 +1095,7 @@
             this.StatusMessagePlayerName.Name = "StatusMessagePlayerName";
             this.StatusMessagePlayerName.Size = new System.Drawing.Size(120, 20);
             this.StatusMessagePlayerName.TabIndex = 9;
+            this.StatusMessagePlayerName.TextChanged += new System.EventHandler(this.StatusMessagePlayerName_TextChanged);
             // 
             // GroupBox10
             // 
@@ -1478,6 +1484,26 @@
             this.tabPage5.Text = "Logs";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // OpenLogFolder
+            // 
+            this.OpenLogFolder.Location = new System.Drawing.Point(4, 256);
+            this.OpenLogFolder.Name = "OpenLogFolder";
+            this.OpenLogFolder.Size = new System.Drawing.Size(102, 23);
+            this.OpenLogFolder.TabIndex = 2;
+            this.OpenLogFolder.Text = "Open Log Folder";
+            this.OpenLogFolder.UseVisualStyleBackColor = true;
+            this.OpenLogFolder.Click += new System.EventHandler(this.OpenLogFolder_Click);
+            // 
+            // ViewLogButtom
+            // 
+            this.ViewLogButtom.Location = new System.Drawing.Point(282, 256);
+            this.ViewLogButtom.Name = "ViewLogButtom";
+            this.ViewLogButtom.Size = new System.Drawing.Size(75, 23);
+            this.ViewLogButtom.TabIndex = 1;
+            this.ViewLogButtom.Text = "View Log";
+            this.ViewLogButtom.UseVisualStyleBackColor = true;
+            this.ViewLogButtom.Click += new System.EventHandler(this.ViewLogButtom_Click);
+            // 
             // ListViewLogs
             // 
             this.ListViewLogs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1493,26 +1519,6 @@
             // 
             this.LogText.Text = "Log Text";
             this.LogText.Width = 500;
-            // 
-            // ViewLogButtom
-            // 
-            this.ViewLogButtom.Location = new System.Drawing.Point(282, 256);
-            this.ViewLogButtom.Name = "ViewLogButtom";
-            this.ViewLogButtom.Size = new System.Drawing.Size(75, 23);
-            this.ViewLogButtom.TabIndex = 1;
-            this.ViewLogButtom.Text = "View Log";
-            this.ViewLogButtom.UseVisualStyleBackColor = true;
-            this.ViewLogButtom.Click += new System.EventHandler(this.ViewLogButtom_Click);
-            // 
-            // OpenLogFolder
-            // 
-            this.OpenLogFolder.Location = new System.Drawing.Point(4, 256);
-            this.OpenLogFolder.Name = "OpenLogFolder";
-            this.OpenLogFolder.Size = new System.Drawing.Size(102, 23);
-            this.OpenLogFolder.TabIndex = 2;
-            this.OpenLogFolder.Text = "Open Log Folder";
-            this.OpenLogFolder.UseVisualStyleBackColor = true;
-            this.OpenLogFolder.Click += new System.EventHandler(this.OpenLogFolder_Click);
             // 
             // AlarmsForm
             // 

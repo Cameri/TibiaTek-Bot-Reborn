@@ -296,6 +296,33 @@ namespace TibiaTekBot
             }
             
         }
-        
+
+        private void BattlelistMessagePlayerInput_TextChanged(object sender, EventArgs e)
+        {
+            BattlelistMessagePlayer.Enabled = BattlelistMessagePlayerInput.Text.Length > 0;
+            if (!BattlelistMessagePlayer.Enabled)
+            {
+                BattlelistMessagePlayer.Checked = false;
+            }
+        }
+
+        private void BattleListPauseBot_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BattlelistMessagePlayer_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StatusMessagePlayerName_TextChanged(object sender, EventArgs e)
+        {
+            StatusMessagePlayer.Enabled = BattlelistMessagePlayerInput.Text.Length > 0;
+            if (!StatusMessagePlayer.Enabled)
+            {
+                StatusMessagePlayer.Checked = false;
+            }
+        }
     }
 }
