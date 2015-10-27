@@ -15,15 +15,17 @@ namespace TibiaTekBot
 
         AlarmsForm alarmsForm;
         LagBarForm lagBarForm;
-
+       // RuneMakerForm runemakerform;
         Kernel kernel;
-
+        public Tibia client;
         public MainForm()
         {
+            
             kernel = new Kernel();
             kernel.Start();
             alarmsForm = new AlarmsForm(kernel.Client);
             lagBarForm = new LagBarForm(kernel.Client);
+            //runemakerform = new RuneMakerForm(kernel.Client);
             InitializeComponent();
         }
 
@@ -106,6 +108,23 @@ namespace TibiaTekBot
         private void windowsMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void runeMakerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //runemakerform.Show();
+            //runemakerform.BringToFront();
+            RuneMakerForm runemakerform = new RuneMakerForm();
+
+            var formToShow = Application.OpenForms.Cast<Form>().FirstOrDefault(c => c is RuneMakerForm);
+            if (formToShow != null)
+            {
+                formToShow.Show();
+            }
+            else
+            {
+                runemakerform.Show();
+            }
         }
     }
 }

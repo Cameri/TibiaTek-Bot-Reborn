@@ -414,6 +414,7 @@
             this.AlarmsLoad.TabIndex = 9;
             this.AlarmsLoad.Text = "Load";
             this.AlarmsLoad.UseVisualStyleBackColor = true;
+            this.AlarmsLoad.Click += new System.EventHandler(this.AlarmsLoad_Click);
             // 
             // AlarmsHide
             // 
@@ -435,6 +436,7 @@
             this.AlarmsSave.TabIndex = 7;
             this.AlarmsSave.Text = "Save";
             this.AlarmsSave.UseVisualStyleBackColor = true;
+            this.AlarmsSave.Click += new System.EventHandler(this.AlarmsSave_Click);
             // 
             // Tabs
             // 

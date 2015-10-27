@@ -129,5 +129,10 @@ namespace TibiaTekBot
         {
             dragging = false;
         }
+
+        private void LagBarForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

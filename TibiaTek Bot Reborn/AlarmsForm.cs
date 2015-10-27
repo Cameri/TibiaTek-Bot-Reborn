@@ -296,7 +296,7 @@ namespace TibiaTekBot
             }
             
         }
-
+        
         private void BattlelistMessagePlayerInput_TextChanged(object sender, EventArgs e)
         {
             BattlelistMessagePlayer.Enabled = BattlelistMessagePlayerInput.Text.Length > 0;
@@ -324,5 +324,15 @@ namespace TibiaTekBot
                 StatusMessagePlayer.Checked = false;
             }
         }
+        private void AlarmsLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AlarmsSave_Click(object sender, EventArgs e)
+        {
+
+        }
+        
     }
 }
