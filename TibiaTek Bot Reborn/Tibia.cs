@@ -227,10 +227,12 @@ namespace TibiaTekBot
                // System.Threading.Thread.Sleep(1000);
                 state = WindowState;
             }
-            //System.Threading.Thread.Sleep(1000);
             System.Windows.Forms.SendKeys.SendWait(keys);
+            System.Windows.Forms.SendKeys.Flush();
+
             return true;
         }
+
 
         public void FlashWindow(bool stop = false)
         {

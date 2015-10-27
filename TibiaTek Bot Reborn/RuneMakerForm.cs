@@ -12,68 +12,114 @@ namespace TibiaTekBot
 {
     public partial class RuneMakerForm : Form
     {
-        Kernel kernel;
         public Tibia client;
-        public RuneMakerForm()
+        private bool active = false;
+        public RuneMakerForm(Tibia client)
         {
-            //this.client = client;
-            kernel = new Kernel();
-            kernel.Start();
+            this.client = client;
             InitializeComponent();
         }
 
         private void RunemakerTrigger_CheckedChanged(object sender, EventArgs e)
         {
-            if (RunemakerTrigger.Text == "Activate")
+            if (active)
             {
-                RuneMakerTimer.Enabled = true;
-                BlankRunesAvailable.Enabled = false;
-                RunemakerTrigger.Text = "Deactivate";
+                RunemakerTrigger.Text = "Activate";
             }
             else
             {
                 ManaLabel.Text = "Mana: 0/0";
-                RuneMakerTimer.Enabled = false;
-                BlankRunesAvailable.Enabled = true;
-                RunemakerTrigger.Text = "Activate";
+                RunemakerTrigger.Text = "Deactivate";
             }
-
-
+            active = !active;
+            RuneMakerTimer.Enabled = active;
+            GroupBox3.Enabled = !active;
         }
 
         private void RuneMakerTimer_Tick(object sender, EventArgs e)
         {
-            ManaLabel.Text = "Mana: "+kernel.Client.LocalPlayer.ManaPoints+"/"+kernel.Client.LocalPlayer.MaxManaPoints;
-            if (BlankRunesAvailable.Value > 0)
+            if (!client.IsConnected)
             {
-                if (RunOnMaxMana.Checked == true)
+                ManaLabel.Text = "Disconnected";
+                RunemakerTrigger.Checked = false;
+                return;
+            }
+
+            // Update Mana/MaxMana display
+            ManaLabel.Text = "Mana: " + client.LocalPlayer.ManaPoints + "/" + client.LocalPlayer.MaxManaPoints;
+
+            if (BlankRunesAvailable.Value <= 0)
+            {
+                RunemakerTrigger.Checked = false; // ran out of runes, supposedly
+                MessageBox.Show("Out of blank runes. Rune Maker is now deactivated.");
+                return;
+            }
+
+            uint random = 0;
+            if (checkBox1.Checked)
+            {
+                random = (uint) (new Random().NextDouble() * client.LocalPlayer.MaxManaPoints * 0.01);
+            }
+
+            if (RunOnMaxMana.Checked)
+            {
+                uint limit = client.LocalPlayer.MaxManaPoints - 2U - random;
+
+                if (client.LocalPlayer.ManaPoints < limit)
                 {
-                    if (kernel.Client.LocalPlayer.ManaPoints >= kernel.Client.LocalPlayer.MaxManaPoints-2)
-                    {
-
-                        if (kernel.Client.LocalPlayer.SoulPoints>RunemakerMinimumSoulPoints.Value+5)
-                        {
-                            kernel.Client.SendKeys(" {ENTER}");
-                            Thread.Sleep(100);
-                            kernel.Client.SendKeys(RunemakerSpell.Text + "{ENTER}");
-                            BlankRunesAvailable.Value--;
-                            
-                        }
-                    }
-
+                    return; // not enough MP
+                }
+            } else
+            {
+                if (client.LocalPlayer.ManaPoints < RunemakerMinimumManaPoints.Value - random)
+                {
+                    return; // not enough MP
                 }
             }
-            else
+
+            if (client.LocalPlayer.SoulPoints <= RunemakerMinimumSoulPoints.Value + 5)
             {
-                RunemakerTrigger.CheckState = CheckState.Unchecked;
-                MessageBox.Show("no more blank runes.");
-                
+                return; // not enough SP
             }
+
+            
+
+            // 'tis all gewd
+            client.SendKeys(" {ENTER}");
+            client.SendKeys(RunemakerSpell.Text);
+            client.SendKeys("{ENTER}");
+            BlankRunesAvailable.Value--;
+   
         }
 
         private void HideWindows_Click(object sender, EventArgs e)
         {
             Hide();
+        }
+
+        private void RunemakerSpell_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RunemakerTrigger.Enabled = RunemakerSpell.Text.Length > 0;
+        }
+
+        private void RuneMakerForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RunemakerSpell_TextChanged(object sender, EventArgs e)
+        {
+            RunemakerTrigger.Enabled = RunemakerSpell.Text.Length > 0;
+        }
+
+        private void RunOnMaxMana_CheckedChanged(object sender, EventArgs e)
+        {
+            RunemakerMinimumManaPoints.Enabled = !RunOnMaxMana.Checked;
+        }
+
+        private void RunemakerMinimumManaPoints_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
