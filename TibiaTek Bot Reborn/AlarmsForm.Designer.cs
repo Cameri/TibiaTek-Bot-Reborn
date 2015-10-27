@@ -145,10 +145,10 @@
             this.Label11 = new System.Windows.Forms.Label();
             this.BlSoundBox = new System.Windows.Forms.ComboBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.OpenLogFolder = new System.Windows.Forms.Button();
+            this.ViewLogButtom = new System.Windows.Forms.Button();
             this.ListViewLogs = new System.Windows.Forms.ListView();
             this.LogText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ViewLogButtom = new System.Windows.Forms.Button();
-            this.OpenLogFolder = new System.Windows.Forms.Button();
             tablalala = new System.Windows.Forms.TabPage();
             tablalala.SuspendLayout();
             this.GroupBox13.SuspendLayout();
@@ -414,6 +414,7 @@
             this.AlarmsLoad.TabIndex = 9;
             this.AlarmsLoad.Text = "Load";
             this.AlarmsLoad.UseVisualStyleBackColor = true;
+            this.AlarmsLoad.Click += new System.EventHandler(this.AlarmsLoad_Click);
             // 
             // AlarmsHide
             // 
@@ -435,6 +436,7 @@
             this.AlarmsSave.TabIndex = 7;
             this.AlarmsSave.Text = "Save";
             this.AlarmsSave.UseVisualStyleBackColor = true;
+            this.AlarmsSave.Click += new System.EventHandler(this.AlarmsSave_Click);
             // 
             // Tabs
             // 
@@ -1478,6 +1480,26 @@
             this.tabPage5.Text = "Logs";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // OpenLogFolder
+            // 
+            this.OpenLogFolder.Location = new System.Drawing.Point(4, 256);
+            this.OpenLogFolder.Name = "OpenLogFolder";
+            this.OpenLogFolder.Size = new System.Drawing.Size(102, 23);
+            this.OpenLogFolder.TabIndex = 2;
+            this.OpenLogFolder.Text = "Open Log Folder";
+            this.OpenLogFolder.UseVisualStyleBackColor = true;
+            this.OpenLogFolder.Click += new System.EventHandler(this.OpenLogFolder_Click);
+            // 
+            // ViewLogButtom
+            // 
+            this.ViewLogButtom.Location = new System.Drawing.Point(282, 256);
+            this.ViewLogButtom.Name = "ViewLogButtom";
+            this.ViewLogButtom.Size = new System.Drawing.Size(75, 23);
+            this.ViewLogButtom.TabIndex = 1;
+            this.ViewLogButtom.Text = "View Log";
+            this.ViewLogButtom.UseVisualStyleBackColor = true;
+            this.ViewLogButtom.Click += new System.EventHandler(this.ViewLogButtom_Click);
+            // 
             // ListViewLogs
             // 
             this.ListViewLogs.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -1493,26 +1515,6 @@
             // 
             this.LogText.Text = "Log Text";
             this.LogText.Width = 500;
-            // 
-            // ViewLogButtom
-            // 
-            this.ViewLogButtom.Location = new System.Drawing.Point(282, 256);
-            this.ViewLogButtom.Name = "ViewLogButtom";
-            this.ViewLogButtom.Size = new System.Drawing.Size(75, 23);
-            this.ViewLogButtom.TabIndex = 1;
-            this.ViewLogButtom.Text = "View Log";
-            this.ViewLogButtom.UseVisualStyleBackColor = true;
-            this.ViewLogButtom.Click += new System.EventHandler(this.ViewLogButtom_Click);
-            // 
-            // OpenLogFolder
-            // 
-            this.OpenLogFolder.Location = new System.Drawing.Point(4, 256);
-            this.OpenLogFolder.Name = "OpenLogFolder";
-            this.OpenLogFolder.Size = new System.Drawing.Size(102, 23);
-            this.OpenLogFolder.TabIndex = 2;
-            this.OpenLogFolder.Text = "Open Log Folder";
-            this.OpenLogFolder.UseVisualStyleBackColor = true;
-            this.OpenLogFolder.Click += new System.EventHandler(this.OpenLogFolder_Click);
             // 
             // AlarmsForm
             // 

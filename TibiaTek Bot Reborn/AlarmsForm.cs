@@ -296,6 +296,16 @@ namespace TibiaTekBot
             }
             
         }
+
+        private void AlarmsLoad_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AlarmsSave_Click(object sender, EventArgs e)
+        {
+
+        }
         
     }
 }

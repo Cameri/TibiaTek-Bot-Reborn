@@ -54,15 +54,6 @@
             this.Label6 = new System.Windows.Forms.Label();
             this.AutoEaterTrigger = new System.Windows.Forms.CheckBox();
             this.AutoEaterSmart = new System.Windows.Forms.CheckBox();
-            this.GroupBox3 = new System.Windows.Forms.GroupBox();
-            this.RunemakerHelp = new System.Windows.Forms.Button();
-            this.RunemakerTrigger = new System.Windows.Forms.CheckBox();
-            this.RunemakerMinimumSoulPoints = new System.Windows.Forms.NumericUpDown();
-            this.Label5 = new System.Windows.Forms.Label();
-            this.RunemakerMinimumManaPoints = new System.Windows.Forms.NumericUpDown();
-            this.Label4 = new System.Windows.Forms.Label();
-            this.RunemakerSpell = new System.Windows.Forms.ComboBox();
-            this.Label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.ExpCheckerBox = new System.Windows.Forms.GroupBox();
             this.ExpCheckerHelp = new System.Windows.Forms.Button();
@@ -73,6 +64,7 @@
             this.windowsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alarmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lagBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.runeMakerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AutoLooterBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).BeginInit();
             this.GroupBox2.SuspendLayout();
@@ -80,9 +72,6 @@
             this.GroupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterMinimumHitPoints)).BeginInit();
-            this.GroupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumSoulPoints)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumManaPoints)).BeginInit();
             this.ExpCheckerBox.SuspendLayout();
             this.mainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -389,115 +378,6 @@
             this.AutoEaterSmart.Text = "Eat Smart";
             this.AutoEaterSmart.UseVisualStyleBackColor = true;
             // 
-            // GroupBox3
-            // 
-            this.GroupBox3.Controls.Add(this.RunemakerHelp);
-            this.GroupBox3.Controls.Add(this.RunemakerTrigger);
-            this.GroupBox3.Controls.Add(this.RunemakerMinimumSoulPoints);
-            this.GroupBox3.Controls.Add(this.Label5);
-            this.GroupBox3.Controls.Add(this.RunemakerMinimumManaPoints);
-            this.GroupBox3.Controls.Add(this.Label4);
-            this.GroupBox3.Controls.Add(this.RunemakerSpell);
-            this.GroupBox3.Controls.Add(this.Label2);
-            this.GroupBox3.Location = new System.Drawing.Point(224, 204);
-            this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(191, 144);
-            this.GroupBox3.TabIndex = 10;
-            this.GroupBox3.TabStop = false;
-            this.GroupBox3.Text = "Runemaker";
-            this.GroupBox3.Enter += new System.EventHandler(this.GroupBox3_Enter);
-            // 
-            // RunemakerHelp
-            // 
-            this.RunemakerHelp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.RunemakerHelp.Location = new System.Drawing.Point(152, 112);
-            this.RunemakerHelp.Name = "RunemakerHelp";
-            this.RunemakerHelp.Size = new System.Drawing.Size(26, 24);
-            this.RunemakerHelp.TabIndex = 11;
-            this.RunemakerHelp.Text = "?";
-            this.RunemakerHelp.UseVisualStyleBackColor = true;
-            // 
-            // RunemakerTrigger
-            // 
-            this.RunemakerTrigger.Appearance = System.Windows.Forms.Appearance.Button;
-            this.RunemakerTrigger.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.RunemakerTrigger.Location = new System.Drawing.Point(9, 112);
-            this.RunemakerTrigger.Name = "RunemakerTrigger";
-            this.RunemakerTrigger.Size = new System.Drawing.Size(74, 24);
-            this.RunemakerTrigger.TabIndex = 10;
-            this.RunemakerTrigger.Text = "Activate";
-            this.RunemakerTrigger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.RunemakerTrigger.UseVisualStyleBackColor = true;
-            // 
-            // RunemakerMinimumSoulPoints
-            // 
-            this.RunemakerMinimumSoulPoints.Location = new System.Drawing.Point(123, 81);
-            this.RunemakerMinimumSoulPoints.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.RunemakerMinimumSoulPoints.Name = "RunemakerMinimumSoulPoints";
-            this.RunemakerMinimumSoulPoints.Size = new System.Drawing.Size(55, 20);
-            this.RunemakerMinimumSoulPoints.TabIndex = 9;
-            this.RunemakerMinimumSoulPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.RunemakerMinimumSoulPoints.ThousandsSeparator = true;
-            // 
-            // Label5
-            // 
-            this.Label5.AutoSize = true;
-            this.Label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Label5.Location = new System.Drawing.Point(6, 83);
-            this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(105, 13);
-            this.Label5.TabIndex = 8;
-            this.Label5.Text = "Mininum Soul Points:";
-            // 
-            // RunemakerMinimumManaPoints
-            // 
-            this.RunemakerMinimumManaPoints.Location = new System.Drawing.Point(123, 51);
-            this.RunemakerMinimumManaPoints.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.RunemakerMinimumManaPoints.Name = "RunemakerMinimumManaPoints";
-            this.RunemakerMinimumManaPoints.Size = new System.Drawing.Size(55, 20);
-            this.RunemakerMinimumManaPoints.TabIndex = 7;
-            this.RunemakerMinimumManaPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.RunemakerMinimumManaPoints.ThousandsSeparator = true;
-            // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Label4.Location = new System.Drawing.Point(6, 53);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(111, 13);
-            this.Label4.TabIndex = 6;
-            this.Label4.Text = "Mininum Mana Points:";
-            // 
-            // RunemakerSpell
-            // 
-            this.RunemakerSpell.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.RunemakerSpell.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.RunemakerSpell.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.RunemakerSpell.FormattingEnabled = true;
-            this.RunemakerSpell.Location = new System.Drawing.Point(58, 19);
-            this.RunemakerSpell.Name = "RunemakerSpell";
-            this.RunemakerSpell.Size = new System.Drawing.Size(120, 21);
-            this.RunemakerSpell.TabIndex = 2;
-            // 
-            // Label2
-            // 
-            this.Label2.AutoSize = true;
-            this.Label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Label2.Location = new System.Drawing.Point(6, 22);
-            this.Label2.Name = "Label2";
-            this.Label2.Size = new System.Drawing.Size(46, 13);
-            this.Label2.TabIndex = 0;
-            this.Label2.Text = "Conjure:";
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(184, 354);
@@ -581,7 +461,8 @@
             // 
             this.windowsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alarmsToolStripMenuItem,
-            this.lagBarToolStripMenuItem});
+            this.lagBarToolStripMenuItem,
+            this.runeMakerToolStripMenuItem});
             this.windowsMenuItem.Name = "windowsMenuItem";
             this.windowsMenuItem.Size = new System.Drawing.Size(68, 20);
             this.windowsMenuItem.Text = "&Windows";
@@ -601,6 +482,13 @@
             this.lagBarToolStripMenuItem.Text = "&Lag Bar";
             this.lagBarToolStripMenuItem.Click += new System.EventHandler(this.lagBarToolStripMenuItem_Click);
             // 
+            // runeMakerToolStripMenuItem
+            // 
+            this.runeMakerToolStripMenuItem.Name = "runeMakerToolStripMenuItem";
+            this.runeMakerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.runeMakerToolStripMenuItem.Text = "&RuneMaker";
+            this.runeMakerToolStripMenuItem.Click += new System.EventHandler(this.runeMakerToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -610,7 +498,6 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ExpCheckerBox);
             this.Controls.Add(this.GroupBox4);
-            this.Controls.Add(this.GroupBox3);
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.AutoLooterBox);
             this.Controls.Add(this.mainMenu);
@@ -629,10 +516,6 @@
             this.GroupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterInterval)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterMinimumHitPoints)).EndInit();
-            this.GroupBox3.ResumeLayout(false);
-            this.GroupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumSoulPoints)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumManaPoints)).EndInit();
             this.ExpCheckerBox.ResumeLayout(false);
             this.ExpCheckerBox.PerformLayout();
             this.mainMenu.ResumeLayout(false);
@@ -669,15 +552,6 @@
         internal System.Windows.Forms.Label Label6;
         internal System.Windows.Forms.CheckBox AutoEaterTrigger;
         internal System.Windows.Forms.CheckBox AutoEaterSmart;
-        internal System.Windows.Forms.GroupBox GroupBox3;
-        internal System.Windows.Forms.Button RunemakerHelp;
-        internal System.Windows.Forms.CheckBox RunemakerTrigger;
-        internal System.Windows.Forms.NumericUpDown RunemakerMinimumSoulPoints;
-        internal System.Windows.Forms.Label Label5;
-        internal System.Windows.Forms.NumericUpDown RunemakerMinimumManaPoints;
-        internal System.Windows.Forms.Label Label4;
-        internal System.Windows.Forms.ComboBox RunemakerSpell;
-        internal System.Windows.Forms.Label Label2;
         private System.Windows.Forms.Button button1;
         internal System.Windows.Forms.GroupBox ExpCheckerBox;
         internal System.Windows.Forms.Button ExpCheckerHelp;
@@ -688,6 +562,7 @@
         private System.Windows.Forms.ToolStripMenuItem windowsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alarmsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lagBarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem runeMakerToolStripMenuItem;
     }
 }
 

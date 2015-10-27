@@ -6,7 +6,6 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-        System.Windows.Forms.Timer lagBarTimer;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -30,21 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LagBarForm));
+            this.lagBarTimer = new System.Windows.Forms.Timer(this.components);
             this.PictureBox2 = new System.Windows.Forms.PictureBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.Label2 = new System.Windows.Forms.Label();
-            lagBarTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lagBarTimer
             // 
-            lagBarTimer.Enabled = true;
-            lagBarTimer.Interval = 1000;
-            lagBarTimer.Tick += new System.EventHandler(this.lagBarTimer_Tick);
+            this.lagBarTimer.Enabled = true;
+            this.lagBarTimer.Interval = 1000;
+            this.lagBarTimer.Tick += new System.EventHandler(this.lagBarTimer_Tick);
             // 
             // PictureBox2
             // 
@@ -102,6 +100,7 @@
             this.Text = "LagBar";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
+            this.Load += new System.EventHandler(this.LagBarForm_Load);
             this.VisibleChanged += new System.EventHandler(this.LagBarForm_VisibleChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LagBarForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LagBarForm_MouseMove);
@@ -118,5 +117,6 @@
         internal System.Windows.Forms.PictureBox PictureBox2;
         internal System.Windows.Forms.PictureBox PictureBox1;
         internal System.Windows.Forms.Label Label2;
+        private System.Windows.Forms.Timer lagBarTimer;
     }
 }

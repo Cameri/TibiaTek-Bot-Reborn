@@ -224,10 +224,10 @@ namespace TibiaTekBot
                 {
                     break;
                 }
-                System.Threading.Thread.Sleep(1000);
+               // System.Threading.Thread.Sleep(1000);
                 state = WindowState;
             }
-            System.Threading.Thread.Sleep(1000);
+            //System.Threading.Thread.Sleep(1000);
             System.Windows.Forms.SendKeys.SendWait(keys);
             return true;
         }
