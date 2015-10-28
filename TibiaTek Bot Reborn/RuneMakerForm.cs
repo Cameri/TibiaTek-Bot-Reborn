@@ -14,6 +14,7 @@ namespace TibiaTekBot
     public partial class RuneMakerForm : Form
     {
         public Tibia client;
+        Log logs = new Log();
         private bool active = false;
         public RuneMakerForm(Tibia client)
         {
@@ -44,6 +45,7 @@ namespace TibiaTekBot
                 ManaLabel.Text = "Disconnected";
                 RunemakerTrigger.Checked = false;
                 MessageBox.Show("Character disconnected, Rune Maker deactivated.");
+                logs.SaveLog(DateTime.Now, "Disconnected", "Character disconnected, Rune Maker deactivated.");
                 return;
                 
             }
@@ -55,6 +57,7 @@ namespace TibiaTekBot
             {
                 RunemakerTrigger.Checked = false; // ran out of runes, supposedly
                 MessageBox.Show("Out of blank runes. Rune Maker is now deactivated.");
+                logs.SaveLog(DateTime.Now, "Rune Maker", "Out of blank runes. Rune Maker is now deactivated.");
                 return;
             }
 
@@ -87,7 +90,8 @@ namespace TibiaTekBot
 
 
             // 'tis all gewd
-            client.SendKeys(" {ENTER}");
+            client.SendKeys("{ESC}");
+            client.SendKeys("{ENTER}");
             client.SendKeys(RunemakerSpell.Text);
             client.SendKeys("{ENTER}");
             new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Completion.wav").Play();
@@ -127,7 +131,7 @@ namespace TibiaTekBot
 
         private void RunemakerHelp_Click(object sender, EventArgs e)
         {
-           
+            
         }
     }
 }

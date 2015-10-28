@@ -13,6 +13,7 @@ namespace TibiaTekBot
         bool Active = false;
         string LogTextDetails;
         Timer BattlelistTimer;
+        Log logs = new Log();
         public Tibia client;
         int AlarmTimeIntervals = 2500;
         public AlarmsForm(Tibia client)
@@ -101,9 +102,10 @@ namespace TibiaTekBot
                 if (BattlelistPlaySound.Checked)
                 {
                     new SoundPlayer(BLSound).Play(); 
-                    LogTextDetails = String.Format("{0}     Alarm was activated:     Affected Alarm: Battle List     ID: {1:X}     Name: {2}     Location: {3}     ", DateTime.Now, bl.ID, bl.Name, bl.Location);
-                    ListViewLogs.Invoke((Action)(() => ListViewLogs.Items.Add(LogTextDetails)));
-                    SaveLogToTXT(LogTextDetails);
+                    LogTextDetails = String.Format("ID: {0:X}     Name: {1}     Location: {2}     ", bl.ID, bl.Name, bl.Location);
+                    //ListViewLogs.Invoke((Action)(() => ListViewLogs.Items.Add(LogTextDetails)));
+                   // SaveLogToTXT(LogTextDetails);
+                    logs.SaveLog(DateTime.Now, "Alarm", LogTextDetails);
                 }
                 break;
                 
@@ -249,29 +251,6 @@ namespace TibiaTekBot
         private void BlSoundBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             BLSound = Application.StartupPath + "\\Alarms\\" + BlSoundBox.SelectedItem;
-        }
-
-        void SaveLogToTXT(string LogText)
-        {
-            string path = Environment.CurrentDirectory + "\\Logs";
-            string playername = client.LocalPlayer.Name;
-
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-
-            if (!File.Exists(path + "\\" + playername + ".Logs.txt"))
-            {
-                // Create a file to write to.
-                File.Create(path + "\\" + playername+".Logs.txt").Close();
-                
-            }
-          
-            using (StreamWriter sw = new StreamWriter(path + "\\" + playername + ".Logs.txt", true))
-            {
-                sw.WriteLine(LogText);
-            }
         }
 
         private void OpenLogFolder_Click(object sender, EventArgs e)
