@@ -45,7 +45,6 @@ namespace TibiaTekBot
             HealthPointsOffset = 0x6D1030U, // XORed
             MaxHealthPointsOffset = 0x6D1024U, // XORed
             CapacityOffset = 0x6D101C, // XORed
-            AttackedEntity
         }
 
         public enum VipList : uint
