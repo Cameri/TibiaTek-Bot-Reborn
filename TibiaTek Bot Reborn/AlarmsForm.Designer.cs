@@ -149,6 +149,8 @@
             this.ViewLogButtom = new System.Windows.Forms.Button();
             this.ListViewLogs = new System.Windows.Forms.ListView();
             this.LogText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.AlarmIntervals = new System.Windows.Forms.NumericUpDown();
+            this.label17 = new System.Windows.Forms.Label();
             tablalala = new System.Windows.Forms.TabPage();
             tablalala.SuspendLayout();
             this.GroupBox13.SuspendLayout();
@@ -186,6 +188,7 @@
             this.PubMsgGrpBox.SuspendLayout();
             this.BlGrpBox.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmIntervals)).BeginInit();
             this.SuspendLayout();
             // 
             // tablalala
@@ -568,6 +571,8 @@
             // 
             // GroupBox6
             // 
+            this.GroupBox6.Controls.Add(this.label17);
+            this.GroupBox6.Controls.Add(this.AlarmIntervals);
             this.GroupBox6.Controls.Add(this.BattlelistActivateIfMonsterNPC);
             this.GroupBox6.Controls.Add(this.BattlelistActivateIfPlayer);
             this.GroupBox6.Location = new System.Drawing.Point(6, 19);
@@ -1522,6 +1527,45 @@
             this.LogText.Text = "Log Text";
             this.LogText.Width = 500;
             // 
+            // AlarmIntervals
+            // 
+            this.AlarmIntervals.DecimalPlaces = 1;
+            this.AlarmIntervals.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.AlarmIntervals.Location = new System.Drawing.Point(289, 14);
+            this.AlarmIntervals.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.AlarmIntervals.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AlarmIntervals.Name = "AlarmIntervals";
+            this.AlarmIntervals.ReadOnly = true;
+            this.AlarmIntervals.Size = new System.Drawing.Size(37, 20);
+            this.AlarmIntervals.TabIndex = 7;
+            this.AlarmIntervals.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AlarmIntervals.ValueChanged += new System.EventHandler(this.AlarmIntervals_ValueChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(204, 18);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(79, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Alarm Intervals:";
+            // 
             // AlarmsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1596,6 +1640,7 @@
             this.BlGrpBox.ResumeLayout(false);
             this.BlGrpBox.PerformLayout();
             this.tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmIntervals)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1722,5 +1767,7 @@
         private System.Windows.Forms.ColumnHeader LogText;
         private System.Windows.Forms.Button OpenLogFolder;
         private System.Windows.Forms.Button ViewLogButtom;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.NumericUpDown AlarmIntervals;
     }
 }
