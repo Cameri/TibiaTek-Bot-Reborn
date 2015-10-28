@@ -59,6 +59,7 @@
     <Compile Include="AlarmsForm.Designer.cs">
       <DependentUpon>AlarmsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Container.cs" />
     <Compile Include="fmrCharacterStatistics.cs">
       <SubType>Form</SubType>
     </Compile>

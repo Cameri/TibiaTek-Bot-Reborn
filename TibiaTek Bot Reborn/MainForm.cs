@@ -25,7 +25,7 @@ namespace TibiaTekBot
         public Tibia client;
         public MainForm()
         {
-            
+
             kernel = new Kernel();
             kernel.Start();
             alarmsForm = new AlarmsForm(kernel.Client);
@@ -42,7 +42,7 @@ namespace TibiaTekBot
             return;
             //MessageBox.Show(String.Format("{0}", kernel.Client.LocalPlayer.Location));
             BattleList bl = kernel.Client.GetBattlelist();
-           // MessageBox.Show(bl.BattlelistBegin.ToString());
+            // MessageBox.Show(bl.BattlelistBegin.ToString());
             bl.Reset();
             Tibia.Location playerLoc = kernel.Client.LocalPlayer.Location;
             uint playerID = kernel.Client.LocalPlayer.ID;
@@ -111,16 +111,16 @@ namespace TibiaTekBot
 
         private void ShowLagBar_CheckedChanged(object sender, EventArgs e)
         {
-             if (ShowLagBar.CheckState==CheckState.Checked)
+            if (ShowLagBar.CheckState == CheckState.Checked)
             {
                 lagBarForm.Show();
                 lagBarForm.BringToFront();
             }
-             else
-             {
-                 lagBarForm.Close();
-             }
-           
+            else
+            {
+                lagBarForm.Close();
+            }
+
         }
 
         private void ExpChecker_CheckedChanged(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace TibiaTekBot
 
         private void LevelScreenshot_CheckedChanged(object sender, EventArgs e)
         {
-            if (LevelScreenshot.Checked==true)
+            if (LevelScreenshot.Checked)
             {
                 if (!Directory.Exists(Environment.CurrentDirectory + "\\ScreenCaptures"))
                 {
@@ -138,23 +138,22 @@ namespace TibiaTekBot
                 }
                 NextLevel = Convert.ToInt32(kernel.Client.LocalPlayer.Level + 1);
             }
-           
+
         }
 
         private void MainFormTimer_Tick(object sender, EventArgs e)
         {
-            if (LevelScreenshot.Checked==true)
+            if (LevelScreenshot.Checked)
             {
-                if (kernel.Client.LocalPlayer.Level==NextLevel)
+                if (kernel.Client.LocalPlayer.Level == NextLevel)
                 {
-                int fileCount = Directory.GetFiles(Environment.CurrentDirectory + "\\ScreenCaptures").Length;
-                kernel.Client.SendKeys("^{DOWN}");
-                Thread.Sleep(700);
-                var image = ScreenCapture.CaptureActiveWindow();
-                image.Save(Environment.CurrentDirectory + "\\ScreenCaptures\\" + kernel.Client.LocalPlayer.Name + " - Level " + NextLevel +".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Camera Shutter.wav").Play();
-                NextLevel++;
-
+                    int fileCount = Directory.GetFiles(Environment.CurrentDirectory + "\\ScreenCaptures").Length;
+                    kernel.Client.SendKeys("^{DOWN}");
+                    Thread.Sleep(700);
+                    var image = ScreenCapture.CaptureActiveWindow();
+                    image.Save(Environment.CurrentDirectory + "\\ScreenCaptures\\" + kernel.Client.LocalPlayer.Name + " - Level " + NextLevel + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                    new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Camera Shutter.wav").Play();
+                    NextLevel++;
                 }
             }
         }
