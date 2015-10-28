@@ -31,21 +31,21 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RuneMakerForm));
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.BlankRunesAvailable = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.ManaLabel = new System.Windows.Forms.Label();
             this.RunOnMaxMana = new System.Windows.Forms.CheckBox();
             this.RunemakerHelp = new System.Windows.Forms.Button();
-            this.RunemakerTrigger = new System.Windows.Forms.CheckBox();
             this.RunemakerMinimumSoulPoints = new System.Windows.Forms.NumericUpDown();
             this.Label5 = new System.Windows.Forms.Label();
             this.RunemakerMinimumManaPoints = new System.Windows.Forms.NumericUpDown();
             this.Label4 = new System.Windows.Forms.Label();
             this.RunemakerSpell = new System.Windows.Forms.ComboBox();
             this.Label2 = new System.Windows.Forms.Label();
+            this.RunemakerTrigger = new System.Windows.Forms.CheckBox();
             this.RuneMakerTimer = new System.Windows.Forms.Timer(this.components);
             this.HideWindows = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BlankRunesAvailable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.RunemakerMinimumSoulPoints)).BeginInit();
@@ -72,6 +72,19 @@
             this.GroupBox3.TabIndex = 11;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "Runemaker";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(6, 175);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBox1.Size = new System.Drawing.Size(201, 17);
+            this.checkBox1.TabIndex = 16;
+            this.checkBox1.Text = "Randomize 1%";
+            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // BlankRunesAvailable
             // 
@@ -129,20 +142,7 @@
             this.RunemakerHelp.TabIndex = 11;
             this.RunemakerHelp.Text = "?";
             this.RunemakerHelp.UseVisualStyleBackColor = true;
-            // 
-            // RunemakerTrigger
-            // 
-            this.RunemakerTrigger.Appearance = System.Windows.Forms.Appearance.Button;
-            this.RunemakerTrigger.Enabled = false;
-            this.RunemakerTrigger.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.RunemakerTrigger.Location = new System.Drawing.Point(12, 246);
-            this.RunemakerTrigger.Name = "RunemakerTrigger";
-            this.RunemakerTrigger.Size = new System.Drawing.Size(74, 24);
-            this.RunemakerTrigger.TabIndex = 10;
-            this.RunemakerTrigger.Text = "Activate";
-            this.RunemakerTrigger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.RunemakerTrigger.UseVisualStyleBackColor = true;
-            this.RunemakerTrigger.CheckedChanged += new System.EventHandler(this.RunemakerTrigger_CheckedChanged);
+            this.RunemakerHelp.Click += new System.EventHandler(this.RunemakerHelp_Click);
             // 
             // RunemakerMinimumSoulPoints
             // 
@@ -221,6 +221,20 @@
             this.Label2.TabIndex = 0;
             this.Label2.Text = "Spell:";
             // 
+            // RunemakerTrigger
+            // 
+            this.RunemakerTrigger.Appearance = System.Windows.Forms.Appearance.Button;
+            this.RunemakerTrigger.Enabled = false;
+            this.RunemakerTrigger.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.RunemakerTrigger.Location = new System.Drawing.Point(12, 246);
+            this.RunemakerTrigger.Name = "RunemakerTrigger";
+            this.RunemakerTrigger.Size = new System.Drawing.Size(74, 24);
+            this.RunemakerTrigger.TabIndex = 10;
+            this.RunemakerTrigger.Text = "Activate";
+            this.RunemakerTrigger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.RunemakerTrigger.UseVisualStyleBackColor = true;
+            this.RunemakerTrigger.CheckedChanged += new System.EventHandler(this.RunemakerTrigger_CheckedChanged);
+            // 
             // RuneMakerTimer
             // 
             this.RuneMakerTimer.Interval = 2000;
@@ -235,19 +249,6 @@
             this.HideWindows.Text = "Hide";
             this.HideWindows.UseVisualStyleBackColor = true;
             this.HideWindows.Click += new System.EventHandler(this.HideWindows_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(6, 175);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBox1.Size = new System.Drawing.Size(201, 17);
-            this.checkBox1.TabIndex = 16;
-            this.checkBox1.Text = "Randomize 1%";
-            this.checkBox1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // RuneMakerForm
             // 

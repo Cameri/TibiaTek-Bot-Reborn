@@ -46,6 +46,7 @@
             // 
             // PictureBox2
             // 
+            this.PictureBox2.Enabled = false;
             this.PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("PictureBox2.Image")));
             this.PictureBox2.Location = new System.Drawing.Point(83, 22);
             this.PictureBox2.Name = "PictureBox2";
@@ -100,6 +101,7 @@
             this.Text = "LagBar";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LagBarForm_FormClosing);
             this.Load += new System.EventHandler(this.LagBarForm_Load);
             this.VisibleChanged += new System.EventHandler(this.LagBarForm_VisibleChanged);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.LagBarForm_MouseDown);

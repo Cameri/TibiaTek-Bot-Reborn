@@ -14,11 +14,12 @@ namespace TibiaTekBot
         string LogTextDetails;
         Timer BattlelistTimer;
         public Tibia client;
+        int AlarmTimeIntervals = 2500;
         public AlarmsForm(Tibia client)
         {
             this.client = client;
-            BattlelistTimer = new Timer(5000);
-            BattlelistTimer.Execute += BattlelistTimer_Execute;
+
+           
             InitializeComponent();
         }
 
@@ -112,10 +113,13 @@ namespace TibiaTekBot
 
         private void AlarmsActivate_Click(object sender, EventArgs e)
         {
+            
             AlarmsLoad.Enabled = false;
             Active = !Active;
             if (Active)
             {
+                BattlelistTimer = new Timer(AlarmTimeIntervals);
+                BattlelistTimer.Execute += BattlelistTimer_Execute;
                 AlarmsActivate.Text = "Deactivate";
                 BattlelistTimer.Start();
             }
@@ -124,6 +128,7 @@ namespace TibiaTekBot
                 AlarmsActivate.Text = "Activate";
                 BattlelistTimer.Stop();
             }
+            
             Tabs.Enabled = !Active;
             AlarmsLoad.Enabled = !Active;
         }
@@ -332,6 +337,15 @@ namespace TibiaTekBot
         private void AlarmsSave_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void AlarmIntervals_ValueChanged(object sender, EventArgs e)
+        
+        {
+            AlarmTimeIntervals = 1000;
+            AlarmTimeIntervals =Convert.ToInt32( AlarmIntervals.Value * 1000);
+          
+            
         }
         
     }

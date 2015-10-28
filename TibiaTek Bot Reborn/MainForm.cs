@@ -7,12 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Imaging;
+using System.Threading;
+using System.IO;
+using System.Media;
 
 namespace TibiaTekBot
 {
     public partial class MainForm : Form
     {
-
+        int NextLevel = 0;
         AlarmsForm alarmsForm;
         LagBarForm lagBarForm;
         RuneMakerForm runemakerform;
@@ -50,19 +54,6 @@ namespace TibiaTekBot
 
                 }
             } while (bl.Next());
-        }
-
-        private void ExpCheckerTrigger_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ExpCheckerTrigger.Text=="Activate")
-            {
-                ExpCheckerTrigger.Text = "Deactivate";
-            }
-            else
-            {
-                ExpCheckerTrigger.Text = "Activate";
-            }
-            kernel.ExperienceChecker.Active = ((CheckBox)sender).Checked;
         }
 
         private void GroupBox4_Enter(object sender, EventArgs e)
@@ -116,6 +107,61 @@ namespace TibiaTekBot
         {
             runemakerform.Show();
             runemakerform.BringToFront();
+        }
+
+        private void ShowLagBar_CheckedChanged(object sender, EventArgs e)
+        {
+             if (ShowLagBar.CheckState==CheckState.Checked)
+            {
+                lagBarForm.Show();
+                lagBarForm.BringToFront();
+            }
+             else
+             {
+                 lagBarForm.Close();
+             }
+           
+        }
+
+        private void ExpChecker_CheckedChanged(object sender, EventArgs e)
+        {
+            kernel.ExperienceChecker.Active = ((CheckBox)sender).Checked;
+        }
+
+        private void LevelScreenshot_CheckedChanged(object sender, EventArgs e)
+        {
+            if (LevelScreenshot.Checked==true)
+            {
+                if (!Directory.Exists(Environment.CurrentDirectory + "\\ScreenCaptures"))
+                {
+                    Directory.CreateDirectory(Environment.CurrentDirectory + "\\ScreenCaptures");
+                }
+                NextLevel = Convert.ToInt32(kernel.Client.LocalPlayer.Level + 1);
+            }
+           
+        }
+
+        private void MainFormTimer_Tick(object sender, EventArgs e)
+        {
+            if (LevelScreenshot.Checked==true)
+            {
+                if (kernel.Client.LocalPlayer.Level==NextLevel)
+                {
+                int fileCount = Directory.GetFiles(Environment.CurrentDirectory + "\\ScreenCaptures").Length;
+                kernel.Client.SendKeys("^{DOWN}");
+                Thread.Sleep(700);
+                var image = ScreenCapture.CaptureActiveWindow();
+                image.Save(Environment.CurrentDirectory + "\\ScreenCaptures\\" + kernel.Client.LocalPlayer.Name + " - Level " + NextLevel +".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+                new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Camera Shutter.wav").Play();
+                NextLevel++;
+
+                }
+            }
+        }
+
+        private void ExpCheckerHelp_Click(object sender, EventArgs e)
+        {
+            NextLevel--;// solo es para simular un level up
         }
     }
 }

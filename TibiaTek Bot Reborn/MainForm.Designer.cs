@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.AutoLooterBox = new System.Windows.Forms.GroupBox();
             this.AutoLooterHelp = new System.Windows.Forms.Button();
@@ -57,14 +58,14 @@
             this.button1 = new System.Windows.Forms.Button();
             this.ExpCheckerBox = new System.Windows.Forms.GroupBox();
             this.ExpCheckerHelp = new System.Windows.Forms.Button();
-            this.ExpCheckerTrigger = new System.Windows.Forms.CheckBox();
-            this.ExpShowCreatures = new System.Windows.Forms.CheckBox();
-            this.ExpShowNext = new System.Windows.Forms.CheckBox();
+            this.ShowLagBar = new System.Windows.Forms.CheckBox();
+            this.ExpChecker = new System.Windows.Forms.CheckBox();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.windowsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alarmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lagBarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.runeMakerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LevelScreenshot = new System.Windows.Forms.CheckBox();
+            this.MainFormTimer = new System.Windows.Forms.Timer(this.components);
             this.AutoLooterBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).BeginInit();
             this.GroupBox2.SuspendLayout();
@@ -84,7 +85,7 @@
             this.AutoLooterBox.Controls.Add(this.AutoLooterMinCap);
             this.AutoLooterBox.Controls.Add(this.AutoLooterConfigure);
             this.AutoLooterBox.Controls.Add(this.AutoLooterTrigger);
-            this.AutoLooterBox.Location = new System.Drawing.Point(12, 31);
+            this.AutoLooterBox.Location = new System.Drawing.Point(12, 138);
             this.AutoLooterBox.Name = "AutoLooterBox";
             this.AutoLooterBox.Size = new System.Drawing.Size(206, 95);
             this.AutoLooterBox.TabIndex = 8;
@@ -169,7 +170,7 @@
             this.GroupBox2.Controls.Add(this.Label3);
             this.GroupBox2.Controls.Add(this.SpellCasterSpell);
             this.GroupBox2.Controls.Add(this.Label1);
-            this.GroupBox2.Location = new System.Drawing.Point(12, 132);
+            this.GroupBox2.Location = new System.Drawing.Point(12, 239);
             this.GroupBox2.Name = "GroupBox2";
             this.GroupBox2.Size = new System.Drawing.Size(206, 105);
             this.GroupBox2.TabIndex = 9;
@@ -255,7 +256,7 @@
             this.GroupBox4.Controls.Add(this.Label6);
             this.GroupBox4.Controls.Add(this.AutoEaterTrigger);
             this.GroupBox4.Controls.Add(this.AutoEaterSmart);
-            this.GroupBox4.Location = new System.Drawing.Point(224, 31);
+            this.GroupBox4.Location = new System.Drawing.Point(224, 138);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(191, 167);
             this.GroupBox4.TabIndex = 11;
@@ -390,62 +391,52 @@
             // 
             // ExpCheckerBox
             // 
+            this.ExpCheckerBox.Controls.Add(this.LevelScreenshot);
             this.ExpCheckerBox.Controls.Add(this.ExpCheckerHelp);
-            this.ExpCheckerBox.Controls.Add(this.ExpCheckerTrigger);
-            this.ExpCheckerBox.Controls.Add(this.ExpShowCreatures);
-            this.ExpCheckerBox.Controls.Add(this.ExpShowNext);
-            this.ExpCheckerBox.Location = new System.Drawing.Point(12, 243);
+            this.ExpCheckerBox.Controls.Add(this.ShowLagBar);
+            this.ExpCheckerBox.Controls.Add(this.ExpChecker);
+            this.ExpCheckerBox.Location = new System.Drawing.Point(5, 27);
             this.ExpCheckerBox.Name = "ExpCheckerBox";
-            this.ExpCheckerBox.Size = new System.Drawing.Size(206, 105);
+            this.ExpCheckerBox.Size = new System.Drawing.Size(403, 105);
             this.ExpCheckerBox.TabIndex = 12;
             this.ExpCheckerBox.TabStop = false;
-            this.ExpCheckerBox.Text = "Experience Checker";
+            this.ExpCheckerBox.Text = "Addons";
             this.ExpCheckerBox.Enter += new System.EventHandler(this.ExpCheckerBox_Enter);
             // 
             // ExpCheckerHelp
             // 
             this.ExpCheckerHelp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ExpCheckerHelp.Location = new System.Drawing.Point(174, 73);
+            this.ExpCheckerHelp.Location = new System.Drawing.Point(371, 75);
             this.ExpCheckerHelp.Name = "ExpCheckerHelp";
             this.ExpCheckerHelp.Size = new System.Drawing.Size(26, 24);
             this.ExpCheckerHelp.TabIndex = 10;
             this.ExpCheckerHelp.Text = "?";
             this.ExpCheckerHelp.UseVisualStyleBackColor = true;
+            this.ExpCheckerHelp.Click += new System.EventHandler(this.ExpCheckerHelp_Click);
             // 
-            // ExpCheckerTrigger
+            // ShowLagBar
             // 
-            this.ExpCheckerTrigger.Appearance = System.Windows.Forms.Appearance.Button;
-            this.ExpCheckerTrigger.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ExpCheckerTrigger.Location = new System.Drawing.Point(6, 73);
-            this.ExpCheckerTrigger.Name = "ExpCheckerTrigger";
-            this.ExpCheckerTrigger.Size = new System.Drawing.Size(74, 24);
-            this.ExpCheckerTrigger.TabIndex = 9;
-            this.ExpCheckerTrigger.Text = "Activate";
-            this.ExpCheckerTrigger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.ExpCheckerTrigger.UseVisualStyleBackColor = true;
-            this.ExpCheckerTrigger.CheckedChanged += new System.EventHandler(this.ExpCheckerTrigger_CheckedChanged);
+            this.ShowLagBar.AutoSize = true;
+            this.ShowLagBar.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ShowLagBar.Location = new System.Drawing.Point(134, 19);
+            this.ShowLagBar.Name = "ShowLagBar";
+            this.ShowLagBar.Size = new System.Drawing.Size(63, 17);
+            this.ShowLagBar.TabIndex = 1;
+            this.ShowLagBar.Text = "Lag Bar";
+            this.ShowLagBar.UseVisualStyleBackColor = true;
+            this.ShowLagBar.CheckedChanged += new System.EventHandler(this.ShowLagBar_CheckedChanged);
             // 
-            // ExpShowCreatures
+            // ExpChecker
             // 
-            this.ExpShowCreatures.AutoSize = true;
-            this.ExpShowCreatures.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ExpShowCreatures.Location = new System.Drawing.Point(6, 42);
-            this.ExpShowCreatures.Name = "ExpShowCreatures";
-            this.ExpShowCreatures.Size = new System.Drawing.Size(143, 17);
-            this.ExpShowCreatures.TabIndex = 1;
-            this.ExpShowCreatures.Text = "Creatures For Next Level";
-            this.ExpShowCreatures.UseVisualStyleBackColor = true;
-            // 
-            // ExpShowNext
-            // 
-            this.ExpShowNext.AutoSize = true;
-            this.ExpShowNext.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ExpShowNext.Location = new System.Drawing.Point(6, 19);
-            this.ExpShowNext.Name = "ExpShowNext";
-            this.ExpShowNext.Size = new System.Drawing.Size(149, 17);
-            this.ExpShowNext.TabIndex = 0;
-            this.ExpShowNext.Text = "Experience To Next Level";
-            this.ExpShowNext.UseVisualStyleBackColor = true;
+            this.ExpChecker.AutoSize = true;
+            this.ExpChecker.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.ExpChecker.Location = new System.Drawing.Point(6, 19);
+            this.ExpChecker.Name = "ExpChecker";
+            this.ExpChecker.Size = new System.Drawing.Size(122, 17);
+            this.ExpChecker.TabIndex = 0;
+            this.ExpChecker.Text = "Experience Checker";
+            this.ExpChecker.UseVisualStyleBackColor = true;
+            this.ExpChecker.CheckedChanged += new System.EventHandler(this.ExpChecker_CheckedChanged);
             // 
             // mainMenu
             // 
@@ -461,7 +452,6 @@
             // 
             this.windowsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.alarmsToolStripMenuItem,
-            this.lagBarToolStripMenuItem,
             this.runeMakerToolStripMenuItem});
             this.windowsMenuItem.Name = "windowsMenuItem";
             this.windowsMenuItem.Size = new System.Drawing.Size(68, 20);
@@ -475,19 +465,29 @@
             this.alarmsToolStripMenuItem.Text = "&Alarms";
             this.alarmsToolStripMenuItem.Click += new System.EventHandler(this.alarmsToolStripMenuItem_Click);
             // 
-            // lagBarToolStripMenuItem
-            // 
-            this.lagBarToolStripMenuItem.Name = "lagBarToolStripMenuItem";
-            this.lagBarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.lagBarToolStripMenuItem.Text = "&Lag Bar";
-            this.lagBarToolStripMenuItem.Click += new System.EventHandler(this.lagBarToolStripMenuItem_Click);
-            // 
             // runeMakerToolStripMenuItem
             // 
             this.runeMakerToolStripMenuItem.Name = "runeMakerToolStripMenuItem";
             this.runeMakerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.runeMakerToolStripMenuItem.Text = "&RuneMaker";
             this.runeMakerToolStripMenuItem.Click += new System.EventHandler(this.runeMakerToolStripMenuItem_Click);
+            // 
+            // LevelScreenshot
+            // 
+            this.LevelScreenshot.AutoSize = true;
+            this.LevelScreenshot.Location = new System.Drawing.Point(204, 19);
+            this.LevelScreenshot.Name = "LevelScreenshot";
+            this.LevelScreenshot.Size = new System.Drawing.Size(109, 17);
+            this.LevelScreenshot.TabIndex = 11;
+            this.LevelScreenshot.Text = "Level Screenshot";
+            this.LevelScreenshot.UseVisualStyleBackColor = true;
+            this.LevelScreenshot.CheckedChanged += new System.EventHandler(this.LevelScreenshot_CheckedChanged);
+            // 
+            // MainFormTimer
+            // 
+            this.MainFormTimer.Enabled = true;
+            this.MainFormTimer.Interval = 1000;
+            this.MainFormTimer.Tick += new System.EventHandler(this.MainFormTimer_Tick);
             // 
             // MainForm
             // 
@@ -555,14 +555,14 @@
         private System.Windows.Forms.Button button1;
         internal System.Windows.Forms.GroupBox ExpCheckerBox;
         internal System.Windows.Forms.Button ExpCheckerHelp;
-        internal System.Windows.Forms.CheckBox ExpCheckerTrigger;
-        internal System.Windows.Forms.CheckBox ExpShowCreatures;
-        internal System.Windows.Forms.CheckBox ExpShowNext;
+        internal System.Windows.Forms.CheckBox ShowLagBar;
+        internal System.Windows.Forms.CheckBox ExpChecker;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem windowsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alarmsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem lagBarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem runeMakerToolStripMenuItem;
+        private System.Windows.Forms.CheckBox LevelScreenshot;
+        private System.Windows.Forms.Timer MainFormTimer;
     }
 }
 

@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -42,7 +43,9 @@ namespace TibiaTekBot
             {
                 ManaLabel.Text = "Disconnected";
                 RunemakerTrigger.Checked = false;
+                MessageBox.Show("Character disconnected, Rune Maker deactivated.");
                 return;
+                
             }
 
             // Update Mana/MaxMana display
@@ -82,12 +85,12 @@ namespace TibiaTekBot
                 return; // not enough SP
             }
 
-            
 
             // 'tis all gewd
             client.SendKeys(" {ENTER}");
             client.SendKeys(RunemakerSpell.Text);
             client.SendKeys("{ENTER}");
+            new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Completion.wav").Play();
             BlankRunesAvailable.Value--;
    
         }
@@ -120,6 +123,11 @@ namespace TibiaTekBot
         private void RunemakerMinimumManaPoints_ValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void RunemakerHelp_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

@@ -132,6 +132,16 @@ namespace TibiaTekBot
 
         private void LagBarForm_Load(object sender, EventArgs e)
         {
+          
+        }
+
+        private void LagBarForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            e.Cancel = true;
+            this.Hide();
+            this.Parent = null;
+           
 
         }
     }
