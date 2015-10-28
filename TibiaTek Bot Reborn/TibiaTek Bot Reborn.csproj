@@ -99,6 +99,7 @@
     <Compile Include="LocalPlayer.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Kernel.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
