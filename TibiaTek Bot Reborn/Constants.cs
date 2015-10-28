@@ -51,6 +51,19 @@ namespace TibiaTekBot
         {
 
         }
+
+        public enum Container : uint
+        {
+            BeginPointer = 0x7790D4U,
+            OpenContainersOffset = 0x8U,
+        }
+
+        public enum Status : uint
+        {
+            TextOffset = 0x586DD0U,
+            TimeOffset = 0x586DC0U,
+
+        }
         
         public enum BattleList : uint
         {
