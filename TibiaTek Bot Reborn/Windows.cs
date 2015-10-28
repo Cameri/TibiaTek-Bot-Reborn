@@ -65,6 +65,15 @@ namespace TibiaTekBot
             public System.Drawing.Point ptMaxPosition;
             public System.Drawing.Rectangle rcNormalPosition;
         }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public struct Rect
+        {
+            public int Left;
+            public int Top;
+            public int Right;
+            public int Bottom;
+        }
         #endregion
         #region External functions
         [DllImport("kernel32.dll")]
@@ -90,6 +99,12 @@ namespace TibiaTekBot
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
+        public static extern IntPtr GetDesktopWindow();
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetWindowRect(IntPtr hWnd, ref Rect rect);
         #endregion
 
         public static T ReadAs<T>(IntPtr Handle, uint Address) where T : struct
