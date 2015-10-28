@@ -340,6 +340,11 @@ namespace TibiaTekBot
             WriteByte(Address + len, 0);
         }
 
+        public void SetStatusText(string text, uint time = 0x32)
+        {
+            WriteString(BaseAddress + (uint)Constants.Status.TextOffset, text);
+            WriteUInt(BaseAddress + (uint)Constants.Status.TimeOffset, time);
+        }
         #endregion
 
         #region Private Methods
