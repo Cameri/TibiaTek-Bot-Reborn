@@ -88,8 +88,7 @@ namespace TibiaTekBot
 
         private void alarmsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            alarmsForm.Show();
-            alarmsForm.BringToFront();
+            
         }
 
         private void lagBarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,8 +104,7 @@ namespace TibiaTekBot
 
         private void runeMakerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            runemakerform.Show();
-            runemakerform.BringToFront();
+           
         }
 
         private void ShowLagBar_CheckedChanged(object sender, EventArgs e)
@@ -161,6 +159,18 @@ namespace TibiaTekBot
         private void ExpCheckerHelp_Click(object sender, EventArgs e)
         {
             NextLevel--;// solo es para simular un level up
+        }
+
+        private void ShowAlarmsButtom_Click(object sender, EventArgs e)
+        {
+            alarmsForm.Show();
+            alarmsForm.BringToFront();
+        }
+
+        private void ShowRuneMakerButtom_Click(object sender, EventArgs e)
+        {
+            runemakerform.Show();
+            runemakerform.BringToFront();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Media;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -43,6 +44,24 @@ namespace TibiaTekBot
 
         private void RuneMakerTimer_Tick(object sender, EventArgs e)
         {
+            DateTime startTime = DateTime.Now;
+            DateTime timeout = startTime.AddSeconds(9);
+            long elapsed = 0;
+            Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            s.Connect(new System.Net.IPAddress(0x37C0E736), 80);
+            elapsed = (long)(DateTime.Now - startTime).TotalMilliseconds;
+
+            if (s.Connected)
+            {
+                s.Close();
+            }
+            if (elapsed >=400)
+            {
+                logs.SaveLog(DateTime.Now, "Lag", "Too much lag to cast spell.");
+                client.SetStatusText("Too much lag to cast spell.");
+                return;
+            }
+
             if (!client.IsConnected)
             {
                 ManaLabel.Text = "Disconnected";
@@ -100,6 +119,7 @@ namespace TibiaTekBot
             client.SendKeys("{ENTER}");
             client.SendKeys(RunemakerSpell.Text);
             client.SendKeys("{ENTER}");
+            Thread.Sleep(1000);
             if (client.LocalPlayer.ManaPoints >= currentmana)
             {
                 tryout++;
@@ -110,13 +130,17 @@ namespace TibiaTekBot
                 client.SetStatusText("Unable to cast spell, max attempts exceeded.");
                 MessageBox.Show("Unable to cast spell, max attempts exceeded.\n\nRune Maker deactivated.");
                 }
-                Thread.Sleep(1000);
+                
                 return;
             }
+            else
+            {
                 tryout = 0;
                 new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Completion.wav").Play();
                 BlankRunesAvailable.Value--;
-           
+            }
+                
+           //fix this
            
    
         }
