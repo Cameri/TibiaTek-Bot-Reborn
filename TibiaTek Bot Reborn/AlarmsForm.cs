@@ -106,6 +106,7 @@ namespace TibiaTekBot
                     //ListViewLogs.Invoke((Action)(() => ListViewLogs.Items.Add(LogTextDetails)));
                    // SaveLogToTXT(LogTextDetails);
                     logs.SaveLog(DateTime.Now, "Alarm", LogTextDetails);
+                    client.SetStatusText("Alarm was activated by: "+bl.Name.ToString());
                 }
                 break;
                 
