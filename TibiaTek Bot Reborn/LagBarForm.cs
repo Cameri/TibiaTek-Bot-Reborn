@@ -14,6 +14,7 @@ namespace TibiaTekBot
     {
 
         public Tibia client;
+        Log logs = new Log();
         private bool dragging = false;
         private Point dif = new Point(0, 0);
 
@@ -44,6 +45,17 @@ namespace TibiaTekBot
 
         private void lagBarTimer_Tick(object sender, EventArgs e)
         {
+            if (!client.IsConnected)
+            {
+                lagBarTimer.Stop();
+                MessageBox.Show("Character disconnected, Lag Bar disable.");
+                logs.SaveLog(DateTime.Now, "Disconnected", "Character disconnected, Lag Bar disable.");
+                this.Hide();
+               
+                return;
+
+            }
+
             lock (this)
             {
                 if (lagBarTimer.Interval != 10000)

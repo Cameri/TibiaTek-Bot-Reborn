@@ -57,15 +57,14 @@
             this.AutoEaterSmart = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.ExpCheckerBox = new System.Windows.Forms.GroupBox();
+            this.LevelScreenshot = new System.Windows.Forms.CheckBox();
             this.ExpCheckerHelp = new System.Windows.Forms.Button();
             this.ShowLagBar = new System.Windows.Forms.CheckBox();
             this.ExpChecker = new System.Windows.Forms.CheckBox();
-            this.mainMenu = new System.Windows.Forms.MenuStrip();
-            this.windowsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alarmsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runeMakerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.LevelScreenshot = new System.Windows.Forms.CheckBox();
             this.MainFormTimer = new System.Windows.Forms.Timer(this.components);
+            this.ShowAlarmsButtom = new System.Windows.Forms.Button();
+            this.ShowRuneMakerButtom = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.AutoLooterBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).BeginInit();
             this.GroupBox2.SuspendLayout();
@@ -74,7 +73,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterInterval)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterMinimumHitPoints)).BeginInit();
             this.ExpCheckerBox.SuspendLayout();
-            this.mainMenu.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AutoLooterBox
@@ -85,7 +84,7 @@
             this.AutoLooterBox.Controls.Add(this.AutoLooterMinCap);
             this.AutoLooterBox.Controls.Add(this.AutoLooterConfigure);
             this.AutoLooterBox.Controls.Add(this.AutoLooterTrigger);
-            this.AutoLooterBox.Location = new System.Drawing.Point(12, 138);
+            this.AutoLooterBox.Location = new System.Drawing.Point(12, 178);
             this.AutoLooterBox.Name = "AutoLooterBox";
             this.AutoLooterBox.Size = new System.Drawing.Size(206, 95);
             this.AutoLooterBox.TabIndex = 8;
@@ -170,7 +169,7 @@
             this.GroupBox2.Controls.Add(this.Label3);
             this.GroupBox2.Controls.Add(this.SpellCasterSpell);
             this.GroupBox2.Controls.Add(this.Label1);
-            this.GroupBox2.Location = new System.Drawing.Point(12, 239);
+            this.GroupBox2.Location = new System.Drawing.Point(12, 278);
             this.GroupBox2.Name = "GroupBox2";
             this.GroupBox2.Size = new System.Drawing.Size(206, 105);
             this.GroupBox2.TabIndex = 9;
@@ -256,7 +255,7 @@
             this.GroupBox4.Controls.Add(this.Label6);
             this.GroupBox4.Controls.Add(this.AutoEaterTrigger);
             this.GroupBox4.Controls.Add(this.AutoEaterSmart);
-            this.GroupBox4.Location = new System.Drawing.Point(224, 138);
+            this.GroupBox4.Location = new System.Drawing.Point(226, 181);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(191, 167);
             this.GroupBox4.TabIndex = 11;
@@ -381,7 +380,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(184, 354);
+            this.button1.Location = new System.Drawing.Point(342, 360);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 16;
@@ -395,18 +394,29 @@
             this.ExpCheckerBox.Controls.Add(this.ExpCheckerHelp);
             this.ExpCheckerBox.Controls.Add(this.ShowLagBar);
             this.ExpCheckerBox.Controls.Add(this.ExpChecker);
-            this.ExpCheckerBox.Location = new System.Drawing.Point(5, 27);
+            this.ExpCheckerBox.Location = new System.Drawing.Point(12, 12);
             this.ExpCheckerBox.Name = "ExpCheckerBox";
-            this.ExpCheckerBox.Size = new System.Drawing.Size(403, 105);
+            this.ExpCheckerBox.Size = new System.Drawing.Size(403, 74);
             this.ExpCheckerBox.TabIndex = 12;
             this.ExpCheckerBox.TabStop = false;
             this.ExpCheckerBox.Text = "Addons";
             this.ExpCheckerBox.Enter += new System.EventHandler(this.ExpCheckerBox_Enter);
             // 
+            // LevelScreenshot
+            // 
+            this.LevelScreenshot.AutoSize = true;
+            this.LevelScreenshot.Location = new System.Drawing.Point(204, 19);
+            this.LevelScreenshot.Name = "LevelScreenshot";
+            this.LevelScreenshot.Size = new System.Drawing.Size(109, 17);
+            this.LevelScreenshot.TabIndex = 11;
+            this.LevelScreenshot.Text = "Level Screenshot";
+            this.LevelScreenshot.UseVisualStyleBackColor = true;
+            this.LevelScreenshot.CheckedChanged += new System.EventHandler(this.LevelScreenshot_CheckedChanged);
+            // 
             // ExpCheckerHelp
             // 
             this.ExpCheckerHelp.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ExpCheckerHelp.Location = new System.Drawing.Point(371, 75);
+            this.ExpCheckerHelp.Location = new System.Drawing.Point(366, 41);
             this.ExpCheckerHelp.Name = "ExpCheckerHelp";
             this.ExpCheckerHelp.Size = new System.Drawing.Size(26, 24);
             this.ExpCheckerHelp.TabIndex = 10;
@@ -438,56 +448,42 @@
             this.ExpChecker.UseVisualStyleBackColor = true;
             this.ExpChecker.CheckedChanged += new System.EventHandler(this.ExpChecker_CheckedChanged);
             // 
-            // mainMenu
-            // 
-            this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.windowsMenuItem});
-            this.mainMenu.Location = new System.Drawing.Point(0, 0);
-            this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(429, 24);
-            this.mainMenu.TabIndex = 17;
-            this.mainMenu.Text = "mainMenu";
-            // 
-            // windowsMenuItem
-            // 
-            this.windowsMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alarmsToolStripMenuItem,
-            this.runeMakerToolStripMenuItem});
-            this.windowsMenuItem.Name = "windowsMenuItem";
-            this.windowsMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.windowsMenuItem.Text = "&Windows";
-            this.windowsMenuItem.Click += new System.EventHandler(this.windowsMenuItem_Click);
-            // 
-            // alarmsToolStripMenuItem
-            // 
-            this.alarmsToolStripMenuItem.Name = "alarmsToolStripMenuItem";
-            this.alarmsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.alarmsToolStripMenuItem.Text = "&Alarms";
-            this.alarmsToolStripMenuItem.Click += new System.EventHandler(this.alarmsToolStripMenuItem_Click);
-            // 
-            // runeMakerToolStripMenuItem
-            // 
-            this.runeMakerToolStripMenuItem.Name = "runeMakerToolStripMenuItem";
-            this.runeMakerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.runeMakerToolStripMenuItem.Text = "&RuneMaker";
-            this.runeMakerToolStripMenuItem.Click += new System.EventHandler(this.runeMakerToolStripMenuItem_Click);
-            // 
-            // LevelScreenshot
-            // 
-            this.LevelScreenshot.AutoSize = true;
-            this.LevelScreenshot.Location = new System.Drawing.Point(204, 19);
-            this.LevelScreenshot.Name = "LevelScreenshot";
-            this.LevelScreenshot.Size = new System.Drawing.Size(109, 17);
-            this.LevelScreenshot.TabIndex = 11;
-            this.LevelScreenshot.Text = "Level Screenshot";
-            this.LevelScreenshot.UseVisualStyleBackColor = true;
-            this.LevelScreenshot.CheckedChanged += new System.EventHandler(this.LevelScreenshot_CheckedChanged);
-            // 
             // MainFormTimer
             // 
             this.MainFormTimer.Enabled = true;
             this.MainFormTimer.Interval = 1000;
             this.MainFormTimer.Tick += new System.EventHandler(this.MainFormTimer_Tick);
+            // 
+            // ShowAlarmsButtom
+            // 
+            this.ShowAlarmsButtom.Location = new System.Drawing.Point(9, 19);
+            this.ShowAlarmsButtom.Name = "ShowAlarmsButtom";
+            this.ShowAlarmsButtom.Size = new System.Drawing.Size(75, 23);
+            this.ShowAlarmsButtom.TabIndex = 12;
+            this.ShowAlarmsButtom.Text = "Alarms";
+            this.ShowAlarmsButtom.UseVisualStyleBackColor = true;
+            this.ShowAlarmsButtom.Click += new System.EventHandler(this.ShowAlarmsButtom_Click);
+            // 
+            // ShowRuneMakerButtom
+            // 
+            this.ShowRuneMakerButtom.Location = new System.Drawing.Point(90, 19);
+            this.ShowRuneMakerButtom.Name = "ShowRuneMakerButtom";
+            this.ShowRuneMakerButtom.Size = new System.Drawing.Size(75, 23);
+            this.ShowRuneMakerButtom.TabIndex = 13;
+            this.ShowRuneMakerButtom.Text = "RuneMaker";
+            this.ShowRuneMakerButtom.UseVisualStyleBackColor = true;
+            this.ShowRuneMakerButtom.Click += new System.EventHandler(this.ShowRuneMakerButtom_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.ShowRuneMakerButtom);
+            this.groupBox1.Controls.Add(this.ShowAlarmsButtom);
+            this.groupBox1.Location = new System.Drawing.Point(12, 92);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(403, 79);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Helpers";
             // 
             // MainForm
             // 
@@ -495,14 +491,14 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(429, 395);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ExpCheckerBox);
             this.Controls.Add(this.GroupBox4);
             this.Controls.Add(this.GroupBox2);
             this.Controls.Add(this.AutoLooterBox);
-            this.Controls.Add(this.mainMenu);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.mainMenu;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "TibiaTek Bot Reborn";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -518,10 +514,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterMinimumHitPoints)).EndInit();
             this.ExpCheckerBox.ResumeLayout(false);
             this.ExpCheckerBox.PerformLayout();
-            this.mainMenu.ResumeLayout(false);
-            this.mainMenu.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -557,12 +551,11 @@
         internal System.Windows.Forms.Button ExpCheckerHelp;
         internal System.Windows.Forms.CheckBox ShowLagBar;
         internal System.Windows.Forms.CheckBox ExpChecker;
-        private System.Windows.Forms.MenuStrip mainMenu;
-        private System.Windows.Forms.ToolStripMenuItem windowsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alarmsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem runeMakerToolStripMenuItem;
         private System.Windows.Forms.CheckBox LevelScreenshot;
         private System.Windows.Forms.Timer MainFormTimer;
+        private System.Windows.Forms.Button ShowRuneMakerButtom;
+        private System.Windows.Forms.Button ShowAlarmsButtom;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

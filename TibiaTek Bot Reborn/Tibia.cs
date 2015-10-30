@@ -122,6 +122,7 @@ namespace TibiaTekBot
 
         public uint BaseAddress
         {
+
             get
             {
                 return (uint)clientProcess.MainModule.BaseAddress;
