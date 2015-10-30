@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Threading;
+using System.IO;
+using System.Media;
 
 
 namespace TibiaTekBot
@@ -231,6 +234,43 @@ namespace TibiaTekBot
             System.Windows.Forms.SendKeys.Flush();
 
             return true;
+        }
+
+        public bool IsOpened
+        {
+            get
+            {
+                return !clientProcess.HasExited;
+            }
+        }
+
+        public void TakeScreenshot(string filenameWithoutExt, bool playSound = true, bool waitUntilActive = false)
+        {
+            string path = Path.Combine(Environment.CurrentDirectory, "ScreenCaptures");
+            (new Thread(() =>
+            {
+                if (!IsOpened || !IsConnected)
+                {
+                    return;
+                }
+
+                do
+                {
+                    BringToFront();
+                    Thread.Sleep(100);
+                } while (waitUntilActive && WindowState != WindowStates.Active);
+                
+                var image = ScreenCapture.CaptureActiveWindow();
+                string[] files = Directory.GetFiles(path, filenameWithoutExt + "*");
+                string newFilename = filenameWithoutExt + (files.Length > 0 ? " (" + files.Length.ToString() + ")" : "") + ".jpg";
+                image.Save(Path.Combine(path, newFilename), System.Drawing.Imaging.ImageFormat.Jpeg);
+                SetStatusText("Screenshot saved.");
+                string soundFile = Path.Combine(new string[] { Environment.CurrentDirectory, "Alarms", "Camera Shutter.wav" });
+                if (playSound && File.Exists(soundFile))
+                {
+                    new SoundPlayer(soundFile).Play();
+                }
+            })).Start();
         }
 
 

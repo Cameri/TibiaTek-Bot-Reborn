@@ -22,7 +22,7 @@ namespace TibiaTekBot
         RuneMakerForm runemakerform;
 
         Kernel kernel;
-        public Tibia client;
+
         public MainForm()
         {
 
@@ -143,18 +143,22 @@ namespace TibiaTekBot
 
         private void MainFormTimer_Tick(object sender, EventArgs e)
         {
-            if (LevelScreenshot.Checked)
+            if (!kernel.Client.IsConnected)
             {
-                if (kernel.Client.LocalPlayer.Level == NextLevel)
-                {
-                    int fileCount = Directory.GetFiles(Environment.CurrentDirectory + "\\ScreenCaptures").Length;
-                    kernel.Client.SendKeys("^{DOWN}");
-                    Thread.Sleep(700);
-                    var image = ScreenCapture.CaptureActiveWindow();
-                    image.Save(Environment.CurrentDirectory + "\\ScreenCaptures\\" + kernel.Client.LocalPlayer.Name + " - Level " + NextLevel + ".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                    new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Camera Shutter.wav").Play();
-                    NextLevel++;
-                }
+                return;
+            }
+
+            if (LevelScreenshot.Checked && kernel.Client.LocalPlayer.Level == NextLevel)
+            {
+                int fileCount = Directory.GetFiles(Environment.CurrentDirectory + "\\ScreenCaptures").Length;
+                
+                kernel.Client.SendKeys("^{DOWN}");
+                Thread.Sleep(700);
+
+                string fileNameWithoutExt = kernel.Client.LocalPlayer.Name + " - Level " + NextLevel;
+                kernel.Client.TakeScreenshot(fileNameWithoutExt, true);
+                NextLevel++;
+                kernel.Client.SetStatusText("Screenshot saved.");
             }
         }
 

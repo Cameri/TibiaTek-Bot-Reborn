@@ -62,21 +62,28 @@ namespace TibiaTekBot
                 DateTime startTime = DateTime.Now;
                 DateTime timeout = startTime.AddSeconds(9);
                 long elapsed = 0;
-                Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-                s.Connect(new System.Net.IPAddress(0x37C0E736), 80);
-                while (!s.Connected)
+                try
                 {
-                    if (DateTime.Now > timeout)
+                    Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                    s.Connect(new System.Net.IPAddress(0x37C0E736), 80);
+                    while (!s.Connected)
                     {
-                        Label2.Text = "+5000 ms"; ;
-                        return;
+                        if (DateTime.Now > timeout)
+                        {
+                            Label2.Text = "+5000 ms"; ;
+                            return;
+                        }
+                        System.Threading.Thread.Sleep(0);
                     }
-                    System.Threading.Thread.Sleep(0);
+                    elapsed = (long)(DateTime.Now - startTime).TotalMilliseconds;
+                    if (s.Connected)
+                    {
+                        s.Close();
+                    }
                 }
-                elapsed = (long)(DateTime.Now - startTime).TotalMilliseconds;
-                if (s.Connected)
+                catch (SocketException ex)
                 {
-                    s.Close();
+
                 }
 
                 Label2.Text = elapsed + " ms";
