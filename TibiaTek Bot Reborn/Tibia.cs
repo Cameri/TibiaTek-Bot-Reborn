@@ -244,7 +244,7 @@ namespace TibiaTekBot
             }
         }
 
-        public void TakeScreenshot(string filenameWithoutExt, bool playSound = true, bool waitUntilActive = false)
+        public void TakeScreenshot(string filenameWithoutExt, bool playSound = true, bool waitUntilActive = true)
         {
             string path = Path.Combine(Environment.CurrentDirectory, "ScreenCaptures");
             (new Thread(() =>
@@ -253,10 +253,22 @@ namespace TibiaTekBot
                 {
                     return;
                 }
-
+                
                 do
                 {
-                    BringToFront();
+                    WindowStates state = WindowState;
+                    if (state == WindowStates.Minimized)
+                    {
+                        Restore();
+                    }
+                    else if (state == WindowStates.Hidden)
+                    {
+                        Show();
+                    }
+                    else if (state == WindowStates.Inactive)
+                    {
+                        BringToFront();
+                    }
                     Thread.Sleep(100);
                 } while (waitUntilActive && WindowState != WindowStates.Active);
                 
