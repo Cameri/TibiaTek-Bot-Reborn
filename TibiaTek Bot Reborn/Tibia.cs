@@ -120,12 +120,17 @@ namespace TibiaTekBot
             }
         }
 
+        private uint _BaseAddress = 0;
         public uint BaseAddress
         {
 
             get
             {
-                return (uint)clientProcess.MainModule.BaseAddress;
+                if (_BaseAddress == 0)
+                {
+                    _BaseAddress = (uint)clientProcess.MainModule.BaseAddress;
+                }
+                return _BaseAddress;
             }
         }
 
