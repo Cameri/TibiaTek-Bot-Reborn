@@ -92,15 +92,20 @@ namespace TibiaTekBot
             }
         }
 
+        IntPtr _WindowHandle = IntPtr.Zero;
         public IntPtr WindowHandle
         {
             get
             {
-                if (clientProcess.MainWindowHandle == IntPtr.Zero)
+                if (_WindowHandle == IntPtr.Zero)
                 {
-                    clientProcess.Refresh();
+                    if (clientProcess.MainWindowHandle == IntPtr.Zero)
+                    {
+                        clientProcess.Refresh();
+                    }
+                    _WindowHandle = clientProcess.MainWindowHandle;
                 }
-                return clientProcess.MainWindowHandle;
+                return _WindowHandle;
             }
         }
 
