@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TabPage tablalala;
             this.GroupBox13 = new System.Windows.Forms.GroupBox();
             this.GroupBox15 = new System.Windows.Forms.GroupBox();
@@ -61,6 +62,8 @@
             this.BattlelistMultiFloorAbove = new System.Windows.Forms.CheckBox();
             this.BattlelistMultiFloorBelow = new System.Windows.Forms.CheckBox();
             this.GroupBox6 = new System.Windows.Forms.GroupBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.AlarmIntervals = new System.Windows.Forms.NumericUpDown();
             this.BattlelistActivateIfMonsterNPC = new System.Windows.Forms.CheckBox();
             this.BattlelistActivateIfPlayer = new System.Windows.Forms.CheckBox();
             this.GroupBox5 = new System.Windows.Forms.GroupBox();
@@ -92,6 +95,8 @@
             this.MessagePublic = new System.Windows.Forms.CheckBox();
             this.TabPage2 = new System.Windows.Forms.TabPage();
             this.GroupBox8 = new System.Windows.Forms.GroupBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.StatusTimerInterval = new System.Windows.Forms.NumericUpDown();
             this.GroupBox12 = new System.Windows.Forms.GroupBox();
             this.StatusConditionFreezing = new System.Windows.Forms.CheckBox();
             this.StatusConditionCursed = new System.Windows.Forms.CheckBox();
@@ -149,8 +154,7 @@
             this.ViewLogButtom = new System.Windows.Forms.Button();
             this.ListViewLogs = new System.Windows.Forms.ListView();
             this.LogText = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.AlarmIntervals = new System.Windows.Forms.NumericUpDown();
-            this.label17 = new System.Windows.Forms.Label();
+            this.StatusTimer = new System.Windows.Forms.Timer(this.components);
             tablalala = new System.Windows.Forms.TabPage();
             tablalala.SuspendLayout();
             this.GroupBox13.SuspendLayout();
@@ -163,6 +167,7 @@
             this.MultiFloorGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BattlelistMultiFloorRange)).BeginInit();
             this.GroupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmIntervals)).BeginInit();
             this.GroupBox5.SuspendLayout();
             this.GroupBox4.SuspendLayout();
             this.TabPage3.SuspendLayout();
@@ -172,6 +177,7 @@
             this.GroupBox7.SuspendLayout();
             this.TabPage2.SuspendLayout();
             this.GroupBox8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusTimerInterval)).BeginInit();
             this.GroupBox12.SuspendLayout();
             this.GroupBox11.SuspendLayout();
             this.GroupBox10.SuspendLayout();
@@ -188,7 +194,6 @@
             this.PubMsgGrpBox.SuspendLayout();
             this.BlGrpBox.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AlarmIntervals)).BeginInit();
             this.SuspendLayout();
             // 
             // tablalala
@@ -582,6 +587,45 @@
             this.GroupBox6.TabStop = false;
             this.GroupBox6.Text = "Activate Alarm If";
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(210, 18);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(74, 13);
+            this.label17.TabIndex = 8;
+            this.label17.Text = "Alarm Interval:";
+            // 
+            // AlarmIntervals
+            // 
+            this.AlarmIntervals.DecimalPlaces = 1;
+            this.AlarmIntervals.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.AlarmIntervals.Location = new System.Drawing.Point(289, 14);
+            this.AlarmIntervals.Maximum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.AlarmIntervals.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AlarmIntervals.Name = "AlarmIntervals";
+            this.AlarmIntervals.ReadOnly = true;
+            this.AlarmIntervals.Size = new System.Drawing.Size(37, 20);
+            this.AlarmIntervals.TabIndex = 7;
+            this.AlarmIntervals.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.AlarmIntervals.ValueChanged += new System.EventHandler(this.AlarmIntervals_ValueChanged);
+            // 
             // BattlelistActivateIfMonsterNPC
             // 
             this.BattlelistActivateIfMonsterNPC.AutoSize = true;
@@ -914,6 +958,8 @@
             this.GroupBox8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GroupBox8.Controls.Add(this.label18);
+            this.GroupBox8.Controls.Add(this.StatusTimerInterval);
             this.GroupBox8.Controls.Add(this.GroupBox12);
             this.GroupBox8.Controls.Add(this.GroupBox11);
             this.GroupBox8.Controls.Add(this.GroupBox10);
@@ -923,6 +969,45 @@
             this.GroupBox8.TabIndex = 0;
             this.GroupBox8.TabStop = false;
             this.GroupBox8.Text = "Status Alarm Settings";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(216, 254);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(74, 13);
+            this.label18.TabIndex = 25;
+            this.label18.Text = "Alarm Interval:";
+            // 
+            // StatusTimerInterval
+            // 
+            this.StatusTimerInterval.DecimalPlaces = 1;
+            this.StatusTimerInterval.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.StatusTimerInterval.Location = new System.Drawing.Point(293, 251);
+            this.StatusTimerInterval.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.StatusTimerInterval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.StatusTimerInterval.Name = "StatusTimerInterval";
+            this.StatusTimerInterval.ReadOnly = true;
+            this.StatusTimerInterval.Size = new System.Drawing.Size(52, 20);
+            this.StatusTimerInterval.TabIndex = 24;
+            this.StatusTimerInterval.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.StatusTimerInterval.ValueChanged += new System.EventHandler(this.StatusTimerInterval_ValueChanged);
             // 
             // GroupBox12
             // 
@@ -958,7 +1043,7 @@
             // 
             this.StatusConditionCursed.AutoSize = true;
             this.StatusConditionCursed.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.StatusConditionCursed.Location = new System.Drawing.Point(110, 86);
+            this.StatusConditionCursed.Location = new System.Drawing.Point(112, 86);
             this.StatusConditionCursed.Name = "StatusConditionCursed";
             this.StatusConditionCursed.Size = new System.Drawing.Size(59, 17);
             this.StatusConditionCursed.TabIndex = 21;
@@ -1378,6 +1463,7 @@
             this.StSoundTest.TabIndex = 2;
             this.StSoundTest.Text = "Play";
             this.StSoundTest.UseVisualStyleBackColor = true;
+            this.StSoundTest.Click += new System.EventHandler(this.StSoundTest_Click);
             // 
             // Label12
             // 
@@ -1396,6 +1482,9 @@
             this.StSoundBox.Name = "StSoundBox";
             this.StSoundBox.Size = new System.Drawing.Size(148, 21);
             this.StSoundBox.TabIndex = 0;
+            this.StSoundBox.DropDown += new System.EventHandler(this.StSoundBox_DropDown);
+            this.StSoundBox.SelectedIndexChanged += new System.EventHandler(this.StSoundBox_SelectedIndexChanged);
+            this.StSoundBox.DropDownClosed += new System.EventHandler(this.StSoundBox_DropDownClosed);
             // 
             // PubMsgGrpBox
             // 
@@ -1527,44 +1616,10 @@
             this.LogText.Text = "Log Text";
             this.LogText.Width = 500;
             // 
-            // AlarmIntervals
+            // StatusTimer
             // 
-            this.AlarmIntervals.DecimalPlaces = 1;
-            this.AlarmIntervals.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            65536});
-            this.AlarmIntervals.Location = new System.Drawing.Point(289, 14);
-            this.AlarmIntervals.Maximum = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.AlarmIntervals.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.AlarmIntervals.Name = "AlarmIntervals";
-            this.AlarmIntervals.ReadOnly = true;
-            this.AlarmIntervals.Size = new System.Drawing.Size(37, 20);
-            this.AlarmIntervals.TabIndex = 7;
-            this.AlarmIntervals.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.AlarmIntervals.ValueChanged += new System.EventHandler(this.AlarmIntervals_ValueChanged);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(204, 18);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(79, 13);
-            this.label17.TabIndex = 8;
-            this.label17.Text = "Alarm Intervals:";
+            this.StatusTimer.Interval = 1000;
+            this.StatusTimer.Tick += new System.EventHandler(this.StatusTimer_Tick);
             // 
             // AlarmsForm
             // 
@@ -1601,6 +1656,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BattlelistMultiFloorRange)).EndInit();
             this.GroupBox6.ResumeLayout(false);
             this.GroupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AlarmIntervals)).EndInit();
             this.GroupBox5.ResumeLayout(false);
             this.GroupBox5.PerformLayout();
             this.GroupBox4.ResumeLayout(false);
@@ -1615,6 +1671,8 @@
             this.GroupBox7.PerformLayout();
             this.TabPage2.ResumeLayout(false);
             this.GroupBox8.ResumeLayout(false);
+            this.GroupBox8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusTimerInterval)).EndInit();
             this.GroupBox12.ResumeLayout(false);
             this.GroupBox12.PerformLayout();
             this.GroupBox11.ResumeLayout(false);
@@ -1640,7 +1698,6 @@
             this.BlGrpBox.ResumeLayout(false);
             this.BlGrpBox.PerformLayout();
             this.tabPage5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AlarmIntervals)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1769,5 +1826,8 @@
         private System.Windows.Forms.Button ViewLogButtom;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.NumericUpDown AlarmIntervals;
+        private System.Windows.Forms.Timer StatusTimer;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.NumericUpDown StatusTimerInterval;
     }
 }

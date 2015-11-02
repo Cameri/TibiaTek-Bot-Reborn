@@ -20,6 +20,7 @@ namespace TibiaTekBot
         AlarmsForm alarmsForm;
         LagBarForm lagBarForm;
         RuneMakerForm runemakerform;
+        HelerForm helerform;
 
         Kernel kernel;
 
@@ -31,29 +32,13 @@ namespace TibiaTekBot
             alarmsForm = new AlarmsForm(kernel.Client);
             lagBarForm = new LagBarForm(kernel.Client);
             runemakerform = new RuneMakerForm(kernel.Client);
-            //runemakerform = new RuneMakerForm(kernel.Client);
+            helerform = new HelerForm(kernel.Client);
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            kernel.Client.SendKeys("exura{ENTER}");
-
-            return;
-            //MessageBox.Show(String.Format("{0}", kernel.Client.LocalPlayer.Location));
-            BattleList bl = kernel.Client.GetBattlelist();
-            // MessageBox.Show(bl.BattlelistBegin.ToString());
-            bl.Reset();
-            Tibia.Location playerLoc = kernel.Client.LocalPlayer.Location;
-            uint playerID = kernel.Client.LocalPlayer.ID;
-            do
-            {
-                if (bl.ID != playerID && bl.OnScreen && bl.Location.Z == playerLoc.Z)
-                {
-                    MessageBox.Show(String.Format("ID: {0:X} \nName: {1} \nLocation: {2}", bl.ID, bl.Name, bl.Location));
-
-                }
-            } while (bl.Next());
+            
         }
 
         private void GroupBox4_Enter(object sender, EventArgs e)
@@ -141,6 +126,11 @@ namespace TibiaTekBot
 
         private void MainFormTimer_Tick(object sender, EventArgs e)
         {
+            
+             
+           
+
+
             if (!kernel.Client.IsConnected)
             {
                 return;
@@ -175,6 +165,12 @@ namespace TibiaTekBot
         {
             runemakerform.Show();
             runemakerform.BringToFront();
+        }
+
+        private void HelerBotButtom_Click(object sender, EventArgs e)
+        {
+            helerform.Show();
+            helerform.BringToFront();
         }
     }
 }

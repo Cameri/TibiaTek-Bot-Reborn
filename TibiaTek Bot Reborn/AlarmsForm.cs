@@ -15,7 +15,8 @@ namespace TibiaTekBot
         Timer BattlelistTimer;
         Log logs = new Log();
         public Tibia client;
-        int AlarmTimeIntervals = 2500;
+        int AlarmTimeIntervals = 1000;
+        int StatusTimeInterval = 1000;
         public AlarmsForm(Tibia client)
         {
             this.client = client;
@@ -32,6 +33,7 @@ namespace TibiaTekBot
             Tibia.Location localPlayerLoc = client.LocalPlayer.Location;
             bl.Reset();
 
+            #region Battle List Sounds
             do
             {    
                 if (!bl.OnScreen || bl.ID == localPlayerID)
@@ -103,8 +105,6 @@ namespace TibiaTekBot
                 {
                     new SoundPlayer(BLSound).Play(); 
                     LogTextDetails = String.Format("ID: {0:X}     Name: {1}     Location: {2}     ", bl.ID, bl.Name, bl.Location);
-                    //ListViewLogs.Invoke((Action)(() => ListViewLogs.Items.Add(LogTextDetails)));
-                   // SaveLogToTXT(LogTextDetails);
                     logs.SaveLog(DateTime.Now, "Alarm", LogTextDetails);
                     client.SetStatusText("Alarm was activated by: "+bl.Name.ToString());
                 }
@@ -112,6 +112,66 @@ namespace TibiaTekBot
                 
 
             } while (bl.Next());
+            #endregion 
+
+           
+        }
+
+        bool RunStatus = false;
+        string statusText = "";
+        private void StatusTimer_Tick(object sender, EventArgs e)
+        {
+           
+           
+            BattleList bl = client.GetBattlelist();
+            uint localPlayerHP = client.LocalPlayer.HealthPoints;
+            uint localPlayerMana = client.LocalPlayer.ManaPoints;
+            uint localPlayerSoul = client.LocalPlayer.SoulPoints;
+            uint localPlayerCAP = client.LocalPlayer.Capacity;
+
+            #region Status Sound
+            if (StatusPlaySound.Checked)
+            {
+                if (RunStatus==true)
+                {
+                    new SoundPlayer(STSound).Play();
+                    LogTextDetails = String.Format("Alarm was activated by: Low {0:X}", statusText);
+                    logs.SaveLog(DateTime.Now, "Alarm", LogTextDetails);
+                    client.SetStatusText("Alarm was activated by: Low " + statusText);
+                }
+
+                statusText = "";
+                RunStatus = false;
+                if (localPlayerHP < StatusHitPoints.Value)
+                {
+                    RunStatus = true;
+                    statusText =statusText+ " HitPoints";
+                    
+                }
+
+                if (localPlayerMana < StatusManaPoints.Value)
+                {
+                    RunStatus = true;
+                    statusText =statusText+ ", ManaPoints";
+                    
+                }
+
+                if (localPlayerSoul < StatusSoulPoints.Value)
+                {
+                    RunStatus = true;
+                    statusText = statusText + ", SoulPoints";
+                   
+                }
+                if (localPlayerCAP /100+1 < StatusCapacity.Value)
+                {
+                    RunStatus = true;
+                    statusText = statusText + ", Capacity";
+                    
+                }
+                
+                
+            }
+            #endregion
         }
 
         private void AlarmsActivate_Click(object sender, EventArgs e)
@@ -123,15 +183,22 @@ namespace TibiaTekBot
             {
                 BattlelistTimer = new Timer(AlarmTimeIntervals);
                 BattlelistTimer.Execute += BattlelistTimer_Execute;
+                StatusTimer.Interval = StatusTimeInterval;
+                StatusTimer.Enabled = true;
+                StatusTimer.Start();
                 AlarmsActivate.Text = "Deactivate";
                 BattlelistTimer.Start();
             }
             else
             {
+                StatusTimer.Stop();
+                StatusTimer.Enabled = false;
                 AlarmsActivate.Text = "Activate";
                 BattlelistTimer.Stop();
             }
-            
+
+            statusText = "";
+            RunStatus = false;
             Tabs.Enabled = !Active;
             AlarmsLoad.Enabled = !Active;
         }
@@ -156,6 +223,19 @@ namespace TibiaTekBot
             } 
             BlSoundBox.SelectedIndex = 0;
             #endregion
+
+            #region Cargar StSoundBox
+            if (StSoundBox.Items.Count > 0)
+            {
+                StSoundBox.Items.Clear();
+            }
+            foreach (var sound in Directory.GetFiles(Environment.CurrentDirectory + "\\Alarms"))
+            {
+                StSoundBox.Items.Add(Path.GetFileName(sound));
+            }
+            StSoundBox.SelectedIndex = 0;
+            #endregion
+
         }
 
         private void AlarmsHide_Click(object sender, EventArgs e)
@@ -324,9 +404,54 @@ namespace TibiaTekBot
         {
             AlarmTimeIntervals = 1000;
             AlarmTimeIntervals =Convert.ToInt32( AlarmIntervals.Value * 1000);
-          
-            
         }
+
+        string STSound = "";
+        private void StSoundTest_Click(object sender, EventArgs e)
+        {
+            if (StSoundBox.Text != string.Empty)
+            {
+                SoundPlayer simpleSound = new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\" + StSoundBox.SelectedItem);
+                simpleSound.Play();
+            }
+            else
+            {
+                MessageBox.Show("Select a sound from the list.");
+            }
+        }
+
+        private void StSoundBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            STSound = Application.StartupPath + "\\Alarms\\" + StSoundBox.SelectedItem;
+        }
+
+        private void StSoundBox_DropDown(object sender, EventArgs e)
+        {
+            if (StSoundBox.Items.Count > 0)
+            {
+                StSoundBox.Items.Clear();
+            }
+            foreach (var sound in Directory.GetFiles(Environment.CurrentDirectory + "\\Alarms"))
+            {
+                StSoundBox.Items.Add(Path.GetFileName(sound));
+            }
+        }
+
+        private void StSoundBox_DropDownClosed(object sender, EventArgs e)
+        {
+            if (StSoundBox.SelectedItem == null)
+            {
+                StSoundBox.SelectedIndex = 0;
+            }
+        }
+
+        private void StatusTimerInterval_ValueChanged(object sender, EventArgs e)
+        {
+            //StatusTimeInterval = 1000;
+            StatusTimeInterval = Convert.ToInt32(StatusTimerInterval.Value * 1000);
+        }
+
+        
         
     }
 }

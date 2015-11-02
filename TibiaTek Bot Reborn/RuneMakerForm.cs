@@ -136,7 +136,7 @@ namespace TibiaTekBot
             else
             {
                 tryout = 0;
-                new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Completion.wav").Play();
+                new SoundPlayer(Environment.CurrentDirectory + "\\Alarms\\Rune Created.wav").Play();
                 BlankRunesAvailable.Value--;
             }
                 

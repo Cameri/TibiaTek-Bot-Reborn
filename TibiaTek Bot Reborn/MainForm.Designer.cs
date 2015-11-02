@@ -65,6 +65,7 @@
             this.ShowAlarmsButtom = new System.Windows.Forms.Button();
             this.ShowRuneMakerButtom = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.HelerBotButtom = new System.Windows.Forms.Button();
             this.AutoLooterBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).BeginInit();
             this.GroupBox2.SuspendLayout();
@@ -456,7 +457,7 @@
             // 
             // ShowAlarmsButtom
             // 
-            this.ShowAlarmsButtom.Location = new System.Drawing.Point(9, 19);
+            this.ShowAlarmsButtom.Location = new System.Drawing.Point(5, 19);
             this.ShowAlarmsButtom.Name = "ShowAlarmsButtom";
             this.ShowAlarmsButtom.Size = new System.Drawing.Size(75, 23);
             this.ShowAlarmsButtom.TabIndex = 12;
@@ -466,7 +467,7 @@
             // 
             // ShowRuneMakerButtom
             // 
-            this.ShowRuneMakerButtom.Location = new System.Drawing.Point(90, 19);
+            this.ShowRuneMakerButtom.Location = new System.Drawing.Point(85, 19);
             this.ShowRuneMakerButtom.Name = "ShowRuneMakerButtom";
             this.ShowRuneMakerButtom.Size = new System.Drawing.Size(75, 23);
             this.ShowRuneMakerButtom.TabIndex = 13;
@@ -476,6 +477,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.HelerBotButtom);
             this.groupBox1.Controls.Add(this.ShowRuneMakerButtom);
             this.groupBox1.Controls.Add(this.ShowAlarmsButtom);
             this.groupBox1.Location = new System.Drawing.Point(12, 92);
@@ -484,6 +486,16 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Helpers";
+            // 
+            // HelerBotButtom
+            // 
+            this.HelerBotButtom.Location = new System.Drawing.Point(166, 19);
+            this.HelerBotButtom.Name = "HelerBotButtom";
+            this.HelerBotButtom.Size = new System.Drawing.Size(75, 23);
+            this.HelerBotButtom.TabIndex = 14;
+            this.HelerBotButtom.Text = "Heler";
+            this.HelerBotButtom.UseVisualStyleBackColor = true;
+            this.HelerBotButtom.Click += new System.EventHandler(this.HelerBotButtom_Click);
             // 
             // MainForm
             // 
@@ -556,6 +568,7 @@
         private System.Windows.Forms.Button ShowRuneMakerButtom;
         private System.Windows.Forms.Button ShowAlarmsButtom;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button HelerBotButtom;
     }
 }
 
