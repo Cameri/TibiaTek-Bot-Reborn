@@ -92,15 +92,20 @@ namespace TibiaTekBot
             }
         }
 
+        IntPtr _WindowHandle = IntPtr.Zero;
         public IntPtr WindowHandle
         {
             get
             {
-                if (clientProcess.MainWindowHandle == IntPtr.Zero)
+                if (_WindowHandle == IntPtr.Zero)
                 {
-                    clientProcess.Refresh();
+                    if (clientProcess.MainWindowHandle == IntPtr.Zero)
+                    {
+                        clientProcess.Refresh();
+                    }
+                    _WindowHandle = clientProcess.MainWindowHandle;
                 }
-                return clientProcess.MainWindowHandle;
+                return _WindowHandle;
             }
         }
 
@@ -120,12 +125,17 @@ namespace TibiaTekBot
             }
         }
 
+        private uint _BaseAddress = 0;
         public uint BaseAddress
         {
 
             get
             {
-                return (uint)clientProcess.MainModule.BaseAddress;
+                if (_BaseAddress == 0)
+                {
+                    _BaseAddress = (uint)clientProcess.MainModule.BaseAddress;
+                }
+                return _BaseAddress;
             }
         }
 
