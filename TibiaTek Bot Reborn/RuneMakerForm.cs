@@ -55,12 +55,7 @@ namespace TibiaTekBot
             {
                 s.Close();
             }
-            if (elapsed >=400)
-            {
-                logs.SaveLog(DateTime.Now, "Lag", "Too much lag to cast spell.");
-                client.SetStatusText("Too much lag to cast spell.");
-                return;
-            }
+           
 
             if (!client.IsConnected)
             {
@@ -113,6 +108,12 @@ namespace TibiaTekBot
 
             int currentmana = Convert.ToInt32( client.LocalPlayer.ManaPoints);
             
+            if (elapsed >= 400)
+            {
+                logs.SaveLog(DateTime.Now, "Lag", "Too much lag to cast spell.");
+                client.SetStatusText("Too much lag to cast spell.");
+                return;
+            }
             
             // 'tis all gewd
             client.SendKeys("{ESC}");

@@ -17,10 +17,12 @@ namespace TibiaTekBot
     public partial class MainForm : Form
     {
         int NextLevel = 0;
+        int autoeatinterval = 0;
         AlarmsForm alarmsForm;
         LagBarForm lagBarForm;
         RuneMakerForm runemakerform;
         HelerForm helerform;
+        Log logs = new Log();
 
         Kernel kernel;
 
@@ -68,7 +70,9 @@ namespace TibiaTekBot
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+           
+            CBFuntionKeys.SelectedIndex = 0;
+            CBAlternalKeys.SelectedIndex = 0;
         }
 
         private void alarmsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -126,11 +130,8 @@ namespace TibiaTekBot
 
         private void MainFormTimer_Tick(object sender, EventArgs e)
         {
-            
-             
-           
 
-
+            #region screencapture
             if (!kernel.Client.IsConnected)
             {
                 return;
@@ -147,7 +148,56 @@ namespace TibiaTekBot
                 kernel.Client.TakeScreenshot(fileNameWithoutExt, true);
                 NextLevel++;
                 kernel.Client.SetStatusText("Screenshot saved.");
+                logs.SaveLog(DateTime.Now, "Screenshot", "Screenshot saved");
+               
             }
+            #endregion
+
+            #region auto eater
+            if (AutoEaterTrigger.Checked)
+            {
+                if (autoeatinterval >= Convert.ToInt32(AutoEaterInterval.Value))
+                {
+                    string combination = "";
+                    combination = CBAlternalKeys.SelectedText;
+                    if (CBAlternalKeys.SelectedItem.ToString() == "None")
+                    {
+                        combination = "";
+                    }
+                    if (CBAlternalKeys.SelectedItem.ToString() == "Ctrl")
+                    {
+                        combination = "^";
+                    }
+                    if (CBAlternalKeys.SelectedItem.ToString() == "Shift")
+                    {
+                        combination = "+";
+                    }
+                    autoeatinterval = 0;
+                    
+                    if (FoodInBag.Value>0)
+                    {
+                        
+                        kernel.Client.SendKeys("");
+                        Thread.Sleep(500);
+                        kernel.Client.SendKeys(combination + "{" + CBFuntionKeys.SelectedItem + "}");
+                        FoodInBag.Value--;
+                    }
+                    else
+                    {
+                        kernel.Client.SetStatusText("No food in bag, auto eater disable.");
+                        logs.SaveLog(DateTime.Now, "Auto Eater", "No food in bag, auto eater disable.");
+                        AutoEaterTrigger.Checked = false;
+                        MessageBox.Show("No food in bag, auto eater disable.");
+                    }
+                    
+                    
+                }
+                else
+                {
+                    autoeatinterval++;
+                }
+            }
+            #endregion
         }
 
         private void ExpCheckerHelp_Click(object sender, EventArgs e)
@@ -171,6 +221,53 @@ namespace TibiaTekBot
         {
             helerform.Show();
             helerform.BringToFront();
+        }
+
+        private void AutoEaterTrigger_CheckedChanged(object sender, EventArgs e)
+        {
+            if (AutoEaterTrigger.Checked)
+            {
+                AutoEaterTrigger.Text = "Deactivate";
+                autoeatinterval = 0;
+            }
+            else
+            {
+                AutoEaterTrigger.Text = "Activate";
+               
+            }
+            
+        }
+
+        private void AutoEaterHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("How To Use:\n\nJust put in a hotkey the food you have in your bag and then put the same hotkey in Tibia Bot Tek - Auto Eater\n\nDefault time is 60 seconds (1 minute) but you can change it to your needs.\n\nFood In Bag: Indicates the amount of food contained in the bag and also the selected hotkey. ");
+            
+        }
+
+        private void CBAlternalKeys_DropDownClosed(object sender, EventArgs e)
+        {
+            if (CBAlternalKeys.SelectedItem == null)
+            {
+                CBAlternalKeys.SelectedIndex = 0;
+            }
+        }
+
+        private void CBFuntionKeys_DropDownClosed(object sender, EventArgs e)
+        {
+            if (CBFuntionKeys.SelectedItem == null)
+            {
+                CBFuntionKeys.SelectedIndex = 0;
+            }
+        }
+
+        private void AutoEaterInterval_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void SpellCasterTrigger_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
