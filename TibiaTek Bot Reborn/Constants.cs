@@ -58,6 +58,28 @@ namespace TibiaTekBot
             OpenContainersOffset = 0x8U,
         }
 
+        public enum TalkboxType : byte
+        {
+            Normal = 1,
+            Whisper = 2,
+            Yell = 3,
+            MonsterSay = 0x10,
+            MonsterYell = 0x11
+        }
+
+        public enum Talkbox : uint
+        {
+            BeginPointer = 0x586FD0U,
+            MessageNumber = 0x4,
+            TimeLeft = 0x8U,
+            TypeOffset = 0xCU,
+            LocationOffset = 0x10U,
+            NumLinesOffset = 0x1CU,
+            LinesOffset = 0x20U,
+            LinesSize = 0x28U,
+            ItemSize = 0x288U,
+        }
+
         public enum Status : uint
         {
             TextOffset = 0x586DD0U,

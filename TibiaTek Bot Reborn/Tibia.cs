@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.IO;
 using System.Media;
-
+using System.Runtime.InteropServices;
 
 namespace TibiaTekBot
 {
@@ -55,6 +55,20 @@ namespace TibiaTekBot
             public uint FeetColor;
             public uint Addons;
             public uint MountID;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        public unsafe struct Talkbox
+        {
+            public uint Number;
+            public uint MessageNumber;
+            public int TimeLeft;
+            public uint Type;
+            public Location Location;
+            public uint NumLines;
+            public fixed byte Lines[15*40];
+
+
         }
         #endregion
 
