@@ -45,22 +45,13 @@ namespace TibiaTekBot
 
         private void lagBarTimer_Tick(object sender, EventArgs e)
         {
-            if (!client.IsConnected)
-            {
-                lagBarTimer.Stop();
-                MessageBox.Show("Character disconnected, Lag Bar disable.");
-                logs.SaveLog(DateTime.Now, "Disconnected", "Character disconnected, Lag Bar disable.");
-                this.Hide();
-               
-                return;
-
-            }
+           
 
             lock (this)
             {
-                if (lagBarTimer.Interval != 10000)
+                if (lagBarTimer.Interval != 5000)
                 {
-                    lagBarTimer.Interval = 10000;
+                    lagBarTimer.Interval = 5000;
                 }
                 //if (lagBarTimer)
                 if (!client.IsConnected)
@@ -68,11 +59,14 @@ namespace TibiaTekBot
                     PictureBox1.Size = new Size(0, 9);
                     Label2.Text = "N/C";
                     Label2.ForeColor = Color.White;
+                    lagBarTimer.Stop();
+                    //MessageBox.Show("Character disconnected, Lag Bar disable.");
+                    logs.SaveLog(DateTime.Now, "Disconnected", "Character disconnected, Lag Bar disable.");
                     return;
                 }
 
                 DateTime startTime = DateTime.Now;
-                DateTime timeout = startTime.AddSeconds(9);
+                DateTime timeout = startTime.AddSeconds(5);
                 long elapsed = 0;
                 try
                 {

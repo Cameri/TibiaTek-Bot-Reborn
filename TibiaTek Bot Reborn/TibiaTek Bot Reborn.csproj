@@ -79,6 +79,12 @@
     <Compile Include="fmrGPSMap.Designer.cs">
       <DependentUpon>fmrGPSMap.cs</DependentUpon>
     </Compile>
+    <Compile Include="HelerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelerForm.Designer.cs">
+      <DependentUpon>HelerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LagBarForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmrGPSMap.resx">
       <DependentUpon>fmrGPSMap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelerForm.resx">
+      <DependentUpon>HelerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LagBarForm.resx">
       <DependentUpon>LagBarForm.cs</DependentUpon>
@@ -210,6 +219,9 @@
     <None Include="Resources\ttb splash7.jpg" />
     <None Include="Resources\ttb splash8.jpg" />
     <None Include="Resources\map_big.jpg" />
+    <Content Include="Alarms\Danger Classic.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Alarms\Camera Shutter.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -220,6 +232,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Alarms\Dong Dong.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Alarms\Danger New.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Alarms\Rune Created.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Alarms\Pinc.WAV">

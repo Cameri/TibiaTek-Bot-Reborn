@@ -45,16 +45,17 @@
             this.SpellCasterSpell = new System.Windows.Forms.ComboBox();
             this.Label1 = new System.Windows.Forms.Label();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
+            this.FoodInBag = new System.Windows.Forms.NumericUpDown();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.CBFuntionKeys = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.CBAlternalKeys = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.AutoEaterHelp = new System.Windows.Forms.Button();
-            this.AutoEaterEatFromFloorFirst = new System.Windows.Forms.CheckBox();
-            this.Label20 = new System.Windows.Forms.Label();
             this.AutoEaterInterval = new System.Windows.Forms.NumericUpDown();
             this.Label18 = new System.Windows.Forms.Label();
-            this.AutoEaterEatFromFloor = new System.Windows.Forms.CheckBox();
-            this.AutoEaterMinimumHitPoints = new System.Windows.Forms.NumericUpDown();
-            this.Label6 = new System.Windows.Forms.Label();
             this.AutoEaterTrigger = new System.Windows.Forms.CheckBox();
-            this.AutoEaterSmart = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.ExpCheckerBox = new System.Windows.Forms.GroupBox();
             this.LevelScreenshot = new System.Windows.Forms.CheckBox();
@@ -65,13 +66,14 @@
             this.ShowAlarmsButtom = new System.Windows.Forms.Button();
             this.ShowRuneMakerButtom = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.HelerBotButtom = new System.Windows.Forms.Button();
             this.AutoLooterBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutoLooterMinCap)).BeginInit();
             this.GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpellCasterMinimumManaPoints)).BeginInit();
             this.GroupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodInBag)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterInterval)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AutoEaterMinimumHitPoints)).BeginInit();
             this.ExpCheckerBox.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -198,6 +200,7 @@
             this.SpellCasterTrigger.Text = "Activate";
             this.SpellCasterTrigger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.SpellCasterTrigger.UseVisualStyleBackColor = true;
+            this.SpellCasterTrigger.CheckedChanged += new System.EventHandler(this.SpellCasterTrigger_CheckedChanged);
             // 
             // SpellCasterMinimumManaPoints
             // 
@@ -245,16 +248,17 @@
             // 
             // GroupBox4
             // 
+            this.GroupBox4.Controls.Add(this.FoodInBag);
+            this.GroupBox4.Controls.Add(this.label6);
+            this.GroupBox4.Controls.Add(this.label5);
+            this.GroupBox4.Controls.Add(this.CBFuntionKeys);
+            this.GroupBox4.Controls.Add(this.label4);
+            this.GroupBox4.Controls.Add(this.CBAlternalKeys);
+            this.GroupBox4.Controls.Add(this.label2);
             this.GroupBox4.Controls.Add(this.AutoEaterHelp);
-            this.GroupBox4.Controls.Add(this.AutoEaterEatFromFloorFirst);
-            this.GroupBox4.Controls.Add(this.Label20);
             this.GroupBox4.Controls.Add(this.AutoEaterInterval);
             this.GroupBox4.Controls.Add(this.Label18);
-            this.GroupBox4.Controls.Add(this.AutoEaterEatFromFloor);
-            this.GroupBox4.Controls.Add(this.AutoEaterMinimumHitPoints);
-            this.GroupBox4.Controls.Add(this.Label6);
             this.GroupBox4.Controls.Add(this.AutoEaterTrigger);
-            this.GroupBox4.Controls.Add(this.AutoEaterSmart);
             this.GroupBox4.Location = new System.Drawing.Point(226, 181);
             this.GroupBox4.Name = "GroupBox4";
             this.GroupBox4.Size = new System.Drawing.Size(191, 167);
@@ -262,6 +266,97 @@
             this.GroupBox4.TabStop = false;
             this.GroupBox4.Text = "Auto Eater";
             this.GroupBox4.Enter += new System.EventHandler(this.GroupBox4_Enter);
+            // 
+            // FoodInBag
+            // 
+            this.FoodInBag.Location = new System.Drawing.Point(89, 77);
+            this.FoodInBag.Maximum = new decimal(new int[] {
+            999000,
+            0,
+            0,
+            0});
+            this.FoodInBag.Name = "FoodInBag";
+            this.FoodInBag.Size = new System.Drawing.Size(88, 20);
+            this.FoodInBag.TabIndex = 22;
+            this.FoodInBag.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.FoodInBag.ThousandsSeparator = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label6.Location = new System.Drawing.Point(6, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(71, 13);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Food In Bag: ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label5.Location = new System.Drawing.Point(153, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 13);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Sec";
+            // 
+            // CBFuntionKeys
+            // 
+            this.CBFuntionKeys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBFuntionKeys.FormattingEnabled = true;
+            this.CBFuntionKeys.Items.AddRange(new object[] {
+            "f1",
+            "f2",
+            "f3",
+            "f4",
+            "f5",
+            "f6",
+            "f7",
+            "f8",
+            "f9",
+            "f10",
+            "f11",
+            "f12"});
+            this.CBFuntionKeys.Location = new System.Drawing.Point(133, 45);
+            this.CBFuntionKeys.Name = "CBFuntionKeys";
+            this.CBFuntionKeys.Size = new System.Drawing.Size(44, 21);
+            this.CBFuntionKeys.TabIndex = 19;
+            this.CBFuntionKeys.DropDownClosed += new System.EventHandler(this.CBFuntionKeys_DropDownClosed);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label4.Location = new System.Drawing.Point(114, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(13, 13);
+            this.label4.TabIndex = 18;
+            this.label4.Text = "+";
+            // 
+            // CBAlternalKeys
+            // 
+            this.CBAlternalKeys.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBAlternalKeys.FormattingEnabled = true;
+            this.CBAlternalKeys.Items.AddRange(new object[] {
+            "None",
+            "Shift",
+            "Ctrl"});
+            this.CBAlternalKeys.Location = new System.Drawing.Point(61, 45);
+            this.CBAlternalKeys.Name = "CBAlternalKeys";
+            this.CBAlternalKeys.Size = new System.Drawing.Size(50, 21);
+            this.CBAlternalKeys.TabIndex = 17;
+            this.CBAlternalKeys.DropDownClosed += new System.EventHandler(this.CBAlternalKeys_DropDownClosed);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.label2.Location = new System.Drawing.Point(6, 49);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Hotkeys:";
             // 
             // AutoEaterHelp
             // 
@@ -272,88 +367,42 @@
             this.AutoEaterHelp.TabIndex = 15;
             this.AutoEaterHelp.Text = "?";
             this.AutoEaterHelp.UseVisualStyleBackColor = true;
-            // 
-            // AutoEaterEatFromFloorFirst
-            // 
-            this.AutoEaterEatFromFloorFirst.AutoSize = true;
-            this.AutoEaterEatFromFloorFirst.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.AutoEaterEatFromFloorFirst.Location = new System.Drawing.Point(6, 40);
-            this.AutoEaterEatFromFloorFirst.Name = "AutoEaterEatFromFloorFirst";
-            this.AutoEaterEatFromFloorFirst.Size = new System.Drawing.Size(116, 17);
-            this.AutoEaterEatFromFloorFirst.TabIndex = 14;
-            this.AutoEaterEatFromFloorFirst.Text = "Eat From Floor First";
-            this.AutoEaterEatFromFloorFirst.UseVisualStyleBackColor = true;
-            // 
-            // Label20
-            // 
-            this.Label20.AutoSize = true;
-            this.Label20.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Label20.Location = new System.Drawing.Point(135, 111);
-            this.Label20.Name = "Label20";
-            this.Label20.Size = new System.Drawing.Size(20, 13);
-            this.Label20.TabIndex = 13;
-            this.Label20.Text = "ms";
+            this.AutoEaterHelp.Click += new System.EventHandler(this.AutoEaterHelp_Click);
             // 
             // AutoEaterInterval
             // 
-            this.AutoEaterInterval.Enabled = false;
-            this.AutoEaterInterval.Location = new System.Drawing.Point(63, 109);
+            this.AutoEaterInterval.Location = new System.Drawing.Point(89, 16);
             this.AutoEaterInterval.Maximum = new decimal(new int[] {
             999000,
             0,
             0,
             0});
+            this.AutoEaterInterval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.AutoEaterInterval.Name = "AutoEaterInterval";
-            this.AutoEaterInterval.Size = new System.Drawing.Size(66, 20);
+            this.AutoEaterInterval.Size = new System.Drawing.Size(61, 20);
             this.AutoEaterInterval.TabIndex = 12;
             this.AutoEaterInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.AutoEaterInterval.ThousandsSeparator = true;
+            this.AutoEaterInterval.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            this.AutoEaterInterval.ValueChanged += new System.EventHandler(this.AutoEaterInterval_ValueChanged);
             // 
             // Label18
             // 
             this.Label18.AutoSize = true;
             this.Label18.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Label18.Location = new System.Drawing.Point(6, 111);
+            this.Label18.Location = new System.Drawing.Point(6, 18);
             this.Label18.Name = "Label18";
             this.Label18.Size = new System.Drawing.Size(45, 13);
             this.Label18.TabIndex = 11;
             this.Label18.Text = "Interval:";
-            // 
-            // AutoEaterEatFromFloor
-            // 
-            this.AutoEaterEatFromFloor.AutoSize = true;
-            this.AutoEaterEatFromFloor.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.AutoEaterEatFromFloor.Location = new System.Drawing.Point(6, 17);
-            this.AutoEaterEatFromFloor.Name = "AutoEaterEatFromFloor";
-            this.AutoEaterEatFromFloor.Size = new System.Drawing.Size(94, 17);
-            this.AutoEaterEatFromFloor.TabIndex = 10;
-            this.AutoEaterEatFromFloor.Text = "Eat From Floor";
-            this.AutoEaterEatFromFloor.UseVisualStyleBackColor = true;
-            // 
-            // AutoEaterMinimumHitPoints
-            // 
-            this.AutoEaterMinimumHitPoints.Enabled = false;
-            this.AutoEaterMinimumHitPoints.Location = new System.Drawing.Point(90, 81);
-            this.AutoEaterMinimumHitPoints.Maximum = new decimal(new int[] {
-            99999,
-            0,
-            0,
-            0});
-            this.AutoEaterMinimumHitPoints.Name = "AutoEaterMinimumHitPoints";
-            this.AutoEaterMinimumHitPoints.Size = new System.Drawing.Size(88, 20);
-            this.AutoEaterMinimumHitPoints.TabIndex = 9;
-            this.AutoEaterMinimumHitPoints.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.AutoEaterMinimumHitPoints.ThousandsSeparator = true;
-            // 
-            // Label6
-            // 
-            this.Label6.AutoSize = true;
-            this.Label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.Label6.Location = new System.Drawing.Point(6, 83);
-            this.Label6.Name = "Label6";
-            this.Label6.Size = new System.Drawing.Size(78, 13);
-            this.Label6.TabIndex = 8;
-            this.Label6.Text = "Min. Hit Points:";
             // 
             // AutoEaterTrigger
             // 
@@ -366,17 +415,7 @@
             this.AutoEaterTrigger.Text = "Activate";
             this.AutoEaterTrigger.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.AutoEaterTrigger.UseVisualStyleBackColor = true;
-            // 
-            // AutoEaterSmart
-            // 
-            this.AutoEaterSmart.AutoSize = true;
-            this.AutoEaterSmart.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.AutoEaterSmart.Location = new System.Drawing.Point(6, 63);
-            this.AutoEaterSmart.Name = "AutoEaterSmart";
-            this.AutoEaterSmart.Size = new System.Drawing.Size(72, 17);
-            this.AutoEaterSmart.TabIndex = 0;
-            this.AutoEaterSmart.Text = "Eat Smart";
-            this.AutoEaterSmart.UseVisualStyleBackColor = true;
+            this.AutoEaterTrigger.CheckedChanged += new System.EventHandler(this.AutoEaterTrigger_CheckedChanged);
             // 
             // button1
             // 
@@ -456,7 +495,7 @@
             // 
             // ShowAlarmsButtom
             // 
-            this.ShowAlarmsButtom.Location = new System.Drawing.Point(9, 19);
+            this.ShowAlarmsButtom.Location = new System.Drawing.Point(5, 19);
             this.ShowAlarmsButtom.Name = "ShowAlarmsButtom";
             this.ShowAlarmsButtom.Size = new System.Drawing.Size(75, 23);
             this.ShowAlarmsButtom.TabIndex = 12;
@@ -466,7 +505,7 @@
             // 
             // ShowRuneMakerButtom
             // 
-            this.ShowRuneMakerButtom.Location = new System.Drawing.Point(90, 19);
+            this.ShowRuneMakerButtom.Location = new System.Drawing.Point(85, 19);
             this.ShowRuneMakerButtom.Name = "ShowRuneMakerButtom";
             this.ShowRuneMakerButtom.Size = new System.Drawing.Size(75, 23);
             this.ShowRuneMakerButtom.TabIndex = 13;
@@ -476,6 +515,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.HelerBotButtom);
             this.groupBox1.Controls.Add(this.ShowRuneMakerButtom);
             this.groupBox1.Controls.Add(this.ShowAlarmsButtom);
             this.groupBox1.Location = new System.Drawing.Point(12, 92);
@@ -484,6 +524,16 @@
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Helpers";
+            // 
+            // HelerBotButtom
+            // 
+            this.HelerBotButtom.Location = new System.Drawing.Point(166, 19);
+            this.HelerBotButtom.Name = "HelerBotButtom";
+            this.HelerBotButtom.Size = new System.Drawing.Size(75, 23);
+            this.HelerBotButtom.TabIndex = 14;
+            this.HelerBotButtom.Text = "Healer";
+            this.HelerBotButtom.UseVisualStyleBackColor = true;
+            this.HelerBotButtom.Click += new System.EventHandler(this.HelerBotButtom_Click);
             // 
             // MainForm
             // 
@@ -510,8 +560,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.SpellCasterMinimumManaPoints)).EndInit();
             this.GroupBox4.ResumeLayout(false);
             this.GroupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.FoodInBag)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AutoEaterInterval)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AutoEaterMinimumHitPoints)).EndInit();
             this.ExpCheckerBox.ResumeLayout(false);
             this.ExpCheckerBox.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -537,15 +587,9 @@
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.GroupBox GroupBox4;
         internal System.Windows.Forms.Button AutoEaterHelp;
-        internal System.Windows.Forms.CheckBox AutoEaterEatFromFloorFirst;
-        internal System.Windows.Forms.Label Label20;
         internal System.Windows.Forms.NumericUpDown AutoEaterInterval;
         internal System.Windows.Forms.Label Label18;
-        internal System.Windows.Forms.CheckBox AutoEaterEatFromFloor;
-        internal System.Windows.Forms.NumericUpDown AutoEaterMinimumHitPoints;
-        internal System.Windows.Forms.Label Label6;
         internal System.Windows.Forms.CheckBox AutoEaterTrigger;
-        internal System.Windows.Forms.CheckBox AutoEaterSmart;
         private System.Windows.Forms.Button button1;
         internal System.Windows.Forms.GroupBox ExpCheckerBox;
         internal System.Windows.Forms.Button ExpCheckerHelp;
@@ -556,6 +600,14 @@
         private System.Windows.Forms.Button ShowRuneMakerButtom;
         private System.Windows.Forms.Button ShowAlarmsButtom;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button HelerBotButtom;
+        private System.Windows.Forms.ComboBox CBFuntionKeys;
+        internal System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox CBAlternalKeys;
+        internal System.Windows.Forms.Label label2;
+        internal System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.NumericUpDown FoodInBag;
+        internal System.Windows.Forms.Label label6;
     }
 }
 
