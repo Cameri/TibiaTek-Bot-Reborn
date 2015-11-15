@@ -30,6 +30,21 @@ namespace TibiaTekBot
             public uint Y;
             public uint Z;
 
+            public override bool Equals(object obj)
+            {
+                if (obj is Location)
+                {
+                    Location oLoc = (Location)obj;
+                    return this.X == oLoc.X 
+                        && this.Y == oLoc.Y
+                        && this.Z == oLoc.Z;
+                }
+                else
+                {
+                    return base.Equals(obj);
+                }
+            }
+
             public override string ToString()
             {
                 return String.Format("X: {0}, Y: {1}, Z: {2}", X, Y, Z);
